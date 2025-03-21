@@ -18,3 +18,4 @@ build/
 .pnpm-store/
 .cache/
 test-output
+gen

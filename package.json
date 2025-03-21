@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:cli": "tsc -p tsconfig.cli.json",
     "serve": "vite preview",
     "lint": "eslint src --ext .ts",
     "test": "node tests/run-tests.js",
@@ -18,7 +19,8 @@
     "test:runtime:verbose": "node tests/runtime-test.js --verbose",
     "test:runtime:vv": "node tests/runtime-test.js --very-verbose",
     "generate-template": "ts-node src/template-generator/index.ts",
-    "generate": "node bin/generate-all.js",
+    "batch-generate": "./batchGenerate.js",
+    "generate-all": "bin/generate-all.js",
     "generate:minify": "node bin/generate-all.js --minify"
   },
   "keywords": [],
@@ -47,5 +49,5 @@
     "typescript": "^5.3.3",
     "vite": "^5.2.6"
   },
-  "description": ""
+  "description": "Custom JSF component for AHML"
 }

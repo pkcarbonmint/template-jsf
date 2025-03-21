@@ -10,15 +10,21 @@ import { SchemaNode, Conditional } from './schema-parser';
 const templatesCache: Record<string, string> = {};
 
 // Load template from file
-function loadTemplate(templatePath: string): string {
+export function loadTemplate(templatePath: string, template?: string): string {
   if (templatesCache[templatePath]) {
     return templatesCache[templatePath];
   }
   
   try {
-    const template = fs.readFileSync(templatePath, 'utf-8');
-    templatesCache[templatePath] = template;
-    return template;
+    if (template) {
+      // If template is provided directly, cache and return it
+      templatesCache[templatePath] = template;
+      return template;
+    }
+    
+    const templateContent = fs.readFileSync(templatePath, 'utf-8');
+    templatesCache[templatePath] = templateContent;
+    return templateContent;
   } catch (error) {
     console.warn(`Template not found: ${templatePath}. Using fallback template.`);
     // Provide a basic fallback template

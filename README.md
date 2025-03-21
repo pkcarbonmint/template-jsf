@@ -20,14 +20,34 @@ JSON Schema provides a powerful way to describe and validate data structures, bu
 
 This project provides a streamlined workflow for developing JSON Schema-based forms:
 
-1. **Schema Definition**: Start by creating your JSON Schema in the `src/test-schemas` directory. The schema defines your data structure, validation rules, and conditional logic.
+### Schema Definition
+Define your JSON Schema in the `src/test-schemas` directory, following JSON Schema specifications.
 
-2. **Template Generation**: Use the template generator tool to create an initial HTML template from your schema:
-   ```bash
-   pnpm generate-template -s src/test-schemas/your-schema.json -o test-output/your-schema.html
-   ```
+### Template Generation
+Generate an HTML template from your schema:
 
-3. **Template Customization**: Modify the generated HTML template to match your design requirements. The template uses data attributes like `data-schema-path` to connect HTML elements to schema properties.
+```bash
+pnpm generate-template -s src/test-schemas/your-schema.json -o test-output/your-schema.html
+```
+
+### Batch Template Generation
+For processing multiple schemas efficiently, use the parallel processing capability:
+
+```bash
+pnpm batch-generate -s src/test-schemas -o test-output -b 10 -w 4
+```
+
+Options:
+- `-s, --schema-dir <dir>`: Directory containing JSON schemas (default: "src/test-schemas")
+- `-o, --output-dir <dir>`: Output directory for generated templates (default: "test-output")
+- `-b, --batch-size <size>`: Number of schemas per batch (default: 10)
+- `-w, --max-workers <count>`: Maximum number of worker threads (default: CPU cores)
+- `-t, --templates-dir <dir>`: Directory containing Mustache templates (default: "src/template-generator/templates")
+
+This parallel processing approach uses direct module imports and in-memory schema caching, making it significantly faster when working with hundreds of schemas. For more details on the performance optimizations, see `OPTIMIZATION.md`.
+
+### Template Customization
+Modify the generated HTML template to match your design requirements. The template uses data attributes like `data-schema-path` to connect HTML elements to schema properties.
 
 4. **Runtime Testing**: Use the runtime demo to test your form's behavior:
    ```bash
@@ -195,6 +215,17 @@ The repository includes several demo pages to showcase the features:
 - **Runtime Demo**: See how forms behave in real-time - `/runtime-demo.html`
 - **Conditional Logic Demo**: Test conditional validation features - `/conditional-demo.html`
 - **Template Playground**: Experiment with template generation - `/template-playground.html`
+
+## Performance Optimization
+
+For large-scale projects with hundreds of schemas, this project includes significant performance optimizations:
+
+- **Parallel Processing**: Generate templates using multiple worker threads
+- **Direct Module Usage**: Workers use compiled modules directly rather than shell commands
+- **Schema Caching**: Parsed schemas are cached to avoid redundant processing
+- **Batch Processing**: Schemas are processed in configurable batches for optimal performance
+
+For detailed information about these optimizations and benchmark results, see [OPTIMIZATION.md](./OPTIMIZATION.md).
 
 ## Development
 
