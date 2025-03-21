@@ -5,7 +5,7 @@
 
 const { workerData, parentPort } = require('worker_threads');
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs/promises');
 
 // Import the compiled schema parser and generator modules
 let schemaParser;
@@ -41,7 +41,7 @@ async function processSchema(schemaFile, schemaDir, outputDir, templatesDir) {
       parsedSchema = schemaCache.get(schemaPath);
     } else {
       // Read the schema file
-      const schemaContent = fs.readFileSync(schemaPath, 'utf-8');
+      const schemaContent = await fs.readFile(schemaPath, 'utf-8');
       const schema = JSON.parse(schemaContent);
       
       // Parse the schema
@@ -56,12 +56,15 @@ async function processSchema(schemaFile, schemaDir, outputDir, templatesDir) {
     
     // Create output directory if it doesn't exist
     const outputFileDir = path.dirname(outputPath);
-    if (!fs.existsSync(outputFileDir)) {
-      fs.mkdirSync(outputFileDir, { recursive: true });
+    try {
+      await fs.access(outputFileDir);
+    } catch (error) {
+      // Directory doesn't exist, create it
+      await fs.mkdir(outputFileDir, { recursive: true });
     }
     
     // Write the output file
-    fs.writeFileSync(outputPath, html, 'utf-8');
+    await fs.writeFile(outputPath, html, 'utf-8');
     
     // Report progress
     parentPort.postMessage({ type: 'progress' });

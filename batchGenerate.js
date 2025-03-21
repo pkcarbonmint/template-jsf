@@ -9,8 +9,9 @@
 
 const { Worker } = require('worker_threads');
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs/promises');
 const { Command } = require('commander');
+const { execSync } = require('child_process');
 
 // Configure command line options
 const program = new Command();
@@ -25,53 +26,69 @@ program
 
 const options = program.opts();
 
-// Input validation
-if (!fs.existsSync(options.schemaDir)) {
-  console.error(`Error: Schema directory '${options.schemaDir}' does not exist.`);
-  process.exit(1);
-}
+// Main program execution
+async function main() {
+  // Input validation
+  try {
+    await fs.access(options.schemaDir);
+  } catch (error) {
+    console.error(`Error: Schema directory '${options.schemaDir}' does not exist.`);
+    process.exit(1);
+  }
 
-if (!fs.existsSync(options.templatesDir)) {
-  console.error(`Error: Templates directory '${options.templatesDir}' does not exist.`);
-  process.exit(1);
-}
+  try {
+    await fs.access(options.templatesDir);
+  } catch (error) {
+    console.error(`Error: Templates directory '${options.templatesDir}' does not exist.`);
+    process.exit(1);
+  }
 
-// Create output directory if it doesn't exist
-if (!fs.existsSync(options.outputDir)) {
-  console.log(`Creating output directory: ${options.outputDir}`);
-  fs.mkdirSync(options.outputDir, { recursive: true });
-}
+  // Create output directory if it doesn't exist
+  try {
+    await fs.access(options.outputDir);
+  } catch (error) {
+    console.log(`Creating output directory: ${options.outputDir}`);
+    await fs.mkdir(options.outputDir, { recursive: true });
+  }
 
-// Convert options to appropriate types
-const batchSize = parseInt(options.batchSize, 10);
-const maxWorkers = parseInt(options.maxWorkers, 10);
+  // Convert options to appropriate types
+  const batchSize = parseInt(options.batchSize, 10);
+  const maxWorkers = parseInt(options.maxWorkers, 10);
 
-console.log('\n--- Batch Template Generator ---');
-console.log(`Schema directory: ${options.schemaDir}`);
-console.log(`Templates directory: ${options.templatesDir}`);
-console.log(`Output directory: ${options.outputDir}`);
-console.log(`Batch size: ${batchSize}`);
-console.log(`Max workers: ${maxWorkers}`);
-console.log('--------------------------------\n');
+  console.log('\n--- Batch Template Generator ---');
+  console.log(`Schema directory: ${options.schemaDir}`);
+  console.log(`Templates directory: ${options.templatesDir}`);
+  console.log(`Output directory: ${options.outputDir}`);
+  console.log(`Batch size: ${batchSize}`);
+  console.log(`Max workers: ${maxWorkers}`);
+  console.log('--------------------------------\n');
 
-// Compile TypeScript files before starting workers
-try {
-  console.log('Compiling TypeScript files...');
-  const { execSync } = require('child_process');
-  execSync('pnpm build:cli', { stdio: 'inherit' });
-  console.log('TypeScript compilation complete.\n');
-} catch (error) {
-  console.error('Error compiling TypeScript files:', error.message);
-  process.exit(1);
+  // Compile TypeScript files before starting workers
+  try {
+    console.log('Compiling TypeScript files...');
+    execSync('pnpm build:cli', { stdio: 'inherit' });
+    console.log('TypeScript compilation complete.\n');
+  } catch (error) {
+    console.error('Error compiling TypeScript files:', error.message);
+    process.exit(1);
+  }
+
+  try {
+    await batchGenerateTemplates(batchSize, maxWorkers);
+    console.log('Template generation completed successfully');
+  } catch (err) {
+    console.error('Error generating templates:', err);
+    process.exit(1);
+  }
 }
 
 /**
  * Main function to batch generate templates
  */
-async function batchGenerateTemplates() {
+async function batchGenerateTemplates(batchSize, maxWorkers) {
   // Get all JSON schema files
-  const schemaFiles = fs.readdirSync(options.schemaDir)
-    .filter(file => file.endsWith('.json'));
+  const files = await fs.readdir(options.schemaDir);
+  const schemaFiles = files.filter(file => file.endsWith('.json'));
   
   console.log(`Found ${schemaFiles.length} JSON schema files`);
   
@@ -162,12 +179,8 @@ async function batchGenerateTemplates() {
   });
 }
 
-// Execute the batch generation
-batchGenerateTemplates()
-  .then(() => {
-    console.log('Template generation completed successfully');
-  })
-  .catch((err) => {
-    console.error('Error generating templates:', err);
-    process.exit(1);
-  }); 
+// Run the main program
+main().catch(error => {
+  console.error('Unhandled error:', error);
+  process.exit(1);
+}); 

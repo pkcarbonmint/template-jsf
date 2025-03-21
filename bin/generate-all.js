@@ -4,24 +4,29 @@
  * Generates templates for all JSON schemas in the test-schemas directory
  * 
  * Usage:
- * node bin/generate-all.js [--output-dir=<directory>] [--parallel] [--workers=<number>] [--batch-size=<number>]
+ * node bin/generate-all.js [--schema-dir=<directory>] [--output-dir=<directory>] [--parallel] [--workers=<number>] [--batch-size=<number>]
  * 
  * Options:
- *   --output-dir    Specify a custom output directory (default: ../generated-templates)
- *   --parallel      Use parallel processing for better performance (recommended for many schemas)
- *   --workers       Number of worker threads for parallel processing (default: CPU count)
- *   --batch-size    Number of schemas per batch in parallel mode (default: 10)
- *   --help          Show this help message
+ *   --schema-dir     Specify the source schema directory (default: src/test-schemas)
+ *   --output-dir     Specify a custom output directory (default: ../generated-templates)
+ *   --parallel       Use parallel processing for better performance (recommended for many schemas)
+ *   --workers        Number of worker threads for parallel processing (default: CPU count)
+ *   --batch-size     Number of schemas per batch in parallel mode (default: 10)
+ *   --help           Show this help message
  */
 
-const fs = require('fs');
 const path = require('path');
-const { execSync, spawn } = require('child_process');
+const { exec, execSync } = require('child_process');
+const util = require('util');
+const execAsync = util.promisify(exec);
+const fs = require('fs');
+const fsPromises = fs.promises;
 const os = require('os');
 
 // Parse command line arguments
 const args = process.argv.slice(2);
 let outputDirArg = null;
+let schemaDirArg = null;
 let useParallel = false;
 let workers = os.cpus().length;
 let batchSize = 10;
@@ -31,12 +36,13 @@ for (const arg of args) {
     console.log(`
 JSON Schema Form Template Generator
 -----------------------------------
-Generates HTML templates for all JSON schemas in the src/test-schemas directory.
+Generates HTML templates for all JSON schemas in the specified schema directory.
 
 Usage:
   node bin/generate-all.js [options]
 
 Options:
+  --schema-dir=<dir>    Specify the source schema directory (default: src/test-schemas)
   --output-dir=<dir>    Specify a custom output directory (default: ../generated-templates)
   --parallel            Use parallel processing for better performance (recommended for many schemas)
   --workers=<number>    Number of worker threads for parallel processing (default: CPU count)
@@ -46,6 +52,8 @@ Options:
     process.exit(0);
   } else if (arg.startsWith('--output-dir=')) {
     outputDirArg = arg.substring('--output-dir='.length);
+  } else if (arg.startsWith('--schema-dir=')) {
+    schemaDirArg = arg.substring('--schema-dir='.length);
   } else if (arg === '--parallel') {
     useParallel = true;
   } else if (arg.startsWith('--workers=')) {
@@ -56,7 +64,9 @@ Options:
 }
 
 // Configuration
-const SCHEMAS_DIR = path.join(__dirname, '../src/test-schemas');
+const SCHEMAS_DIR = schemaDirArg 
+  ? path.resolve(schemaDirArg)
+  : path.join(__dirname, '../src/test-schemas');
 const OUTPUT_DIR = outputDirArg 
   ? path.resolve(outputDirArg)
   : path.join(__dirname, '../generated-templates');
@@ -76,27 +86,8 @@ if (useParallel) {
   console.log(`Batch size: ${batchSize}`);
 }
 
-// Ensure output directory exists
-if (!fs.existsSync(OUTPUT_DIR)) {
-  console.log(`Creating output directory: ${OUTPUT_DIR}`);
-  fs.mkdirSync(OUTPUT_DIR, { recursive: true });
-}
-
-// Get all JSON schema files
-const schemaFiles = fs.readdirSync(SCHEMAS_DIR)
-  .filter(file => file.endsWith('.json'));
-
-console.log(`\nFound ${schemaFiles.length} schema files to process`);
-
-// Use parallel or sequential processing based on configuration
-if (useParallel) {
-  processInParallel(schemaFiles);
-} else {
-  processSequentially(schemaFiles);
-}
-
 // Process all schemas in parallel using the batchGenerate script
-function processInParallel(schemaFiles) {
+async function processInParallel(schemaFiles) {
   const startTime = Date.now();
   
   // Execute the batch generation script
@@ -106,9 +97,14 @@ function processInParallel(schemaFiles) {
     console.log(`\nStarting parallel generation with ${workers} workers...`);
     const command = `node ${batchGenScript} -s "${SCHEMAS_DIR}" -o "${OUTPUT_DIR}" -b ${batchSize} -w ${workers}`;
     
-    // Execute the command and display output in real-time
-    const result = execSync(command, { encoding: 'utf8' });
-    console.log(result);
+    // Execute the command asynchronously and display output
+    const { stdout, stderr } = await execAsync(command);
+    
+    if (stderr) {
+      console.error("Command stderr:", stderr);
+    }
+    
+    console.log(stdout);
     
     const endTime = Date.now();
     const totalDuration = (endTime - startTime) / 1000;
@@ -122,23 +118,24 @@ function processInParallel(schemaFiles) {
     console.log(`Processing mode: Parallel (${workers} workers, batch size: ${batchSize})`);
     
     // Verify all files were generated
-    const generatedCount = countGeneratedFiles(schemaFiles);
+    const generatedCount = await countGeneratedFiles(schemaFiles);
     console.log(`Generated files: ${generatedCount}/${schemaFiles.length}`);
     
-    process.exit(generatedCount === schemaFiles.length ? 0 : 1);
+    return generatedCount === schemaFiles.length;
   } catch (error) {
     console.error('Error during parallel generation:', error.message);
-    process.exit(1);
+    throw error;
   }
 }
 
 // Process all schemas sequentially (original implementation)
-function processSequentially(schemaFiles) {
+async function processSequentially(schemaFiles) {
   let successCount = 0;
   let failCount = 0;
   const results = [];
   
-  schemaFiles.forEach((schemaFile, index) => {
+  for (let index = 0; index < schemaFiles.length; index++) {
+    const schemaFile = schemaFiles[index];
     const schemaPath = path.join(SCHEMAS_DIR, schemaFile);
     const outputPath = path.join(OUTPUT_DIR, schemaFile.replace('.json', '.html'));
     
@@ -150,13 +147,13 @@ function processSequentially(schemaFiles) {
       // Generate template using the existing script
       const command = `node ${path.join(__dirname, 'generate-template.js')} -s "${schemaPath}" -o "${outputPath}"`;
       
-      execSync(command, { encoding: 'utf8' });
+      const { stdout } = await execAsync(command);
       
       const endTime = Date.now();
       const duration = (endTime - startTime) / 1000;
       
       // Get the size of the output file
-      const stats = fs.statSync(outputPath);
+      const stats = await fsPromises.stat(outputPath);
       const fileSizeKB = (stats.size / 1024).toFixed(2);
       
       console.log(`✅ Success: ${schemaFile} → ${path.relative(process.cwd(), outputPath)}`);
@@ -180,7 +177,7 @@ function processSequentially(schemaFiles) {
         error: error.message
       });
     }
-  });
+  }
   
   console.log('\n┌────────────────────────────────────────────────┐');
   console.log('│ Generation Summary                             │');
@@ -205,23 +202,59 @@ function processSequentially(schemaFiles) {
     console.log('└───────────────────┴──────────┴───────────┘');
   }
   
-  if (failCount > 0) {
-    process.exit(1);
-  } else {
-    process.exit(0);
-  }
+  return failCount === 0;
 }
 
 // Count how many output files were successfully generated
-function countGeneratedFiles(schemaFiles) {
+async function countGeneratedFiles(schemaFiles) {
   let count = 0;
   
-  schemaFiles.forEach(schemaFile => {
+  for (const schemaFile of schemaFiles) {
     const outputPath = path.join(OUTPUT_DIR, schemaFile.replace('.json', '.html'));
-    if (fs.existsSync(outputPath)) {
+    try {
+      await fsPromises.access(outputPath);
       count++;
+    } catch (error) {
+      // File doesn't exist
     }
-  });
+  }
   
   return count;
-} 
+}
+
+// Main function to run the program
+async function main() {
+  try {
+    try {
+      await fsPromises.access(OUTPUT_DIR);
+    } catch (error) {
+      console.log(`Creating output directory: ${OUTPUT_DIR}`);
+      await fsPromises.mkdir(OUTPUT_DIR, { recursive: true });
+    }
+
+    // Get all JSON schema files
+    const dirFiles = await fsPromises.readdir(SCHEMAS_DIR);
+    const schemaFiles = dirFiles.filter(file => file.endsWith('.json'));
+
+    console.log(`\nFound ${schemaFiles.length} schema files to process`);
+
+    // Use parallel or sequential processing based on configuration
+    let success;
+    if (useParallel) {
+      success = await processInParallel(schemaFiles);
+    } else {
+      success = await processSequentially(schemaFiles);
+    }
+
+    process.exit(success ? 0 : 1);
+  } catch (error) {
+    console.error('Error:', error.message);
+    process.exit(1);
+  }
+}
+
+// Run the main function
+main().catch(error => {
+  console.error('Unhandled error:', error);
+  process.exit(1);
+}); 
