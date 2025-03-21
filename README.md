@@ -2,6 +2,60 @@
 
 A powerful library for generating dynamic HTML forms from JSON Schema definitions. The library provides template generation and runtime form handling, including validation, conditional display, and data binding.
 
+## Why
+
+JSON Schema provides a powerful way to describe and validate data structures, but implementing user-friendly forms that respect these schemas often requires complex, framework-specific solutions. This project aims to solve several common challenges:
+
+1. **Separation of structure and presentation** - By decoupling the schema (data structure) from the template (presentation), we enable developers to create custom UIs while maintaining data integrity.
+
+2. **Framework agnosticism** - Most existing JSON Schema form libraries are tightly coupled to specific frameworks (React, Vue, Angular). This lightweight approach works with vanilla JavaScript and minimal dependencies.
+
+3. **Conditional visibility and validation** - JSON Schema's conditional features (if/then/else, allOf, anyOf) are powerful but difficult to implement in form UIs. This component handles complex conditional logic automatically.
+
+4. **Developer flexibility** - Unlike rigid form generators, this approach allows developers to fully customize the form's appearance while the runtime handles the data binding and conditional logic.
+
+5. **Performance** - By using a minimal set of dependencies and focusing on lightweight implementation, this component avoids the bloat common in larger form libraries.
+
+## Development Workflow
+
+This project provides a streamlined workflow for developing JSON Schema-based forms:
+
+1. **Schema Definition**: Start by creating your JSON Schema in the `src/test-schemas` directory. The schema defines your data structure, validation rules, and conditional logic.
+
+2. **Template Generation**: Use the template generator tool to create an initial HTML template from your schema:
+   ```bash
+   pnpm generate-template -s src/test-schemas/your-schema.json -o test-output/your-schema.html
+   ```
+
+3. **Template Customization**: Modify the generated HTML template to match your design requirements. The template uses data attributes like `data-schema-path` to connect HTML elements to schema properties.
+
+4. **Runtime Testing**: Use the runtime demo to test your form's behavior:
+   ```bash
+   pnpm serve
+   ```
+   Then visit `http://localhost:4173/runtime-demo.html` and select your schema.
+
+5. **Visibility Reporting**: During development, you can use the visibility report to understand which fields are visible and why:
+   ```javascript
+   const visibilityReport = formInstance.getFieldVisibilityReport();
+   console.log(visibilityReport);
+   ```
+
+6. **Testing Changes**: Run tests to verify your form works correctly:
+   ```bash
+   pnpm test:runtime
+   ```
+   The tests verify form initialization, data binding, conditional logic, and submission.
+
+7. **Integration**: Once your form is working as expected, integrate it into your application using the runtime library:
+   ```javascript
+   import { createSchemaForm } from './dist/runtime.es.js';
+   const form = createSchemaForm('#container', {
+     schema: yourSchema,
+     onSubmit: (data) => handleSubmit(data)
+   });
+   ```
+
 ## Features
 
 - Generate HTML forms directly from JSON Schema
