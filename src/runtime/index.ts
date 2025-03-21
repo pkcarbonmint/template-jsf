@@ -58,6 +58,7 @@ interface FormEvents {
   fieldHide: { field: string; reason?: string };
   reset: { formData: Record<string, any> };
   [key: string]: any; // Allow for other events
+  [key: symbol]: any; // Add index signature for symbol
 }
 
 export type SchemaPaths = Record<string, string>;
