@@ -1,0 +1,955 @@
+<form id="root" class="w-full max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg" data-schema-form>
+  <h1 class="text-3xl font-medium mb-8 text-gray-800">Conditional Logic Test Form</h1>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="root" data-schema-id="root" data-schema-path="root">
+  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Conditional Logic Test Form</h2>
+  <p class="text-sm text-gray-600 mb-6">Testing form for conditional logic keywords in JSON Schema</p>
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="name" data-schema-path="name">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Name
+      <span class="text-red-500">*</span>
+    </span>
+    <span class="block text-xs text-gray-500 mt-1 mb-1">Your full name</span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-name"
+    name="field-name"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-name"
+    data-schema-path="field-name"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="age" data-schema-path="age">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Age
+      <span class="text-red-500">*</span>
+    </span>
+    <span class="block text-xs text-gray-500 mt-1 mb-1">Your age in years</span>
+  </label>
+  <div class="relative">
+  <input 
+    type="number"
+    id="field-age"
+    name="field-age"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="number"
+    data-schema-id="field-age"
+    data-schema-path="field-age"
+    required
+    
+    max="120"
+    
+    step="1"
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="accountType" data-schema-path="accountType">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Account Type
+      <span class="text-red-500">*</span>
+    </span>
+  </label>
+  <div class="relative">
+  <select
+    id="field-accountType"
+    name="field-accountType"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 appearance-none"
+    data-schema-type="enum"
+    data-schema-id="field-accountType"
+    data-schema-path="field-accountType"
+    required
+  >
+    <option value="">-- Select --</option>
+    <option value="personal">personal</option>
+    <option value="business">business</option>
+    <option value="nonprofit">nonprofit</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+    </svg>
+  </div>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="personalSection" data-schema-path="personalSection">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Personal Information
+      <span class="text-red-500">*</span>
+    </span>
+    <span class="block text-xs text-gray-500 mt-1 mb-1">Information for personal accounts</span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-personalSection" data-schema-id="field-personalSection" data-schema-path="field-personalSection">
+  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Personal Information</h2>
+  <p class="text-sm text-gray-600 mb-6">Information for personal accounts</p>
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="occupation" data-schema-path="occupation">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Occupation
+      
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-personalSection-occupation"
+    name="field-personalSection-occupation"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-personalSection-occupation"
+    data-schema-path="field-personalSection-occupation"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="hobbies" data-schema-path="hobbies">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Hobbies
+      
+    </span>
+  </label>
+  <div id="field-personalSection-hobbies" class="array-container bg-gray-50 p-6 rounded-lg border border-gray-100 shadow-sm" data-schema-type="array" data-schema-id="field-personalSection-hobbies" data-schema-path="field-personalSection-hobbies">
+  <h3 class="text-lg font-medium text-gray-700 mb-4 border-b border-gray-200 pb-2">Hobbies</h3>
+
+  <div class="array-items space-y-6">
+    <!-- Array item template will be cloned and inserted here dynamically -->
+    <div class="array-item-template hidden">
+      <div class="array-item relative border border-gray-200 bg-white rounded-lg p-5 mb-4 shadow-sm">
+        <div class="relative">
+  <input 
+    type="text"
+    id="field-personalSection-hobbies-items"
+    name="field-personalSection-hobbies-items"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-personalSection-hobbies-items"
+    data-schema-path="field-personalSection-hobbies-items"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+        <button type="button" class="remove-item absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors duration-200" aria-label="Remove item">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <button type="button" class="add-item px-4 py-2 bg-green-500 text-white rounded shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 transition-colors duration-200 flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+      Add Item
+    </button>
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="businessSection" data-schema-path="businessSection">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Business Information
+      <span class="text-red-500">*</span>
+    </span>
+    <span class="block text-xs text-gray-500 mt-1 mb-1">Information for business accounts</span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-businessSection" data-schema-id="field-businessSection" data-schema-path="field-businessSection">
+  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Business Information</h2>
+  <p class="text-sm text-gray-600 mb-6">Information for business accounts</p>
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="companyName" data-schema-path="companyName">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Company Name
+      
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-businessSection-companyName"
+    name="field-businessSection-companyName"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-businessSection-companyName"
+    data-schema-path="field-businessSection-companyName"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="taxId" data-schema-path="taxId">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Tax ID
+      
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-businessSection-taxId"
+    name="field-businessSection-taxId"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-businessSection-taxId"
+    data-schema-path="field-businessSection-taxId"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="employeeCount" data-schema-path="employeeCount">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Number of Employees
+      
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="number"
+    id="field-businessSection-employeeCount"
+    name="field-businessSection-employeeCount"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="number"
+    data-schema-id="field-businessSection-employeeCount"
+    data-schema-path="field-businessSection-employeeCount"
+    
+    min="1"
+    
+    
+    step="1"
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="nonprofitSection" data-schema-path="nonprofitSection">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Nonprofit Information
+      <span class="text-red-500">*</span>
+    </span>
+    <span class="block text-xs text-gray-500 mt-1 mb-1">Information for nonprofit accounts</span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-nonprofitSection" data-schema-id="field-nonprofitSection" data-schema-path="field-nonprofitSection">
+  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Nonprofit Information</h2>
+  <p class="text-sm text-gray-600 mb-6">Information for nonprofit accounts</p>
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="organizationName" data-schema-path="organizationName">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Organization Name
+      
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-nonprofitSection-organizationName"
+    name="field-nonprofitSection-organizationName"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-nonprofitSection-organizationName"
+    data-schema-path="field-nonprofitSection-organizationName"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="mission" data-schema-path="mission">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Mission Statement
+      
+    </span>
+  </label>
+  <div class="relative">
+  <textarea
+    id="field-nonprofitSection-mission"
+    name="field-nonprofitSection-mission"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 resize-y min-h-[120px]"
+    data-schema-type="string"
+    data-schema-id="field-nonprofitSection-mission"
+    data-schema-path="field-nonprofitSection-mission"
+    
+    
+    
+    placeholder=" "
+  ></textarea>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="agreeToTerms" data-schema-path="agreeToTerms">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Terms Agreement
+      <span class="text-red-500">*</span>
+    </span>
+    <span class="block text-xs text-gray-500 mt-1 mb-1">I agree to the terms and conditions</span>
+  </label>
+  <label class="inline-flex items-center cursor-pointer">
+  <div class="relative">
+    <input 
+      type="checkbox"
+      id="field-agreeToTerms"
+      name="field-agreeToTerms"
+      class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+      data-schema-type="boolean"
+      data-schema-id="field-agreeToTerms"
+      data-schema-path="field-agreeToTerms"
+      required
+      
+    />
+    <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500">
+    </div>
+  </div>
+  <span class="ml-3 text-sm font-medium text-gray-700">Disabled</span>
+</label> 
+</div> 
+<div class="property-container mb-5" data-property-name="contactPreference" data-schema-path="contactPreference">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Preferred Contact Method
+      <span class="text-red-500">*</span>
+    </span>
+  </label>
+  <div class="relative">
+  <select
+    id="field-contactPreference"
+    name="field-contactPreference"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 appearance-none"
+    data-schema-type="enum"
+    data-schema-id="field-contactPreference"
+    data-schema-path="field-contactPreference"
+    required
+  >
+    <option value="">-- Select --</option>
+    <option value="email">email</option>
+    <option value="phone">phone</option>
+    <option value="mail">mail</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+    </svg>
+  </div>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="email" data-schema-path="email">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Email Address
+      <span class="text-red-500">*</span>
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="email"
+    id="field-email"
+    name="field-email"
+    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+    data-schema-type="email"
+    data-schema-id="field-email"
+    data-schema-path="field-email"
+    required
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="phone" data-schema-path="phone">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Phone Number
+      <span class="text-red-500">*</span>
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-phone"
+    name="field-phone"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-phone"
+    data-schema-path="field-phone"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="mailingAddress" data-schema-path="mailingAddress">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Mailing Address
+      <span class="text-red-500">*</span>
+    </span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-mailingAddress" data-schema-id="field-mailingAddress" data-schema-path="field-mailingAddress">
+  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Mailing Address</h2>
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="street" data-schema-path="street">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Street Address
+      
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-mailingAddress-street"
+    name="field-mailingAddress-street"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-mailingAddress-street"
+    data-schema-path="field-mailingAddress-street"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="city" data-schema-path="city">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      City
+      
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-mailingAddress-city"
+    name="field-mailingAddress-city"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-mailingAddress-city"
+    data-schema-path="field-mailingAddress-city"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="state" data-schema-path="state">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      State&#x2F;Province
+      
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-mailingAddress-state"
+    name="field-mailingAddress-state"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-mailingAddress-state"
+    data-schema-path="field-mailingAddress-state"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="postalCode" data-schema-path="postalCode">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Postal Code
+      
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-mailingAddress-postalCode"
+    name="field-mailingAddress-postalCode"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-mailingAddress-postalCode"
+    data-schema-path="field-mailingAddress-postalCode"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="country" data-schema-path="country">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Country
+      
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-mailingAddress-country"
+    name="field-mailingAddress-country"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-mailingAddress-country"
+    data-schema-path="field-mailingAddress-country"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+    <div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="if">
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--if" data-schema-id="field--if" data-schema-path="field--if">
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="age" data-schema-path="age">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      age
+      
+    </span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--if-age" data-schema-id="field--if-age" data-schema-path="field--if-age">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="then">
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--then" data-schema-id="field--then" data-schema-path="field--then">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+<div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="else">
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--else" data-schema-id="field--else" data-schema-path="field--else">
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="_submitDisabled" data-schema-path="_submitDisabled">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      _submitDisabled
+      
+    </span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--else-_submitDisabled" data-schema-id="field--else-_submitDisabled" data-schema-path="field--else-_submitDisabled">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="allOf">
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-0" data-schema-id="field--allOf-0" data-schema-path="field--allOf-0">
+  <div class="space-y-6">
+    
+    <div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="if">
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-0-if" data-schema-id="field--allOf-0-if" data-schema-path="field--allOf-0-if">
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="accountType" data-schema-path="accountType">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      accountType
+      
+    </span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-0-if-accountType" data-schema-id="field--allOf-0-if-accountType" data-schema-path="field--allOf-0-if-accountType">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="then">
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-0-then" data-schema-id="field--allOf-0-then" data-schema-path="field--allOf-0-then">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+  </div>
+</div> 
+<div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-1" data-schema-id="field--allOf-1" data-schema-path="field--allOf-1">
+  <div class="space-y-6">
+    
+    <div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="if">
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-1-if" data-schema-id="field--allOf-1-if" data-schema-path="field--allOf-1-if">
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="accountType" data-schema-path="accountType">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      accountType
+      
+    </span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-1-if-accountType" data-schema-id="field--allOf-1-if-accountType" data-schema-path="field--allOf-1-if-accountType">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="then">
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-1-then" data-schema-id="field--allOf-1-then" data-schema-path="field--allOf-1-then">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+  </div>
+</div> 
+<div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-2" data-schema-id="field--allOf-2" data-schema-path="field--allOf-2">
+  <div class="space-y-6">
+    
+    <div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="if">
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-2-if" data-schema-id="field--allOf-2-if" data-schema-path="field--allOf-2-if">
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="accountType" data-schema-path="accountType">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      accountType
+      
+    </span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-2-if-accountType" data-schema-id="field--allOf-2-if-accountType" data-schema-path="field--allOf-2-if-accountType">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="then">
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-2-then" data-schema-id="field--allOf-2-then" data-schema-path="field--allOf-2-then">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+  </div>
+</div> 
+<div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-3" data-schema-id="field--allOf-3" data-schema-path="field--allOf-3">
+  <div class="space-y-6">
+    
+    <div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="if">
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-3-if" data-schema-id="field--allOf-3-if" data-schema-path="field--allOf-3-if">
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="contactPreference" data-schema-path="contactPreference">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      contactPreference
+      
+    </span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-3-if-contactPreference" data-schema-id="field--allOf-3-if-contactPreference" data-schema-path="field--allOf-3-if-contactPreference">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="then">
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-3-then" data-schema-id="field--allOf-3-then" data-schema-path="field--allOf-3-then">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+  </div>
+</div> 
+<div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-4" data-schema-id="field--allOf-4" data-schema-path="field--allOf-4">
+  <div class="space-y-6">
+    
+    <div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="if">
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-4-if" data-schema-id="field--allOf-4-if" data-schema-path="field--allOf-4-if">
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="contactPreference" data-schema-path="contactPreference">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      contactPreference
+      
+    </span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-4-if-contactPreference" data-schema-id="field--allOf-4-if-contactPreference" data-schema-path="field--allOf-4-if-contactPreference">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="then">
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-4-then" data-schema-id="field--allOf-4-then" data-schema-path="field--allOf-4-then">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+  </div>
+</div> 
+<div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-5" data-schema-id="field--allOf-5" data-schema-path="field--allOf-5">
+  <div class="space-y-6">
+    
+    <div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="if">
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-5-if" data-schema-id="field--allOf-5-if" data-schema-path="field--allOf-5-if">
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="contactPreference" data-schema-path="contactPreference">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      contactPreference
+      
+    </span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-5-if-contactPreference" data-schema-id="field--allOf-5-if-contactPreference" data-schema-path="field--allOf-5-if-contactPreference">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="then">
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--allOf-5-then" data-schema-id="field--allOf-5-then" data-schema-path="field--allOf-5-then">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+  </div>
+</div> 
+</div> 
+<div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="anyOf">
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--anyOf-0" data-schema-id="field--anyOf-0" data-schema-path="field--anyOf-0">
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="accountType" data-schema-path="accountType">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      accountType
+      
+    </span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--anyOf-0-accountType" data-schema-id="field--anyOf-0-accountType" data-schema-path="field--anyOf-0-accountType">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="businessSection" data-schema-path="businessSection">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      businessSection
+      
+    </span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--anyOf-0-businessSection" data-schema-id="field--anyOf-0-businessSection" data-schema-path="field--anyOf-0-businessSection">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+<div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--anyOf-1" data-schema-id="field--anyOf-1" data-schema-path="field--anyOf-1">
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="accountType" data-schema-path="accountType">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      accountType
+      
+    </span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--anyOf-1-accountType" data-schema-id="field--anyOf-1-accountType" data-schema-path="field--anyOf-1-accountType">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="nonprofitSection" data-schema-path="nonprofitSection">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      nonprofitSection
+      
+    </span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--anyOf-1-nonprofitSection" data-schema-id="field--anyOf-1-nonprofitSection" data-schema-path="field--anyOf-1-nonprofitSection">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+<div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--anyOf-2" data-schema-id="field--anyOf-2" data-schema-path="field--anyOf-2">
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="accountType" data-schema-path="accountType">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      accountType
+      
+    </span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field--anyOf-2-accountType" data-schema-id="field--anyOf-2-accountType" data-schema-path="field--anyOf-2-accountType">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+  </div>
+</div> 
+  <div class="mt-10 flex justify-end">
+    <button type="submit" class="px-6 py-2.5 bg-blue-500 text-white rounded shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 transition-colors duration-200 uppercase text-sm font-medium tracking-wider">
+      Submit
+    </button>
+  </div>
+</form> 

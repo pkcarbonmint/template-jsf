@@ -326,6 +326,34 @@ class MockRuntime {
     return { ...this.formData };
   }
   
+  getFieldVisibilityReport() {
+    if (!this.element) return {};
+    
+    const fields = this.element.querySelectorAll('[data-schema-path]');
+    const report = {};
+    
+    fields.forEach(field => {
+      const path = field.getAttribute('data-schema-path');
+      if (!path) return;
+      
+      const isVisible = !field.classList.contains('hidden');
+      const inputs = field.querySelectorAll('input, select, textarea');
+      const inputDetails = Array.from(inputs).map(input => ({
+        name: (input).name,
+        type: (input).type,
+        value: (input).value,
+        required: input.hasAttribute('required')
+      }));
+      
+      report[path] = {
+        visible: isVisible,
+        inputs: inputDetails.length > 0 ? inputDetails : undefined
+      };
+    });
+    
+    return report;
+  }
+  
   triggerEvent(eventType, data) {
     this.emitEvent(eventType, data);
   }
@@ -489,6 +517,33 @@ async function testFormInitialization(env, suiteName) {
     const formData = env.runtime.getFormData();
     if (typeof formData !== 'object') {
       throw new Error('Form data is not an object');
+    }
+  });
+  
+  suite.test('Field visibility report should be available at initialization', () => {
+    const visibilityReport = env.runtime.getFieldVisibilityReport();
+    
+    if (!visibilityReport || typeof visibilityReport !== 'object') {
+      throw new Error('Field visibility report should be an object');
+    }
+    
+    // Check that the report has entries for fields
+    const fieldCount = Object.keys(visibilityReport).length;
+    if (fieldCount === 0) {
+      throw new Error('Field visibility report should contain field entries');
+    }
+    
+    // Verify all top-level fields from the schema are in the report
+    if (env.schema && env.schema.properties) {
+      const schemaTopLevelFields = Object.keys(env.schema.properties);
+      
+      // There should be some overlap between schema fields and report fields
+      const reportFields = Object.keys(visibilityReport);
+      const overlap = schemaTopLevelFields.some(field => reportFields.includes(field));
+      
+      if (!overlap) {
+        throw new Error('Field visibility report should contain some schema top-level fields');
+      }
     }
   });
   
@@ -766,6 +821,24 @@ async function testConditionalLogic(env, suiteName) {
   
   const suite = new TestSuite(`${suiteName} - Conditional Schema Logic`);
   
+  suite.test('Initial field visibility state should be correctly reported', () => {
+    const visibilityReport = env.runtime.getFieldVisibilityReport();
+    
+    // Check that the base fields are visible
+    ['name', 'age', 'accountType', 'contactPreference'].forEach(field => {
+      if (!visibilityReport[field] || !visibilityReport[field].visible) {
+        throw new Error(`Basic field ${field} should be visible initially`);
+      }
+    });
+    
+    // Account type sections should be hidden by default
+    ['businessSection', 'personalSection', 'nonprofitSection'].forEach(section => {
+      if (!visibilityReport[section] || visibilityReport[section].visible) {
+        throw new Error(`Section ${section} should be hidden initially`);
+      }
+    });
+  });
+  
   suite.test('If/Then/Else: Terms agreement should be required when age is 18+', () => {
     const runtime = env.runtime;
     
@@ -797,6 +870,18 @@ async function testConditionalLogic(env, suiteName) {
     
     if (submitButton.disabled) {
       throw new Error('Submit button should be enabled for age 18+');
+    }
+    
+    // Verify visibility report
+    const visibilityReport = runtime.getFieldVisibilityReport();
+    if (!visibilityReport.agreeToTerms || !visibilityReport.agreeToTerms.visible) {
+      throw new Error('Terms agreement field should be visible in visibility report');
+    }
+    
+    // Verify that terms input is marked as required in the report
+    const termsFieldInputs = visibilityReport.agreeToTerms.inputs;
+    if (!termsFieldInputs || !termsFieldInputs.some(input => input.required)) {
+      throw new Error('Terms agreement input should be marked as required in visibility report');
     }
   });
   
@@ -850,6 +935,23 @@ async function testConditionalLogic(env, suiteName) {
       throw new Error('Business section should be visible when account type is business');
     }
     
+    // Check visibility report
+    const visibilityReport = runtime.getFieldVisibilityReport();
+    
+    // Business section should be visible
+    if (!visibilityReport.businessSection || !visibilityReport.businessSection.visible) {
+      throw new Error('Business section should be visible in visibility report when account type is business');
+    }
+    
+    // Personal and nonprofit sections should be hidden
+    if (visibilityReport.personalSection && visibilityReport.personalSection.visible) {
+      throw new Error('Personal section should be hidden in visibility report when account type is business');
+    }
+    
+    if (visibilityReport.nonprofitSection && visibilityReport.nonprofitSection.visible) {
+      throw new Error('Nonprofit section should be hidden in visibility report when account type is business');
+    }
+    
     // Personal and nonprofit sections should be hidden
     const personalSection = env.container.querySelector('[data-schema-path="personalSection"]');
     const nonprofitSection = env.container.querySelector('[data-schema-path="nonprofitSection"]');
@@ -899,6 +1001,29 @@ async function testConditionalLogic(env, suiteName) {
     if (mailFields && !mailFields.classList.contains('hidden')) {
       throw new Error('Mailing address should not be required when contact preference is email');
     }
+    
+    // Verify visibility report
+    const visibilityReport = runtime.getFieldVisibilityReport();
+    
+    // Check email field visibility and required state
+    if (!visibilityReport.email || !visibilityReport.email.visible) {
+      throw new Error('Email field should be visible in visibility report when contact preference is email');
+    }
+    
+    const emailInputDetails = visibilityReport.email.inputs;
+    if (!emailInputDetails || !emailInputDetails.some(input => input.required)) {
+      throw new Error('Email input should be marked as required in visibility report');
+    }
+    
+    // Check phone field visibility
+    if (visibilityReport.phone && visibilityReport.phone.visible) {
+      throw new Error('Phone field should be hidden in visibility report when contact preference is email');
+    }
+    
+    // Check mailing address field visibility
+    if (visibilityReport.mailingAddress && visibilityReport.mailingAddress.visible) {
+      throw new Error('Mailing address should be hidden in visibility report when contact preference is email');
+    }
   });
   
   suite.test('AnyOf: Business account should require company name and tax ID', () => {
@@ -945,6 +1070,30 @@ async function testConditionalLogic(env, suiteName) {
     
     if (occupationInput && occupationInput.hasAttribute('required')) {
       throw new Error('Occupation should not be required for personal accounts');
+    }
+    
+    // Verify visibility report
+    const visibilityReport = runtime.getFieldVisibilityReport();
+    
+    // Personal section should be visible
+    if (!visibilityReport.personalSection || !visibilityReport.personalSection.visible) {
+      throw new Error('Personal section should be visible in visibility report when account type is personal');
+    }
+    
+    // Business and nonprofit sections should be hidden
+    if (visibilityReport.businessSection && visibilityReport.businessSection.visible) {
+      throw new Error('Business section should be hidden in visibility report when account type is personal');
+    }
+    
+    if (visibilityReport.nonprofitSection && visibilityReport.nonprofitSection.visible) {
+      throw new Error('Nonprofit section should be hidden in visibility report when account type is personal');
+    }
+    
+    // Check that occupation input is not required in the report
+    const personalSectionInputs = visibilityReport.personalSection.inputs;
+    const occupationDetails = personalSectionInputs?.find(input => input.name === 'field-personalSection-occupation');
+    if (occupationDetails && occupationDetails.required) {
+      throw new Error('Occupation should not be marked as required in visibility report');
     }
   });
   

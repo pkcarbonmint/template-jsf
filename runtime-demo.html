@@ -62,6 +62,13 @@
           <button id="reset-btn" class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 mr-2">Reset</button>
           <button id="submit-btn" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Submit</button>
           <button id="debug-btn" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 ml-2">Debug</button>
+          <button id="visibility-btn" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 ml-2">Debug Field Visibility</button>
+        </div>
+        
+        <!-- Debug Panel (initially hidden) -->
+        <div id="debug-panel" class="mt-4 p-4 border border-gray-200 rounded bg-gray-50 hidden">
+          <h3 class="text-md font-semibold mb-2">Field Visibility Status</h3>
+          <div id="visibility-log" class="json-display max-h-96 overflow-auto text-xs"></div>
         </div>
       </div>
     </div>
@@ -81,6 +88,12 @@
       const loadBtn = document.getElementById('load-btn');
       const resetBtn = document.getElementById('reset-btn');
       const submitBtn = document.getElementById('submit-btn');
+      const visibilityBtn = document.getElementById('visibility-btn');
+      const debugPanel = document.getElementById('debug-panel');
+      const visibilityLog = document.getElementById('visibility-log');
+      
+      // Track field visibility reasons
+      let fieldVisibilityReasons = {};
       
       let form = null;
       
@@ -118,12 +131,57 @@
         }
       }
       
+      // Helper function to generate field visibility report
+      function generateFieldVisibilityReport() {
+        debugPanel.classList.remove('hidden');
+        
+        if (!form) {
+          visibilityLog.textContent = "Form not initialized yet.";
+          return;
+        }
+        
+        // Use the built-in method if available
+        if (typeof form.getFieldVisibilityReport === 'function') {
+          const report = form.getFieldVisibilityReport();
+          displayJson(visibilityLog, report);
+          return;
+        }
+        
+        // Fallback to older method if the function isn't available
+        const fields = formContainer.querySelectorAll('[data-schema-path]');
+        const report = {};
+        
+        fields.forEach(field => {
+          const path = field.getAttribute('data-schema-path');
+          const isVisible = !field.classList.contains('hidden');
+          const inputs = field.querySelectorAll('input, select, textarea');
+          const inputDetails = Array.from(inputs).map(input => ({
+            name: input.name,
+            type: input.type,
+            value: input.value,
+            required: input.hasAttribute('required')
+          }));
+          
+          report[path] = {
+            visible: isVisible,
+            reason: fieldVisibilityReasons[path] || 'Unknown',
+            inputs: inputDetails.length > 0 ? inputDetails : undefined
+          };
+        });
+        
+        // Display the report
+        displayJson(visibilityLog, report);
+      }
+      
       // Load template and initialize form
       function loadTemplate() {
         const templateName = templateSelector.value;
         if (!templateName) return;
         
         formContainer.innerHTML = '<div class="flex justify-center items-center h-64"><div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div></div>';
+        
+        // Reset field visibility tracking
+        fieldVisibilityReasons = {};
         
         // Get the corresponding schema URL
         const schemaName = templateName.replace('.html', '.json');
@@ -139,6 +197,17 @@
             onChange: (data) => {
               displayJson(formDataDisplay, data);
               console.log('onChange callback executed', data);
+              
+              // Debug for medium schema
+              if (templateName === 'medium.html') {
+                console.log('Medium schema form data details:', {
+                  rawData: data,
+                  hasName: 'name' in data,
+                  hasSku: 'sku' in data,
+                  hasPrice: 'price' in data,
+                  fieldsFound: Object.keys(data).join(', ')
+                });
+              }
             },
             onSubmit: (data) => {
               logEvent('submit', { data: 'Form submitted!' });
@@ -154,6 +223,45 @@
           // Setup event listeners
           form.on('ready', (data) => {
             logEvent('ready', { form: 'Form is ready' });
+            
+            // Track initial visibility of all fields
+            const initialFields = formContainer.querySelectorAll('[data-schema-path]');
+            initialFields.forEach(field => {
+              const path = field.getAttribute('data-schema-path');
+              const isVisible = !field.classList.contains('hidden');
+              fieldVisibilityReasons[path] = isVisible ? 'Initial state: visible' : 'Initial state: hidden';
+            });
+            
+            // Add specific debug logging for medium schema
+            if (templateName === 'medium.html') {
+              console.log('Medium schema form ready - checking fields:');
+              setTimeout(() => {
+                // Get all input elements after form is ready
+                const inputs = formContainer.querySelectorAll('input, select, textarea');
+                console.log(`Found ${inputs.length} input fields:`);
+                
+                // Log details about each input field
+                inputs.forEach(input => {
+                  console.log('Field:', {
+                    name: input.name,
+                    id: input.id,
+                    type: input.type,
+                    value: input.value,
+                    schemaId: input.getAttribute('data-schema-id'),
+                    schemaPath: input.getAttribute('data-schema-path')
+                  });
+                  
+                  // Add extra change event listener to track all changes
+                  input.addEventListener('change', (e) => {
+                    console.log(`Field ${input.name} changed:`, {
+                      newValue: input.value,
+                      fieldId: input.getAttribute('data-schema-id'),
+                      dataAfter: form.getFormData ? form.getFormData() : 'getFormData not available'
+                    });
+                  });
+                });
+              }, 500); // Short delay to ensure form is fully rendered
+            }
           });
           
           form.on('change', (data) => {
@@ -162,10 +270,14 @@
           
           form.on('fieldShow', (data) => {
             logEvent('fieldShow', { field: data.field });
+            // Track reason for showing
+            fieldVisibilityReasons[data.field] = `Shown after value change at ${new Date().toLocaleTimeString()}`;
           });
           
           form.on('fieldHide', (data) => {
             logEvent('fieldHide', { field: data.field });
+            // Track reason for hiding
+            fieldVisibilityReasons[data.field] = `Hidden after value change at ${new Date().toLocaleTimeString()}`;
           });
           
           logEvent('load', { template: templateName });
@@ -190,6 +302,9 @@
           form.submit();
         }
       });
+      
+      // Add field visibility debug button functionality
+      visibilityBtn.addEventListener('click', generateFieldVisibilityReport);
       
       // Add debug button functionality
       const debugBtn = document.getElementById('debug-btn');

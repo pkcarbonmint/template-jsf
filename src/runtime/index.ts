@@ -54,8 +54,8 @@ interface FormEvents {
   error: { message: string } | { errors: any[] };
   change: { field: string; value: any; formData: Record<string, any> };
   submit: { formData: Record<string, any> };
-  fieldShow: { field: string };
-  fieldHide: { field: string };
+  fieldShow: { field: string; reason?: string };
+  fieldHide: { field: string; reason?: string };
   reset: { formData: Record<string, any> };
   [key: string]: any; // Allow for other events
 }
@@ -70,6 +70,7 @@ export class SchemaForm {
   private options: FormOptions;
   private formData: Record<string, any> = {};
   private schemaPathMap: SchemaPaths = {};
+  private fieldVisibilityHistory: Record<string, {action: string, reason: string, timestamp: number}[]> = {};
   
   constructor(element: HTMLElement | string, options: FormOptions = {}) {
     // Set element - either directly or by selector
@@ -89,6 +90,7 @@ export class SchemaForm {
     // Initialize data structures
     this.formData = {};
     this.schemaPathMap = {};
+    this.fieldVisibilityHistory = {};
     
     // Create event emitter
     this.emitter = mitt<FormEvents>();
@@ -129,6 +131,9 @@ export class SchemaForm {
       if (this.options.defaultData) {
         this.formData = { ...this.options.defaultData };
         this.updateFormFields();
+      } else {
+        // Initialize form data from fields that exist in the form
+        this.initializeFormDataFromFields();
       }
       
       // Call the initial evaluateAllConditions to set up initial visibility
@@ -322,11 +327,11 @@ export class SchemaForm {
     this.evaluateAllConditions();
     
     // Emit change event
-    this.emitter.emit('change', { fieldId, value: input.value, formData: this.getFormData() });
+    this.emitter.emit('change', { field: fieldId, value: input.value, formData: this.getFormData() });
     
     // Call onChange callback if provided
     if (this.options.onChange) {
-      this.options.onChange(fieldId, input.value, this.getFormData());
+      this.options.onChange(this.getFormData());
     }
   }
   
@@ -499,7 +504,10 @@ export class SchemaForm {
   private evaluateAllConditions(): void {
     if (!this.schema) return;
     
-    // First hide all conditional fields
+    // First ensure basic fields are visible
+    this.showBasicFields();
+    
+    // Then hide conditional fields that should be hidden by default
     this.hideConditionalFields();
     
     // Check and apply JSON Schema conditionals
@@ -513,18 +521,46 @@ export class SchemaForm {
     }
   }
   
+  private showBasicFields(): void {
+    // Make sure all basic fields in the schema properties are visible by default
+    if (!this.schema || !this.schema.properties) return;
+    
+    console.log('Ensuring basic schema properties are visible');
+    
+    // Get all top-level property names from the schema
+    const topLevelProperties = Object.keys(this.schema.properties);
+    
+    // Show each property field by default
+    topLevelProperties.forEach(propName => {
+      // Skip special fields and known conditional sections
+      if (propName.startsWith('_') || 
+          propName === 'additionalInfo' || 
+          propName === 'personalSection' || 
+          propName === 'businessSection' || 
+          propName === 'nonprofitSection') {
+        return;
+      }
+      
+      const field = this.element.querySelector(`[data-schema-path="${propName}"]`);
+      if (field) {
+        console.log(`Ensuring field is visible: ${propName}`);
+        this.showFieldElement(field as HTMLElement, "Basic schema property");
+      }
+    });
+  }
+  
   private hideConditionalFields(): void {
     // Hide the additionalInfo section by default (specifically for simple schema)
     const additionalInfoField = this.element.querySelector('[data-schema-path="additionalInfo"]');
     if (additionalInfoField) {
-      this.hideFieldElement(additionalInfoField as HTMLElement);
+      this.hideFieldElement(additionalInfoField as HTMLElement, "Hidden by default (additionalInfo)");
       console.log('Hiding additionalInfo field by default');
     }
     
     // Find all fields that are explicitly marked as conditional
     const conditionalFields = this.element.querySelectorAll('[data-conditional="true"]');
     conditionalFields.forEach((field) => {
-      this.hideFieldElement(field as HTMLElement);
+      this.hideFieldElement(field as HTMLElement, "Marked as conditional");
     });
   }
   
@@ -882,31 +918,53 @@ export class SchemaForm {
     }
   }
   
-  private showFieldElement(element: HTMLElement): void {
+  private showFieldElement(element: HTMLElement, reason: string = 'Unknown'): void {
     // Remove hidden class
     element.classList.remove('hidden');
     
     // Find parent containers that might need to be shown
     const parentContainer = element.closest('[data-schema-path]');
     if (parentContainer && parentContainer !== element) {
-      this.showFieldElement(parentContainer as HTMLElement);
+      this.showFieldElement(parentContainer as HTMLElement, `Parent of ${element.getAttribute('data-schema-path')}`);
     }
     
-    // Emit event
+    // Track visibility history
     const path = element.getAttribute('data-schema-path');
     if (path) {
-      this.emitter.emit('fieldShow', { field: path });
+      if (!this.fieldVisibilityHistory[path]) {
+        this.fieldVisibilityHistory[path] = [];
+      }
+      
+      this.fieldVisibilityHistory[path].push({
+        action: 'show',
+        reason,
+        timestamp: Date.now()
+      });
+      
+      // Emit event with path and reason
+      this.emitter.emit('fieldShow', { field: path, reason });
     }
   }
   
-  private hideFieldElement(element: HTMLElement): void {
+  private hideFieldElement(element: HTMLElement, reason: string = 'Unknown'): void {
     // Add hidden class
     element.classList.add('hidden');
     
-    // Emit event
+    // Track visibility history
     const path = element.getAttribute('data-schema-path');
     if (path) {
-      this.emitter.emit('fieldHide', { field: path });
+      if (!this.fieldVisibilityHistory[path]) {
+        this.fieldVisibilityHistory[path] = [];
+      }
+      
+      this.fieldVisibilityHistory[path].push({
+        action: 'hide',
+        reason,
+        timestamp: Date.now()
+      });
+      
+      // Emit event with path and reason
+      this.emitter.emit('fieldHide', { field: path, reason });
     }
   }
   
@@ -1177,16 +1235,27 @@ export class SchemaForm {
     }
   }
 
-  private hideField(fieldId: string, element: Element): void {
+  private hideField(fieldId: string, element: Element, reason: string = 'Unknown'): void {
     element.classList.add('hidden');
     
     // Make inputs not required
     const inputs = element.querySelectorAll('input, select, textarea');
-    inputs.forEach((input: HTMLElement) => {
-      input.removeAttribute('required');
+    inputs.forEach((input: Element) => {
+      (input as HTMLElement).removeAttribute('required');
     });
     
-    this.emitter.emit('fieldHide', { fieldId });
+    // Track in visibility history and emit event
+    if (!this.fieldVisibilityHistory[fieldId]) {
+      this.fieldVisibilityHistory[fieldId] = [];
+    }
+    
+    this.fieldVisibilityHistory[fieldId].push({
+      action: 'hide',
+      reason,
+      timestamp: Date.now()
+    });
+    
+    this.emitter.emit('fieldHide', { field: fieldId, reason });
   }
 
   private handleSpecialProperty(propName: string, propAction: any): void {
@@ -1207,9 +1276,9 @@ export class SchemaForm {
     console.log(`Conditional ${index} evaluated: ${ifConditionMet ? 'TRUE' : 'FALSE'}`, conditional);
     
     if (ifConditionMet) {
-      this.applyConditional(conditional.then);
+      this.applyConditional(conditional.then, `Condition ${index} IF matched`);
     } else if (conditional.else) {
-      this.applyConditional(conditional.else);
+      this.applyConditional(conditional.else, `Condition ${index} ELSE applied`);
     }
   }
 
@@ -1247,8 +1316,8 @@ export class SchemaForm {
     return true;
   }
 
-  private applyConditional(schema: any): void {
-    console.log('Applying conditional:', schema);
+  private applyConditional(schema: any, reason: string = 'Unknown'): void {
+    console.log(`Applying conditional: ${reason}`, schema);
     
     // Apply required fields
     if (schema.required) {
@@ -1268,8 +1337,8 @@ export class SchemaForm {
             (marker as HTMLElement).style.display = 'inline';
           });
           
-          // Ensure the field is visible
-          this.showFieldElement(field as HTMLElement);
+          // Ensure the field is visible with reason
+          this.showFieldElement(field as HTMLElement, `Required by condition: ${reason}`);
         } else {
           console.log(`Required field not found: ${fieldName}`);
         }
@@ -1291,7 +1360,7 @@ export class SchemaForm {
           const field = this.element.querySelector(`[data-schema-path="${propName}"]`);
           if (field) {
             console.log(`Showing field: ${propName}`);
-            this.showFieldElement(field as HTMLElement);
+            this.showFieldElement(field as HTMLElement, `Property in schema condition: ${reason}`);
           } else {
             console.log(`Field not found for path: ${propName}`);
           }
@@ -1312,6 +1381,79 @@ export class SchemaForm {
     }
     
     return current;
+  }
+
+  // New method to initialize form data from existing fields
+  private initializeFormDataFromFields(): void {
+    if (!this.formElement) return;
+    
+    console.log('Initializing form data from fields');
+    
+    // Find all input elements in the form
+    const inputs = this.formElement.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+      const element = input as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+      
+      // Get the field ID based on attributes or name
+      const schemaElement = element.closest('[data-schema-id], [data-schema-path]');
+      const fieldId = schemaElement?.getAttribute('data-schema-id') || 
+                     schemaElement?.getAttribute('data-schema-path') || 
+                     element.name;
+      
+      if (fieldId) {
+        // Initialize form data with empty values
+        this.updateFormDataFromField(fieldId, element);
+      }
+    });
+    
+    console.log('Initial form data:', this.formData);
+    
+    // Make sure we call onChange with the initial data
+    if (this.options.onChange) {
+      this.options.onChange(this.getFormData());
+    }
+  }
+
+  // Public method to get field visibility history
+  public getFieldVisibilityHistory(): Record<string, any> {
+    return { ...this.fieldVisibilityHistory };
+  }
+
+  /**
+   * Returns detailed information about all fields including visibility state
+   */
+  public getFieldVisibilityReport(): Record<string, any> {
+    if (!this.element) return {};
+    
+    const fields = this.element.querySelectorAll('[data-schema-path]');
+    const report: Record<string, any> = {};
+    
+    fields.forEach(field => {
+      const path = field.getAttribute('data-schema-path');
+      if (!path) return;
+      
+      const isVisible = !field.classList.contains('hidden');
+      const inputs = field.querySelectorAll('input, select, textarea');
+      const inputDetails = Array.from(inputs).map(input => ({
+        name: (input as HTMLInputElement).name,
+        type: (input as HTMLInputElement).type,
+        value: (input as HTMLInputElement).value,
+        required: input.hasAttribute('required')
+      }));
+      
+      // Get the most recent history entry for this field
+      const history = this.fieldVisibilityHistory[path] || [];
+      const lastAction = history.length > 0 ? history[history.length - 1] : undefined;
+      
+      report[path] = {
+        visible: isVisible,
+        lastAction,
+        history: history.slice(-5), // Get the 5 most recent actions
+        inputs: inputDetails.length > 0 ? inputDetails : undefined
+      };
+    });
+    
+    return report;
   }
 }
 

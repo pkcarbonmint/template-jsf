@@ -1,0 +1,252 @@
+<form id="root" class="w-full max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg" data-schema-form>
+  <h1 class="text-3xl font-medium mb-8 text-gray-800">User Profile</h1>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="root" data-schema-id="root" data-schema-path="root">
+  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">User Profile</h2>
+  <p class="text-sm text-gray-600 mb-6">Basic information about a user</p>
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="firstName" data-schema-path="firstName">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      First Name
+      <span class="text-red-500">*</span>
+    </span>
+    <span class="block text-xs text-gray-500 mt-1 mb-1">User&#39;s first name</span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-firstName"
+    name="field-firstName"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-firstName"
+    data-schema-path="field-firstName"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="lastName" data-schema-path="lastName">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Last Name
+      <span class="text-red-500">*</span>
+    </span>
+    <span class="block text-xs text-gray-500 mt-1 mb-1">User&#39;s last name</span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-lastName"
+    name="field-lastName"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-lastName"
+    data-schema-path="field-lastName"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="email" data-schema-path="email">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Email
+      <span class="text-red-500">*</span>
+    </span>
+    <span class="block text-xs text-gray-500 mt-1 mb-1">User&#39;s email address</span>
+  </label>
+  <div class="relative">
+  <input 
+    type="email"
+    id="field-email"
+    name="field-email"
+    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+    data-schema-type="email"
+    data-schema-id="field-email"
+    data-schema-path="field-email"
+    required
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="age" data-schema-path="age">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Age
+      <span class="text-red-500">*</span>
+    </span>
+    <span class="block text-xs text-gray-500 mt-1 mb-1">User&#39;s age in years</span>
+  </label>
+  <div class="relative">
+  <input 
+    type="number"
+    id="field-age"
+    name="field-age"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="number"
+    data-schema-id="field-age"
+    data-schema-path="field-age"
+    required
+    
+    max="120"
+    
+    step="1"
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="agreeToTerms" data-schema-path="agreeToTerms">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Terms Agreement
+      <span class="text-red-500">*</span>
+    </span>
+    <span class="block text-xs text-gray-500 mt-1 mb-1">I agree to the terms and conditions</span>
+  </label>
+  <label class="inline-flex items-center cursor-pointer">
+  <div class="relative">
+    <input 
+      type="checkbox"
+      id="field-agreeToTerms"
+      name="field-agreeToTerms"
+      class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+      data-schema-type="boolean"
+      data-schema-id="field-agreeToTerms"
+      data-schema-path="field-agreeToTerms"
+      required
+      
+    />
+    <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500">
+    </div>
+  </div>
+  <span class="ml-3 text-sm font-medium text-gray-700">Disabled</span>
+</label> 
+</div> 
+<div class="property-container mb-5" data-property-name="userType" data-schema-path="userType">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      User Type
+      <span class="text-red-500">*</span>
+    </span>
+    <span class="block text-xs text-gray-500 mt-1 mb-1">The type of user account</span>
+  </label>
+  <div class="relative">
+  <select
+    id="field-userType"
+    name="field-userType"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 appearance-none"
+    data-schema-type="enum"
+    data-schema-id="field-userType"
+    data-schema-path="field-userType"
+    required
+  >
+    <option value="">-- Select --</option>
+    <option value="standard">standard</option>
+    <option value="premium">premium</option>
+    <option value="admin">admin</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+    </svg>
+  </div>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="additionalInfo" data-schema-path="additionalInfo">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Additional Information
+      <span class="text-red-500">*</span>
+    </span>
+    <span class="block text-xs text-gray-500 mt-1 mb-1">Optional user details</span>
+  </label>
+  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-additionalInfo" data-schema-id="field-additionalInfo" data-schema-path="field-additionalInfo">
+  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Additional Information</h2>
+  <p class="text-sm text-gray-600 mb-6">Optional user details</p>
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="phone" data-schema-path="phone">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Phone Number
+      
+    </span>
+    <span class="block text-xs text-gray-500 mt-1 mb-1">User&#39;s phone number</span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-additionalInfo-phone"
+    name="field-additionalInfo-phone"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-additionalInfo-phone"
+    data-schema-path="field-additionalInfo-phone"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="address" data-schema-path="address">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      Address
+      
+    </span>
+    <span class="block text-xs text-gray-500 mt-1 mb-1">User&#39;s home address</span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-additionalInfo-address"
+    name="field-additionalInfo-address"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-additionalInfo-address"
+    data-schema-path="field-additionalInfo-address"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+  <div class="mt-10 flex justify-end">
+    <button type="submit" class="px-6 py-2.5 bg-blue-500 text-white rounded shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 transition-colors duration-200 uppercase text-sm font-medium tracking-wider">
+      Submit
+    </button>
+  </div>
+</form> 
