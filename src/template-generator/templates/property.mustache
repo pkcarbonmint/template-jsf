@@ -1,0 +1,12 @@
+<div class="property-container mb-5" data-property-name="{{name}}" data-schema-path="{{name}}">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      {{title}}
+      {{#required}}<span class="text-red-500">*</span>{{/required}}
+    </span>
+    {{#description}}
+    <span class="block text-xs text-gray-500 mt-1 mb-1">{{description}}</span>
+    {{/description}}
+  </label>
+  {{{content}}}
+</div> 

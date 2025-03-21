@@ -1,0 +1,18 @@
+<div class="relative">
+  <input 
+    type="number"
+    id="{{id}}"
+    name="{{id}}"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="number"
+    data-schema-id="{{id}}"
+    data-schema-path="{{id}}"
+    {{#required}}required{{/required}}
+    {{#minimum}}min="{{minimum}}"{{/minimum}}
+    {{#maximum}}max="{{maximum}}"{{/maximum}}
+    {{#default}}value="{{default}}"{{/default}}
+    {{#step}}step="{{step}}"{{/step}}
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 

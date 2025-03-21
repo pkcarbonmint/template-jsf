@@ -1,0 +1,51 @@
+{
+  "name": "template-jsf",
+  "version": "1.0.0",
+  "main": "dist/runtime.umd.js",
+  "module": "dist/runtime.es.js",
+  "types": "dist/runtime.d.ts",
+  "bin": {
+    "generate-template": "bin/generate-template.js"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "lint": "eslint src --ext .ts",
+    "test": "node tests/run-tests.js",
+    "test:generator": "node tests/generator-test.js",
+    "test:runtime": "node tests/runtime-test.js",
+    "test:runtime:verbose": "node tests/runtime-test.js --verbose",
+    "test:runtime:vv": "node tests/runtime-test.js --very-verbose",
+    "generate-template": "ts-node src/template-generator/index.ts",
+    "generate": "node bin/generate-all.js",
+    "generate:minify": "node bin/generate-all.js --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@stoplight/json-schema-tree": "^1.0.0",
+    "@types/mustache": "^4.2.5",
+    "ajv": "^8.12.0",
+    "commander": "^13.1.0",
+    "fp-ts": "^2.16.0",
+    "jquery": "^3.7.1",
+    "mitt": "^3.0.0",
+    "mustache": "^4.2.0",
+    "tailwindcss": "^3.4.0"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.16",
+    "@types/node": "^22.13.10",
+    "@typescript-eslint/eslint-plugin": "^8.27.0",
+    "@typescript-eslint/parser": "^8.27.0",
+    "eslint": "^9.22.0",
+    "jsdom": "^26.0.0",
+    "live-server": "^1.2.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.2.6"
+  },
+  "description": ""
+}

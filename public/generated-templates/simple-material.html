@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    /* Material Design inspired styles */
+    .form-container {
+      font-family: 'Roboto', Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+    
+    .form-title {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 24px;
+      color: #333;
+    }
+    
+    .form-description {
+      color: #666;
+      margin-bottom: 24px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      transition: border-color 0.2s;
+    }
+    
+    .form-control:focus {
+      border-color: #6200ee;
+      outline: none;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+    }
+    
+    .field-description {
+      color: #777;
+      font-size: 14px;
+      margin-top: 4px;
+    }
+    
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    .checkbox-control {
+      margin-right: 10px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+    
+    .select-control {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: white;
+      transition: border-color 0.2s;
+    }
+    
+    .select-control:focus {
+      border-color: #6200ee;
+      outline: none;
+    }
+    
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 30px;
+    }
+    
+    .btn {
+      padding: 10px 16px;
+      font-size: 16px;
+      font-weight: 500;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .btn-primary {
+      background-color: #6200ee;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: #5000d1;
+    }
+    
+    .btn-secondary {
+      background-color: #f5f5f5;
+      color: #333;
+      margin-right: 10px;
+    }
+    
+    .btn-secondary:hover {
+      background-color: #e5e5e5;
+    }
+    
+    .required-marker {
+      color: #d32f2f;
+      margin-left: 2px;
+    }
+    
+    .nested-fields {
+      margin-left: 20px;
+      padding-left: 20px;
+      border-left: 1px solid #e0e0e0;
+    }
+    
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2 class="form-title" data-bind="text: schema.title">User Profile</h2>
+    <p class="form-description" data-bind="text: schema.description">Basic information about a user</p>
+    
+    <form id="schema-form">
+      <!-- First Name -->
+      <div class="form-group" data-schema-path="firstName">
+        <label for="firstName">
+          First Name <span class="required-marker" data-bind="visible: isRequired">*</span>
+        </label>
+        <input type="text" class="form-control" id="firstName" name="firstName">
+        <div class="field-description">User's first name</div>
+      </div>
+      
+      <!-- Last Name -->
+      <div class="form-group" data-schema-path="lastName">
+        <label for="lastName">
+          Last Name <span class="required-marker" data-bind="visible: isRequired">*</span>
+        </label>
+        <input type="text" class="form-control" id="lastName" name="lastName">
+        <div class="field-description">User's last name</div>
+      </div>
+      
+      <!-- Email -->
+      <div class="form-group" data-schema-path="email">
+        <label for="email">
+          Email <span class="required-marker" data-bind="visible: isRequired">*</span>
+        </label>
+        <input type="email" class="form-control" id="email" name="email">
+        <div class="field-description">User's email address</div>
+      </div>
+      
+      <!-- Age -->
+      <div class="form-group" data-schema-path="age">
+        <label for="age">
+          Age <span class="required-marker" data-bind="visible: isRequired">*</span>
+        </label>
+        <input type="number" class="form-control" id="age" name="age" min="0" max="120">
+        <div class="field-description">User's age in years</div>
+      </div>
+      
+      <!-- User Type -->
+      <div class="form-group" data-schema-path="userType">
+        <label for="userType">
+          User Type <span class="required-marker" data-bind="visible: isRequired">*</span>
+        </label>
+        <select class="select-control" id="userType" name="userType">
+          <option value="standard">Standard</option>
+          <option value="premium">Premium</option>
+          <option value="admin">Administrator</option>
+        </select>
+        <div class="field-description">The type of user account</div>
+      </div>
+      
+      <!-- Terms Agreement -->
+      <div class="form-group" data-schema-path="agreeToTerms">
+        <div class="checkbox-container">
+          <input type="checkbox" class="checkbox-control" id="agreeToTerms" name="agreeToTerms">
+          <label for="agreeToTerms" style="display: inline;">
+            Terms Agreement
+          </label>
+        </div>
+        <div class="field-description">I agree to the terms and conditions</div>
+      </div>
+      
+      <!-- Additional Information -->
+      <div class="form-group" data-schema-path="additionalInfo">
+        <h3>Additional Information</h3>
+        <div class="nested-fields">
+          <!-- Phone -->
+          <div class="form-group" data-schema-path="additionalInfo.phone">
+            <label for="additionalInfo.phone">
+              Phone Number <span class="required-marker" data-bind="visible: isRequired">*</span>
+            </label>
+            <input type="tel" class="form-control" id="additionalInfo.phone" name="additionalInfo.phone">
+            <div class="field-description">User's phone number</div>
+          </div>
+          
+          <!-- Address -->
+          <div class="form-group" data-schema-path="additionalInfo.address">
+            <label for="additionalInfo.address">
+              Address <span class="required-marker" data-bind="visible: isRequired">*</span>
+            </label>
+            <input type="text" class="form-control" id="additionalInfo.address" name="additionalInfo.address">
+            <div class="field-description">User's home address</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" id="reset-btn">Reset</button>
+        <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html> 

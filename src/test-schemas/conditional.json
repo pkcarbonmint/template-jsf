@@ -1,0 +1,224 @@
+{
+  "type": "object",
+  "title": "Conditional Logic Test Form",
+  "description": "Testing form for conditional logic keywords in JSON Schema",
+  "required": ["name", "age"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Name",
+      "description": "Your full name"
+    },
+    "age": {
+      "type": "integer",
+      "title": "Age",
+      "description": "Your age in years",
+      "minimum": 0,
+      "maximum": 120
+    },
+    "accountType": {
+      "type": "string",
+      "title": "Account Type",
+      "enum": ["personal", "business", "nonprofit"],
+      "default": "personal"
+    },
+    "personalSection": {
+      "type": "object",
+      "title": "Personal Information",
+      "description": "Information for personal accounts",
+      "properties": {
+        "occupation": {
+          "type": "string",
+          "title": "Occupation"
+        },
+        "hobbies": {
+          "type": "array",
+          "title": "Hobbies",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "businessSection": {
+      "type": "object",
+      "title": "Business Information",
+      "description": "Information for business accounts",
+      "properties": {
+        "companyName": {
+          "type": "string",
+          "title": "Company Name"
+        },
+        "taxId": {
+          "type": "string",
+          "title": "Tax ID"
+        },
+        "employeeCount": {
+          "type": "integer",
+          "title": "Number of Employees",
+          "minimum": 1
+        }
+      }
+    },
+    "nonprofitSection": {
+      "type": "object",
+      "title": "Nonprofit Information",
+      "description": "Information for nonprofit accounts",
+      "properties": {
+        "organizationName": {
+          "type": "string",
+          "title": "Organization Name"
+        },
+        "mission": {
+          "type": "string",
+          "title": "Mission Statement",
+          "format": "textarea"
+        }
+      }
+    },
+    "agreeToTerms": {
+      "type": "boolean",
+      "title": "Terms Agreement",
+      "description": "I agree to the terms and conditions"
+    },
+    "contactPreference": {
+      "type": "string",
+      "title": "Preferred Contact Method",
+      "enum": ["email", "phone", "mail"],
+      "default": "email"
+    },
+    "email": {
+      "type": "string",
+      "title": "Email Address",
+      "format": "email"
+    },
+    "phone": {
+      "type": "string",
+      "title": "Phone Number"
+    },
+    "mailingAddress": {
+      "type": "object",
+      "title": "Mailing Address",
+      "properties": {
+        "street": {
+          "type": "string",
+          "title": "Street Address"
+        },
+        "city": {
+          "type": "string",
+          "title": "City"
+        },
+        "state": {
+          "type": "string",
+          "title": "State/Province"
+        },
+        "postalCode": {
+          "type": "string",
+          "title": "Postal Code"
+        },
+        "country": {
+          "type": "string",
+          "title": "Country"
+        }
+      }
+    }
+  },
+  "if": {
+    "properties": {
+      "age": { "minimum": 18 }
+    }
+  },
+  "then": {
+    "required": ["agreeToTerms"]
+  },
+  "else": {
+    "properties": {
+      "_submitDisabled": { "const": true }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "accountType": { "const": "personal" }
+        }
+      },
+      "then": {
+        "required": ["personalSection"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "accountType": { "const": "business" }
+        }
+      },
+      "then": {
+        "required": ["businessSection"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "accountType": { "const": "nonprofit" }
+        }
+      },
+      "then": {
+        "required": ["nonprofitSection"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "contactPreference": { "const": "email" }
+        }
+      },
+      "then": {
+        "required": ["email"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "contactPreference": { "const": "phone" }
+        }
+      },
+      "then": {
+        "required": ["phone"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "contactPreference": { "const": "mail" }
+        }
+      },
+      "then": {
+        "required": ["mailingAddress"]
+      }
+    }
+  ],
+  "anyOf": [
+    {
+      "properties": {
+        "accountType": { "const": "business" },
+        "businessSection": {
+          "required": ["companyName", "taxId"]
+        }
+      }
+    },
+    {
+      "properties": {
+        "accountType": { "const": "nonprofit" },
+        "nonprofitSection": {
+          "required": ["organizationName", "mission"]
+        }
+      }
+    },
+    {
+      "properties": {
+        "accountType": { "const": "personal" }
+      }
+    }
+  ]
+} 

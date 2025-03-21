@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Schema Form Runtime Demo</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hidden {
+      display: none !important;
+    }
+    .json-display {
+      font-family: monospace;
+      background-color: #f9fafb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      max-height: 300px;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="container p-6">
+    <header class="mb-8">
+      <h1 class="text-2xl font-bold text-gray-800 mb-2">JSON Schema Form Runtime Demo</h1>
+      <p class="text-gray-600">Test the runtime component with different templates</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2 bg-white rounded-lg shadow-md p-6">
+        <div class="mb-4 flex items-center">
+          <label for="template-selector" class="mr-2 font-medium text-gray-700">Choose Template:</label>
+          <select id="template-selector" class="rounded-md border border-gray-300 px-3 py-2">
+            <option value="simple-material.html">Simple User Schema</option>
+            <option value="medium.html">Medium Product Schema</option>
+            <option value="complex.html">Complex Schema</option>
+          </select>
+          <button id="load-btn" class="ml-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Load</button>
+        </div>
+
+        <div id="form-container" class="mt-6 border border-gray-200 rounded-lg min-h-[400px] p-4">
+          <!-- Form will be loaded here -->
+          <div class="flex items-center justify-center h-64 text-gray-500">
+            Select a template and click "Load" to start
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-lg font-semibold mb-4 text-gray-700">Form Data</h2>
+        <pre id="form-data" class="json-display">// Form data will appear here</pre>
+        
+        <h2 class="text-lg font-semibold mt-6 mb-4 text-gray-700">Events</h2>
+        <div id="events-log" class="json-display">// Events will appear here</div>
+        
+        <div class="mt-6">
+          <button id="reset-btn" class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 mr-2">Reset</button>
+          <button id="submit-btn" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Submit</button>
+          <button id="debug-btn" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 ml-2">Debug</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Include runtime component -->
+  <script type="module">
+    // Import from the compiled JS file instead of TypeScript
+    // We'll use the ES module version for direct browser usage
+    import { createSchemaForm } from './runtime.es.js';
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      const templateSelector = document.getElementById('template-selector');
+      const formContainer = document.getElementById('form-container');
+      const formDataDisplay = document.getElementById('form-data');
+      const eventsLog = document.getElementById('events-log');
+      const loadBtn = document.getElementById('load-btn');
+      const resetBtn = document.getElementById('reset-btn');
+      const submitBtn = document.getElementById('submit-btn');
+      
+      let form = null;
+      
+      // Helper function to display JSON data
+      function displayJson(element, data) {
+        element.textContent = JSON.stringify(data, null, 2);
+      }
+      
+      // Helper function to log events
+      function logEvent(type, data) {
+        const timestamp = new Date().toLocaleTimeString();
+        const log = document.createElement('div');
+        log.className = 'mb-1 pb-1 border-b border-gray-200';
+        log.innerHTML = `<span class="text-blue-500">[${timestamp}]</span> <strong>${type}</strong>`;
+        
+        if (data) {
+          // Only show a summary for large objects
+          let summary = data;
+          if (typeof data === 'object' && data !== null) {
+            if (data.formData) {
+              const keys = Object.keys(data.formData);
+              summary = `${keys.length} fields updated`;
+            } else {
+              summary = JSON.stringify(data).slice(0, 50) + '...';
+            }
+          }
+          log.innerHTML += `: <span class="text-green-600">${summary}</span>`;
+        }
+        
+        eventsLog.insertBefore(log, eventsLog.firstChild);
+        
+        // Keep only the last 10 events
+        while (eventsLog.children.length > 10) {
+          eventsLog.removeChild(eventsLog.lastChild);
+        }
+      }
+      
+      // Load template and initialize form
+      function loadTemplate() {
+        const templateName = templateSelector.value;
+        if (!templateName) return;
+        
+        formContainer.innerHTML = '<div class="flex justify-center items-center h-64"><div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div></div>';
+        
+        // Get the corresponding schema URL
+        const schemaName = templateName.replace('.html', '.json');
+        const schemaUrl = `test-schemas/${schemaName}`;
+        const templateUrl = `generated-templates/${templateName}`;
+        
+        try {
+          // Create and initialize the form
+          form = createSchemaForm(formContainer, {
+            schemaUrl: schemaUrl,
+            templateUrl: templateUrl,
+            debug: true,
+            onChange: (data) => {
+              displayJson(formDataDisplay, data);
+              console.log('onChange callback executed', data);
+            },
+            onSubmit: (data) => {
+              logEvent('submit', { data: 'Form submitted!' });
+              alert('Form submitted! See console for data.');
+              console.log('Form submission data:', data);
+            },
+            onError: (errors) => {
+              logEvent('error', { errors });
+              console.error('Form errors:', errors);
+            }
+          });
+          
+          // Setup event listeners
+          form.on('ready', (data) => {
+            logEvent('ready', { form: 'Form is ready' });
+          });
+          
+          form.on('change', (data) => {
+            logEvent('change', { field: data.field });
+          });
+          
+          form.on('fieldShow', (data) => {
+            logEvent('fieldShow', { field: data.field });
+          });
+          
+          form.on('fieldHide', (data) => {
+            logEvent('fieldHide', { field: data.field });
+          });
+          
+          logEvent('load', { template: templateName });
+        } catch (error) {
+          console.error('Error initializing form:', error);
+          formContainer.innerHTML = `<div class="text-red-500 p-4">Error: ${error.message}</div>`;
+        }
+      }
+      
+      // Setup event listeners
+      loadBtn.addEventListener('click', loadTemplate);
+      
+      resetBtn.addEventListener('click', () => {
+        if (form) {
+          form.reset();
+          logEvent('reset', { action: 'Form reset' });
+        }
+      });
+      
+      submitBtn.addEventListener('click', () => {
+        if (form) {
+          form.submit();
+        }
+      });
+      
+      // Add debug button functionality
+      const debugBtn = document.getElementById('debug-btn');
+      debugBtn.addEventListener('click', () => {
+        if (form) {
+          console.log('Debugging form:', form);
+          if (typeof form.debugEmitter === 'function') {
+            form.debugEmitter();
+            
+            // Test triggering events
+            console.log('Manually triggering events:');
+            if (typeof form.triggerEvent === 'function') {
+              form.triggerEvent('change', { field: 'test', value: 'test-value', formData: {} });
+              form.triggerEvent('fieldShow', { field: 'test-field' });
+            }
+          }
+          logEvent('debug', { message: 'Debug information in console' });
+        } else {
+          console.log('Form not initialized yet');
+          logEvent('debug', { message: 'Form not initialized' });
+        }
+      });
+      
+      // Initial setup
+      logEvent('init', { status: 'Ready to load templates' });
+    });
+  </script>
+</body>
+</html> 

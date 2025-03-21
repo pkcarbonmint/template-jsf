@@ -1,0 +1,517 @@
+{
+  "type": "object",
+  "title": "Business Application Form",
+  "description": "Complete application for business registration",
+  "required": ["businessInfo", "contactInfo", "legalDetails"],
+  "properties": {
+    "applicationId": {
+      "type": "string",
+      "title": "Application ID",
+      "description": "Auto-generated application identifier",
+      "readOnly": true
+    },
+    "submissionDate": {
+      "type": "string",
+      "title": "Submission Date",
+      "format": "date",
+      "readOnly": true
+    },
+    "businessInfo": {
+      "type": "object",
+      "title": "Business Information",
+      "required": ["name", "type", "industry", "description"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Business Name",
+          "description": "Legal name of the business"
+        },
+        "tradingName": {
+          "type": "string",
+          "title": "Trading Name",
+          "description": "Trading or operating name (if different)"
+        },
+        "type": {
+          "type": "string",
+          "title": "Business Type",
+          "enum": ["sole_proprietorship", "partnership", "llc", "corporation", "nonprofit", "other"],
+          "enumNames": ["Sole Proprietorship", "Partnership", "Limited Liability Company", "Corporation", "Non-Profit Organization", "Other"]
+        },
+        "otherType": {
+          "type": "string",
+          "title": "Specify Other Type",
+          "description": "If 'Other' was selected, please specify"
+        },
+        "industry": {
+          "type": "string",
+          "title": "Primary Industry",
+          "enum": ["agriculture", "construction", "manufacturing", "wholesale", "retail", "transportation", "information", "finance", "professional", "education", "healthcare", "food", "other"],
+          "enumNames": ["Agriculture", "Construction", "Manufacturing", "Wholesale Trade", "Retail Trade", "Transportation", "Information Technology", "Finance & Insurance", "Professional Services", "Education", "Healthcare", "Food & Hospitality", "Other"]
+        },
+        "description": {
+          "type": "string",
+          "title": "Business Description",
+          "description": "Brief description of business activities",
+          "format": "textarea"
+        },
+        "establishmentDate": {
+          "type": "string",
+          "title": "Date Established",
+          "format": "date"
+        },
+        "employeeCount": {
+          "type": "integer",
+          "title": "Number of Employees",
+          "description": "Current number of employees",
+          "minimum": 0,
+          "default": 1
+        },
+        "annualRevenue": {
+          "type": "string",
+          "title": "Estimated Annual Revenue",
+          "enum": ["under_100k", "100k_500k", "500k_1m", "1m_5m", "5m_10m", "over_10m"],
+          "enumNames": ["Under $100,000", "$100,000 - $500,000", "$500,000 - $1 million", "$1 million - $5 million", "$5 million - $10 million", "Over $10 million"]
+        }
+      }
+    },
+    "contactInfo": {
+      "type": "object",
+      "title": "Contact Information",
+      "required": ["primaryContact", "businessAddress", "phone", "email"],
+      "properties": {
+        "primaryContact": {
+          "type": "object",
+          "title": "Primary Contact",
+          "required": ["firstName", "lastName", "position"],
+          "properties": {
+            "firstName": {
+              "type": "string",
+              "title": "First Name"
+            },
+            "lastName": {
+              "type": "string",
+              "title": "Last Name"
+            },
+            "position": {
+              "type": "string",
+              "title": "Position"
+            }
+          }
+        },
+        "businessAddress": {
+          "type": "object",
+          "title": "Business Address",
+          "required": ["street", "city", "state", "zipCode", "country"],
+          "properties": {
+            "street": {
+              "type": "string",
+              "title": "Street Address"
+            },
+            "city": {
+              "type": "string",
+              "title": "City"
+            },
+            "state": {
+              "type": "string",
+              "title": "State/Province"
+            },
+            "zipCode": {
+              "type": "string",
+              "title": "ZIP/Postal Code"
+            },
+            "country": {
+              "type": "string",
+              "title": "Country",
+              "default": "United States"
+            }
+          }
+        },
+        "mailingAddress": {
+          "type": "object",
+          "title": "Mailing Address",
+          "description": "If different from business address",
+          "properties": {
+            "sameAsBusiness": {
+              "type": "boolean",
+              "title": "Same as Business Address",
+              "default": true
+            },
+            "street": {
+              "type": "string",
+              "title": "Street Address"
+            },
+            "city": {
+              "type": "string",
+              "title": "City"
+            },
+            "state": {
+              "type": "string",
+              "title": "State/Province"
+            },
+            "zipCode": {
+              "type": "string",
+              "title": "ZIP/Postal Code"
+            },
+            "country": {
+              "type": "string",
+              "title": "Country",
+              "default": "United States"
+            }
+          }
+        },
+        "phone": {
+          "type": "string",
+          "title": "Business Phone",
+          "format": "tel"
+        },
+        "alternatePhone": {
+          "type": "string",
+          "title": "Alternate Phone",
+          "format": "tel"
+        },
+        "email": {
+          "type": "string",
+          "title": "Business Email",
+          "format": "email"
+        },
+        "website": {
+          "type": "string",
+          "title": "Website",
+          "format": "uri"
+        }
+      }
+    },
+    "legalDetails": {
+      "type": "object",
+      "title": "Legal Information",
+      "required": ["taxId", "registrationNumber", "hasLicenses"],
+      "properties": {
+        "taxId": {
+          "type": "string",
+          "title": "Tax Identification Number",
+          "description": "EIN or other tax ID"
+        },
+        "registrationNumber": {
+          "type": "string",
+          "title": "Business Registration Number",
+          "description": "State/local business registration"
+        },
+        "hasLicenses": {
+          "type": "boolean",
+          "title": "Business has required licenses/permits",
+          "default": false
+        },
+        "licenses": {
+          "type": "array",
+          "title": "Licenses & Permits",
+          "description": "List all required licenses and permits",
+          "items": {
+            "type": "object",
+            "required": ["type", "number", "issuedBy", "expirationDate"],
+            "properties": {
+              "type": {
+                "type": "string",
+                "title": "License Type"
+              },
+              "number": {
+                "type": "string",
+                "title": "License Number"
+              },
+              "issuedBy": {
+                "type": "string",
+                "title": "Issued By"
+              },
+              "issueDate": {
+                "type": "string",
+                "title": "Issue Date",
+                "format": "date"
+              },
+              "expirationDate": {
+                "type": "string",
+                "title": "Expiration Date",
+                "format": "date"
+              }
+            }
+          }
+        }
+      }
+    },
+    "financialInfo": {
+      "type": "object",
+      "title": "Financial Information",
+      "properties": {
+        "hasBankAccount": {
+          "type": "boolean",
+          "title": "Business has dedicated bank account",
+          "default": false
+        },
+        "bankInformation": {
+          "type": "object",
+          "title": "Bank Information",
+          "properties": {
+            "bankName": {
+              "type": "string",
+              "title": "Bank Name"
+            },
+            "accountType": {
+              "type": "string",
+              "title": "Account Type",
+              "enum": ["checking", "savings", "other"],
+              "enumNames": ["Checking", "Savings", "Other"]
+            },
+            "accountNumber": {
+              "type": "string",
+              "title": "Account Number (Last 4 digits)",
+              "maxLength": 4
+            },
+            "routingNumber": {
+              "type": "string",
+              "title": "Routing Number"
+            }
+          },
+          "required": ["bankName", "accountType"]
+        },
+        "hasMerchantAccount": {
+          "type": "boolean",
+          "title": "Business has merchant account for payments",
+          "default": false
+        },
+        "merchantServices": {
+          "type": "array",
+          "title": "Merchant Services",
+          "items": {
+            "type": "object",
+            "properties": {
+              "provider": {
+                "type": "string",
+                "title": "Service Provider"
+              },
+              "accountNumber": {
+                "type": "string",
+                "title": "Account ID"
+              },
+              "paymentTypes": {
+                "type": "array",
+                "title": "Payment Types Accepted",
+                "items": {
+                  "type": "string",
+                  "enum": ["visa", "mastercard", "amex", "discover", "paypal", "other"],
+                  "enumNames": ["Visa", "MasterCard", "American Express", "Discover", "PayPal", "Other"]
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": ["provider", "paymentTypes"]
+          }
+        }
+      }
+    },
+    "additionalDocuments": {
+      "type": "array",
+      "title": "Additional Documents",
+      "description": "Upload supporting documents",
+      "items": {
+        "type": "object",
+        "properties": {
+          "documentType": {
+            "type": "string",
+            "title": "Document Type",
+            "enum": ["business_license", "tax_document", "id_proof", "insurance", "lease_agreement", "other"],
+            "enumNames": ["Business License", "Tax Document", "ID Proof", "Insurance Certificate", "Lease Agreement", "Other"]
+          },
+          "otherDocumentType": {
+            "type": "string",
+            "title": "Specify Other Document"
+          },
+          "fileUpload": {
+            "type": "string",
+            "title": "File",
+            "format": "data-url"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "format": "textarea"
+          }
+        },
+        "required": ["documentType", "fileUpload"]
+      }
+    },
+    "termsAndConditions": {
+      "type": "boolean",
+      "title": "I agree to the terms and conditions",
+      "description": "By checking this box, you agree to our terms and privacy policy",
+      "default": false
+    },
+    "signature": {
+      "type": "object",
+      "title": "Electronic Signature",
+      "required": ["name", "date"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Full Name"
+        },
+        "title": {
+          "type": "string",
+          "title": "Title/Position"
+        },
+        "date": {
+          "type": "string",
+          "title": "Date",
+          "format": "date"
+        }
+      }
+    }
+  },
+  "conditionals": [
+    {
+      "if": {
+        "properties": {
+          "businessInfo": {
+            "properties": {
+              "type": {
+                "enum": ["other"]
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "businessInfo": {
+            "required": ["otherType"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "contactInfo": {
+            "properties": {
+              "mailingAddress": {
+                "properties": {
+                  "sameAsBusiness": {
+                    "const": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "contactInfo": {
+            "properties": {
+              "mailingAddress": {
+                "required": ["street", "city", "state", "zipCode", "country"]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "legalDetails": {
+            "properties": {
+              "hasLicenses": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "legalDetails": {
+            "required": ["licenses"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "financialInfo": {
+            "properties": {
+              "hasBankAccount": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "financialInfo": {
+            "required": ["bankInformation"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "financialInfo": {
+            "properties": {
+              "hasMerchantAccount": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "financialInfo": {
+            "required": ["merchantServices"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "additionalDocuments": {
+            "items": {
+              "properties": {
+                "documentType": {
+                  "enum": ["other"]
+                }
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "additionalDocuments": {
+            "items": {
+              "required": ["otherDocumentType"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "termsAndConditions": {
+            "const": false
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "_submitDisabled": {
+            "const": true
+          }
+        }
+      }
+    }
+  ]
+}

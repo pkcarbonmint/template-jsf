@@ -1,0 +1,347 @@
+<form id="root" class="w-full max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg" data-schema-form>
+  <h1 class="text-3xl font-medium mb-8 text-gray-800">Complex Object</h1>
+  <div id="root" class="mb-8 p-6 bg-gray-50 border border-gray-100 rounded-lg shadow-sm" data-schema-type="object" data-schema-id="root">
+  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Complex Object</h2>
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="type">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      type
+      <span class="text-red-500">*</span>
+    </span>
+  </label>
+  <div class="relative">
+  <select
+    id="field-type"
+    name="field-type"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 appearance-none"
+    data-schema-type="string"
+    data-schema-id="field-type"
+    required
+  >
+    <option value="">-- Select --</option>
+    <option value="person">person</option>
+    <option value="organization">organization</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+    </svg>
+  </div>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="name">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      name
+      <span class="text-red-500">*</span>
+    </span>
+    <span class="block text-xs text-gray-500 mt-1 mb-1">The name of the entity</span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-name"
+    name="field-name"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-name"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="contact">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      contact
+      <span class="text-red-500">*</span>
+    </span>
+  </label>
+  <div id="field-contact" class="mb-8 p-6 bg-gray-50 border border-gray-100 rounded-lg shadow-sm" data-schema-type="object" data-schema-id="field-contact">
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="email">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      email
+      <span class="text-red-500">*</span>
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="email"
+    id="field-contact-email"
+    name="field-contact-email"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-format="email"
+    data-schema-id="field-contact-email"
+    required
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="phone">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      phone
+      
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-contact-phone"
+    name="field-contact-phone"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-contact-phone"
+    
+    
+    
+    data-pattern="^\+?[0-9]{10,15}$"
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="address">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      address
+      <span class="text-red-500">*</span>
+    </span>
+  </label>
+  <div id="field-address" class="mb-8 p-6 bg-gray-50 border border-gray-100 rounded-lg shadow-sm" data-schema-type="object" data-schema-id="field-address">
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="street">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      street
+      <span class="text-red-500">*</span>
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-address-street"
+    name="field-address-street"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-address-street"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="city">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      city
+      <span class="text-red-500">*</span>
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-address-city"
+    name="field-address-city"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-address-city"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="property-container mb-5" data-property-name="country">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      country
+      <span class="text-red-500">*</span>
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="text"
+    id="field-address-country"
+    name="field-address-country"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="string"
+    data-schema-id="field-address-country"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+    <div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="allOf">
+  <div id="field--allOf-0" class="mb-8 p-6 bg-gray-50 border border-gray-100 rounded-lg shadow-sm" data-schema-type="object" data-schema-id="field--allOf-0">
+  <div class="space-y-6">
+    
+    <div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="if">
+  <div id="field--allOf-0-if" class="mb-8 p-6 bg-gray-50 border border-gray-100 rounded-lg shadow-sm" data-schema-type="object" data-schema-id="field--allOf-0-if">
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="type">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      type
+      
+    </span>
+  </label>
+  <div id="field--allOf-0-if-type" class="mb-8 p-6 bg-gray-50 border border-gray-100 rounded-lg shadow-sm" data-schema-type="object" data-schema-id="field--allOf-0-if-type">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="then">
+  <div id="field--allOf-0-then" class="mb-8 p-6 bg-gray-50 border border-gray-100 rounded-lg shadow-sm" data-schema-type="object" data-schema-id="field--allOf-0-then">
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="age">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      age
+      <span class="text-red-500">*</span>
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="number"
+    id="field--allOf-0-then-age"
+    name="field--allOf-0-then-age"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="integer"
+    data-schema-id="field--allOf-0-then-age"
+    required
+    
+    
+    
+    step="1"
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+  </div>
+</div> 
+<div id="field--allOf-1" class="mb-8 p-6 bg-gray-50 border border-gray-100 rounded-lg shadow-sm" data-schema-type="object" data-schema-id="field--allOf-1">
+  <div class="space-y-6">
+    
+    <div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="if">
+  <div id="field--allOf-1-if" class="mb-8 p-6 bg-gray-50 border border-gray-100 rounded-lg shadow-sm" data-schema-type="object" data-schema-id="field--allOf-1-if">
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="type">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      type
+      
+    </span>
+  </label>
+  <div id="field--allOf-1-if-type" class="mb-8 p-6 bg-gray-50 border border-gray-100 rounded-lg shadow-sm" data-schema-type="object" data-schema-id="field--allOf-1-if-type">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="then">
+  <div id="field--allOf-1-then" class="mb-8 p-6 bg-gray-50 border border-gray-100 rounded-lg shadow-sm" data-schema-type="object" data-schema-id="field--allOf-1-then">
+  <div class="space-y-6">
+    <div class="property-container mb-5" data-property-name="employees">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      employees
+      <span class="text-red-500">*</span>
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="number"
+    id="field--allOf-1-then-employees"
+    name="field--allOf-1-then-employees"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    data-schema-type="integer"
+    data-schema-id="field--allOf-1-then-employees"
+    required
+    min="1"
+    
+    
+    step="1"
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+  </div>
+</div> 
+</div> 
+<div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="anyOf">
+  <div id="field--anyOf-0" class="mb-8 p-6 bg-gray-50 border border-gray-100 rounded-lg shadow-sm" data-schema-type="object" data-schema-id="field--anyOf-0">
+  <div class="space-y-6">
+    
+    
+  </div>
+</div> 
+</div> 
+  </div>
+</div> 
+  <div class="mt-10 flex justify-end">
+    <button type="submit" class="px-6 py-2.5 bg-blue-500 text-white rounded shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 transition-colors duration-200 uppercase text-sm font-medium tracking-wider">
+      Submit
+    </button>
+  </div>
+</form> 

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Schema Form Conditional Logic Demo</title>
+  <script type="module" src="/runtime.es.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .hidden {
+      display: none !important;
+    }
+    pre {
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6 text-center">JSON Schema Form Conditional Logic Demo</h1>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold mb-4">Form</h2>
+        <div class="mb-4 flex space-x-2">
+          <button id="load-conditional" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Load Conditional Schema</button>
+          <button id="reset-form" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Reset Form</button>
+        </div>
+        
+        <div id="form-container" class="mt-4"></div>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold mb-4">Form Data</h2>
+        <div class="mb-4">
+          <div class="flex items-center mb-2">
+            <span class="font-medium">Current Form Data:</span>
+            <button id="copy-data" class="ml-2 px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded hover:bg-gray-300">Copy</button>
+          </div>
+          <pre id="form-data" class="bg-gray-100 p-4 rounded-md text-sm overflow-auto h-96"></pre>
+        </div>
+        
+        <div class="mb-4">
+          <h3 class="font-medium mb-2">Events:</h3>
+          <div id="events-log" class="bg-gray-100 p-4 rounded-md text-sm overflow-auto h-48"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { createSchemaForm } from '/runtime.es.js';
+    
+    let formInstance = null;
+    
+    // Event logging
+    const eventsLog = document.getElementById('events-log');
+    function logEvent(type, data) {
+      const entry = document.createElement('div');
+      entry.className = 'mb-1 pb-1 border-b border-gray-200';
+      entry.innerHTML = `<span class="font-mono text-xs text-gray-400">[${new Date().toLocaleTimeString()}]</span> <span class="font-semibold">${type}</span>: ${JSON.stringify(data)}`;
+      eventsLog.insertBefore(entry, eventsLog.firstChild);
+    }
+    
+    // Load schema and initialize form
+    async function loadSchema(schemaPath) {
+      try {
+        const response = await fetch(schemaPath);
+        if (!response.ok) throw new Error(`Failed to load schema: ${response.statusText}`);
+        
+        const schema = await response.json();
+        
+        // Generate template
+        const templateResponse = await fetch(`/test-output/${schemaPath.split('/').pop().replace('.json', '.html')}`);
+        if (!templateResponse.ok) throw new Error(`Failed to load template: ${templateResponse.statusText}`);
+        
+        const template = await templateResponse.text();
+        
+        // Add template to container
+        const formContainer = document.getElementById('form-container');
+        formContainer.innerHTML = template;
+        
+        // Initialize form
+        formInstance = createSchemaForm(formContainer, {
+          schema: schema,
+          onReady: (form) => {
+            logEvent('ready', { message: 'Form initialized' });
+          },
+          onChange: (data) => {
+            updateFormDataDisplay(data);
+          },
+          onSubmit: (data) => {
+            logEvent('submit', { formData: data });
+            alert('Form submitted! Check the console for the data.');
+            console.log('Form submission:', data);
+          },
+          debug: true
+        });
+        
+        // Set up event listeners
+        ['change', 'submit', 'fieldShow', 'fieldHide', 'reset'].forEach(eventType => {
+          formInstance.on(eventType, (data) => {
+            logEvent(eventType, data);
+          });
+        });
+        
+        // Initialize form data display
+        updateFormDataDisplay(formInstance.getFormData());
+      } catch (error) {
+        console.error('Error loading schema:', error);
+        alert(`Error loading schema: ${error.message}`);
+      }
+    }
+    
+    // Update form data display
+    function updateFormDataDisplay(data) {
+      const formDataElem = document.getElementById('form-data');
+      formDataElem.textContent = JSON.stringify(data, null, 2);
+    }
+    
+    // Button event handlers
+    document.getElementById('load-conditional').addEventListener('click', () => {
+      loadSchema('/src/test-schemas/conditional.json');
+    });
+    
+    document.getElementById('reset-form').addEventListener('click', () => {
+      if (formInstance) {
+        formInstance.reset();
+      }
+    });
+    
+    document.getElementById('copy-data').addEventListener('click', () => {
+      const formDataElem = document.getElementById('form-data');
+      navigator.clipboard.writeText(formDataElem.textContent)
+        .then(() => {
+          alert('Form data copied to clipboard!');
+        })
+        .catch(err => {
+          console.error('Failed to copy form data:', err);
+        });
+    });
+    
+    // Load the conditional schema by default
+    loadSchema('/src/test-schemas/conditional.json');
+  </script>
+</body>
+</html> 

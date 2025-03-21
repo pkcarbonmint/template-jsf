@@ -1,0 +1,181 @@
+{
+  "type": "object",
+  "title": "Product Form",
+  "description": "Create or edit a product",
+  "required": ["name", "price", "category"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Product Name",
+      "description": "The name of the product"
+    },
+    "sku": {
+      "type": "string",
+      "title": "SKU",
+      "description": "Stock keeping unit"
+    },
+    "price": {
+      "type": "number",
+      "title": "Price",
+      "description": "Product price in USD",
+      "minimum": 0
+    },
+    "category": {
+      "type": "string",
+      "title": "Category",
+      "enum": ["electronics", "clothing", "food", "books", "other"],
+      "enumNames": ["Electronics", "Clothing", "Food & Beverage", "Books", "Other"]
+    },
+    "inStock": {
+      "type": "boolean",
+      "title": "In Stock",
+      "default": true
+    },
+    "stockQuantity": {
+      "type": "integer",
+      "title": "Stock Quantity",
+      "description": "Number of items in stock",
+      "minimum": 0
+    },
+    "description": {
+      "type": "string",
+      "title": "Description",
+      "description": "Product description",
+      "format": "textarea"
+    },
+    "images": {
+      "type": "array",
+      "title": "Product Images",
+      "description": "Images of the product",
+      "items": {
+        "type": "object",
+        "required": ["url"],
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Image URL",
+            "format": "uri"
+          },
+          "alt": {
+            "type": "string",
+            "title": "Alt Text",
+            "description": "Alternative text for the image"
+          },
+          "isPrimary": {
+            "type": "boolean",
+            "title": "Primary Image",
+            "default": false
+          }
+        }
+      }
+    },
+    "variants": {
+      "type": "array",
+      "title": "Product Variants",
+      "description": "Different variations of the product",
+      "items": {
+        "type": "object",
+        "required": ["name", "price"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Variant Name"
+          },
+          "price": {
+            "type": "number",
+            "title": "Variant Price",
+            "minimum": 0
+          },
+          "sku": {
+            "type": "string",
+            "title": "Variant SKU"
+          },
+          "inStock": {
+            "type": "boolean",
+            "title": "In Stock",
+            "default": true
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "title": "Product Metadata",
+      "properties": {
+        "weight": {
+          "type": "number",
+          "title": "Weight (kg)",
+          "minimum": 0
+        },
+        "dimensions": {
+          "type": "object",
+          "title": "Dimensions",
+          "properties": {
+            "length": {
+              "type": "number",
+              "title": "Length (cm)",
+              "minimum": 0
+            },
+            "width": {
+              "type": "number",
+              "title": "Width (cm)",
+              "minimum": 0
+            },
+            "height": {
+              "type": "number",
+              "title": "Height (cm)",
+              "minimum": 0
+            }
+          }
+        },
+        "manufactureDate": {
+          "type": "string",
+          "title": "Manufacture Date",
+          "format": "date"
+        }
+      }
+    }
+  },
+  "conditionals": [
+    {
+      "if": {
+        "properties": {
+          "inStock": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "required": ["stockQuantity"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "enum": ["electronics", "clothing"]
+          }
+        }
+      },
+      "then": {
+        "required": ["metadata"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "images": {
+            "minItems": 1
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "hasImages": {
+            "const": true
+          }
+        }
+      }
+    }
+  ]
+}

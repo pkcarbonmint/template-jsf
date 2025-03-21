@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    /* Modern product form styling */
+    .form-container {
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      color: #333;
+    }
+    
+    .form-title {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+    }
+    
+    .form-description {
+      color: #7f8c8d;
+      margin-bottom: 30px;
+    }
+    
+    .form-section {
+      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #f8f9fa;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    .section-title {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    
+    .form-control:focus {
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+      outline: none;
+    }
+    
+    textarea.form-control {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+    
+    .field-description {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 4px;
+    }
+    
+    .required-marker {
+      color: #e74c3c;
+      margin-left: 3px;
+    }
+    
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    .checkbox-control {
+      margin-right: 10px;
+      width: 18px;
+      height: 18px;
+    }
+    
+    .select-control {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: white;
+      transition: all 0.2s;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 1em;
+    }
+    
+    .select-control:focus {
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+      outline: none;
+    }
+    
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+    
+    .form-col {
+      flex: 1;
+      padding: 0 10px;
+      min-width: 200px;
+    }
+    
+    .array-container {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #fff;
+    }
+    
+    .array-item {
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 15px;
+      margin-bottom: 15px;
+      background-color: #f5f8fa;
+      position: relative;
+    }
+    
+    .array-item-template {
+      display: none;
+    }
+    
+    .array-item-title {
+      font-weight: 500;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .array-controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+    
+    .btn {
+      padding: 10px 16px;
+      font-size: 15px;
+      font-weight: 500;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .btn-primary {
+      background-color: #3498db;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: #2980b9;
+    }
+    
+    .btn-danger {
+      background-color: #e74c3c;
+      color: white;
+    }
+    
+    .btn-danger:hover {
+      background-color: #c0392b;
+    }
+    
+    .btn-secondary {
+      background-color: #ecf0f1;
+      color: #2c3e50;
+    }
+    
+    .btn-secondary:hover {
+      background-color: #bdc3c7;
+    }
+    
+    .btn-sm {
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+    
+    .add-item {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+    }
+    
+    .remove-item {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .remove-item:hover {
+      background-color: #c0392b;
+    }
+    
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+    }
+    
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1 class="form-title" data-bind="text: schema.title">Product Form</h1>
+    <p class="form-description" data-bind="text: schema.description">Create or edit a product</p>
+    
+    <form id="schema-form">
+      <div class="form-section">
+        <h2 class="section-title">Basic Information</h2>
+        
+        <div class="form-row">
+          <div class="form-col">
+            <!-- Name -->
+            <div class="form-group" data-schema-path="name">
+              <label for="name">
+                Product Name <span class="required-marker" data-bind="visible: isRequired">*</span>
+              </label>
+              <input type="text" class="form-control" id="name" name="name">
+              <div class="field-description">The name of the product</div>
+            </div>
+          </div>
+          
+          <div class="form-col">
+            <!-- SKU -->
+            <div class="form-group" data-schema-path="sku">
+              <label for="sku">
+                SKU <span class="required-marker" data-bind="visible: isRequired">*</span>
+              </label>
+              <input type="text" class="form-control" id="sku" name="sku">
+              <div class="field-description">Stock keeping unit</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-col">
+            <!-- Price -->
+            <div class="form-group" data-schema-path="price">
+              <label for="price">
+                Price <span class="required-marker" data-bind="visible: isRequired">*</span>
+              </label>
+              <input type="number" step="0.01" min="0" class="form-control" id="price" name="price">
+              <div class="field-description">Product price in USD</div>
+            </div>
+          </div>
+          
+          <div class="form-col">
+            <!-- Category -->
+            <div class="form-group" data-schema-path="category">
+              <label for="category">
+                Category <span class="required-marker" data-bind="visible: isRequired">*</span>
+              </label>
+              <select class="select-control" id="category" name="category">
+                <option value="electronics">Electronics</option>
+                <option value="clothing">Clothing</option>
+                <option value="food">Food & Beverage</option>
+                <option value="books">Books</option>
+                <option value="other">Other</option>
+              </select>
+              <div class="field-description">Product category</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-col">
+            <!-- In Stock -->
+            <div class="form-group" data-schema-path="inStock">
+              <div class="checkbox-container">
+                <input type="checkbox" class="checkbox-control" id="inStock" name="inStock" checked>
+                <label for="inStock" style="display: inline;">In Stock</label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-col">
+            <!-- Stock Quantity -->
+            <div class="form-group" data-schema-path="stockQuantity">
+              <label for="stockQuantity">
+                Stock Quantity <span class="required-marker" data-bind="visible: isRequired">*</span>
+              </label>
+              <input type="number" min="0" step="1" class="form-control" id="stockQuantity" name="stockQuantity">
+              <div class="field-description">Number of items in stock</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Description -->
+        <div class="form-group" data-schema-path="description">
+          <label for="description">
+            Description <span class="required-marker" data-bind="visible: isRequired">*</span>
+          </label>
+          <textarea class="form-control" id="description" name="description"></textarea>
+          <div class="field-description">Product description</div>
+        </div>
+      </div>
+      
+      <!-- Product Images -->
+      <div class="form-section" data-schema-path="images">
+        <h2 class="section-title">Product Images</h2>
+        
+        <div class="array-container">
+          <div class="array-items">
+            <!-- Template for image items -->
+            <div class="array-item array-item-template">
+              <button type="button" class="remove-item">×</button>
+              <div class="array-item-title">Image</div>
+              
+              <div class="form-group" data-schema-path="images[].url">
+                <label>
+                  Image URL <span class="required-marker" data-bind="visible: isRequired">*</span>
+                </label>
+                <input type="url" class="form-control" name="images[].url">
+                <div class="field-description">URL to the image</div>
+              </div>
+              
+              <div class="form-group" data-schema-path="images[].alt">
+                <label>Alt Text</label>
+                <input type="text" class="form-control" name="images[].alt">
+                <div class="field-description">Alternative text for the image</div>
+              </div>
+              
+              <div class="form-group" data-schema-path="images[].isPrimary">
+                <div class="checkbox-container">
+                  <input type="checkbox" class="checkbox-control" name="images[].isPrimary">
+                  <label style="display: inline;">Primary Image</label>
+                </div>
+              </div>
+            </div>
+            
+            <!-- First item (visible by default) -->
+            <div class="array-item">
+              <button type="button" class="remove-item">×</button>
+              <div class="array-item-title">Image 1</div>
+              
+              <div class="form-group" data-schema-path="images[0].url">
+                <label for="images[0].url">
+                  Image URL <span class="required-marker" data-bind="visible: isRequired">*</span>
+                </label>
+                <input type="url" class="form-control" id="images[0].url" name="images[0].url">
+                <div class="field-description">URL to the image</div>
+              </div>
+              
+              <div class="form-group" data-schema-path="images[0].alt">
+                <label for="images[0].alt">Alt Text</label>
+                <input type="text" class="form-control" id="images[0].alt" name="images[0].alt">
+                <div class="field-description">Alternative text for the image</div>
+              </div>
+              
+              <div class="form-group" data-schema-path="images[0].isPrimary">
+                <div class="checkbox-container">
+                  <input type="checkbox" class="checkbox-control" id="images[0].isPrimary" name="images[0].isPrimary">
+                  <label for="images[0].isPrimary" style="display: inline;">Primary Image</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <button type="button" class="btn btn-secondary add-item">+ Add Image</button>
+        </div>
+      </div>
+      
+      <!-- Product Variants -->
+      <div class="form-section" data-schema-path="variants">
+        <h2 class="section-title">Product Variants</h2>
+        
+        <div class="array-container">
+          <div class="array-items">
+            <!-- Template for variant items -->
+            <div class="array-item array-item-template">
+              <button type="button" class="remove-item">×</button>
+              <div class="array-item-title">Variant</div>
+              
+              <div class="form-row">
+                <div class="form-col">
+                  <div class="form-group" data-schema-path="variants[].name">
+                    <label>
+                      Variant Name <span class="required-marker" data-bind="visible: isRequired">*</span>
+                    </label>
+                    <input type="text" class="form-control" name="variants[].name">
+                  </div>
+                </div>
+                
+                <div class="form-col">
+                  <div class="form-group" data-schema-path="variants[].sku">
+                    <label>Variant SKU</label>
+                    <input type="text" class="form-control" name="variants[].sku">
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-col">
+                  <div class="form-group" data-schema-path="variants[].price">
+                    <label>
+                      Variant Price <span class="required-marker" data-bind="visible: isRequired">*</span>
+                    </label>
+                    <input type="number" step="0.01" min="0" class="form-control" name="variants[].price">
+                  </div>
+                </div>
+                
+                <div class="form-col">
+                  <div class="form-group" data-schema-path="variants[].inStock">
+                    <div class="checkbox-container">
+                      <input type="checkbox" class="checkbox-control" name="variants[].inStock" checked>
+                      <label style="display: inline;">In Stock</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- First variant (visible by default) -->
+            <div class="array-item">
+              <button type="button" class="remove-item">×</button>
+              <div class="array-item-title">Variant 1</div>
+              
+              <div class="form-row">
+                <div class="form-col">
+                  <div class="form-group" data-schema-path="variants[0].name">
+                    <label for="variants[0].name">
+                      Variant Name <span class="required-marker" data-bind="visible: isRequired">*</span>
+                    </label>
+                    <input type="text" class="form-control" id="variants[0].name" name="variants[0].name">
+                  </div>
+                </div>
+                
+                <div class="form-col">
+                  <div class="form-group" data-schema-path="variants[0].sku">
+                    <label for="variants[0].sku">Variant SKU</label>
+                    <input type="text" class="form-control" id="variants[0].sku" name="variants[0].sku">
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-col">
+                  <div class="form-group" data-schema-path="variants[0].price">
+                    <label for="variants[0].price">
+                      Variant Price <span class="required-marker" data-bind="visible: isRequired">*</span>
+                    </label>
+                    <input type="number" step="0.01" min="0" class="form-control" id="variants[0].price" name="variants[0].price">
+                  </div>
+                </div>
+                
+                <div class="form-col">
+                  <div class="form-group" data-schema-path="variants[0].inStock">
+                    <div class="checkbox-container">
+                      <input type="checkbox" class="checkbox-control" id="variants[0].inStock" name="variants[0].inStock" checked>
+                      <label for="variants[0].inStock" style="display: inline;">In Stock</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <button type="button" class="btn btn-secondary add-item">+ Add Variant</button>
+        </div>
+      </div>
+      
+      <!-- Metadata -->
+      <div class="form-section" data-schema-path="metadata">
+        <h2 class="section-title">Product Metadata</h2>
+        
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group" data-schema-path="metadata.weight">
+              <label for="metadata.weight">
+                Weight (kg) <span class="required-marker" data-bind="visible: isRequired">*</span>
+              </label>
+              <input type="number" step="0.01" min="0" class="form-control" id="metadata.weight" name="metadata.weight">
+            </div>
+          </div>
+          
+          <div class="form-col">
+            <div class="form-group" data-schema-path="metadata.manufactureDate">
+              <label for="metadata.manufactureDate">
+                Manufacture Date <span class="required-marker" data-bind="visible: isRequired">*</span>
+              </label>
+              <input type="date" class="form-control" id="metadata.manufactureDate" name="metadata.manufactureDate">
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group" data-schema-path="metadata.dimensions">
+          <h3>Dimensions</h3>
+          
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group" data-schema-path="metadata.dimensions.length">
+                <label for="metadata.dimensions.length">
+                  Length (cm) <span class="required-marker" data-bind="visible: isRequired">*</span>
+                </label>
+                <input type="number" step="0.1" min="0" class="form-control" id="metadata.dimensions.length" name="metadata.dimensions.length">
+              </div>
+            </div>
+            
+            <div class="form-col">
+              <div class="form-group" data-schema-path="metadata.dimensions.width">
+                <label for="metadata.dimensions.width">
+                  Width (cm) <span class="required-marker" data-bind="visible: isRequired">*</span>
+                </label>
+                <input type="number" step="0.1" min="0" class="form-control" id="metadata.dimensions.width" name="metadata.dimensions.width">
+              </div>
+            </div>
+            
+            <div class="form-col">
+              <div class="form-group" data-schema-path="metadata.dimensions.height">
+                <label for="metadata.dimensions.height">
+                  Height (cm) <span class="required-marker" data-bind="visible: isRequired">*</span>
+                </label>
+                <input type="number" step="0.1" min="0" class="form-control" id="metadata.dimensions.height" name="metadata.dimensions.height">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" id="reset-btn" style="margin-right: 10px;">Reset</button>
+        <button type="submit" class="btn btn-primary" id="submit-btn">Save Product</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html> 

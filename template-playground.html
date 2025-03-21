@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Schema Form Template Playground</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .template-container {
+      height: calc(100vh - 160px);
+      overflow: auto;
+      transition: all 0.3s ease;
+    }
+    .controls {
+      border-bottom: 1px solid #e5e7eb;
+      background-color: #f9fafb;
+    }
+    .action-button {
+      padding: 0.5rem 1rem;
+      background-color: #3b82f6;
+      color: white;
+      border-radius: 0.25rem;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+    .action-button:hover {
+      background-color: #2563eb;
+    }
+    .action-button.secondary {
+      background-color: #6b7280;
+    }
+    .action-button.secondary:hover {
+      background-color: #4b5563;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <header class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+      <h1 class="text-xl font-semibold text-gray-900">JSON Schema Form Template Playground</h1>
+      <div class="space-x-2">
+        <button id="reload-btn" class="action-button secondary">Reload Template</button>
+        <button id="save-btn" class="action-button">Save Changes</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="controls px-4 py-3 sm:px-6 flex space-x-4 items-center bg-white">
+    <label class="font-medium text-gray-700">Select Template:</label>
+    <select id="template-selector" class="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+      <option value="simple-material.html">Simple User Schema</option>
+      <option value="medium.html">Medium Product Schema</option>
+      <option value="complex.html">Complex Schema</option>
+    </select>
+    
+    <div class="ml-auto flex items-center space-x-2">
+      <label for="edit-mode" class="font-medium text-gray-700">Edit Mode:</label>
+      <input type="checkbox" id="edit-mode" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+    </div>
+  </div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div id="template-container" class="bg-white shadow-md rounded-lg template-container p-6">
+      <!-- Template will be loaded here -->
+      <div class="flex justify-center items-center h-full text-gray-500">
+        Select a template to preview
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-white shadow-inner py-4 mt-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
+      JSON Schema Form Template Playground
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const templateSelector = document.getElementById('template-selector');
+      const templateContainer = document.getElementById('template-container');
+      const editModeToggle = document.getElementById('edit-mode');
+      const reloadBtn = document.getElementById('reload-btn');
+      const saveBtn = document.getElementById('save-btn');
+      
+      let currentTemplate = null;
+      let originalHTML = null;
+      
+      // Load template function
+      function loadTemplate(templateName) {
+        if (!templateName) return;
+        
+        fetch(`generated-templates/${templateName}`)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Template not found');
+            }
+            return response.text();
+          })
+          .then(html => {
+            originalHTML = html;
+            templateContainer.innerHTML = html;
+            currentTemplate = templateName;
+            
+            // Initialize form behavior
+            const form = templateContainer.querySelector('form');
+            if (form) {
+              form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const data = {};
+                
+                for (let [key, value] of formData.entries()) {
+                  data[key] = value;
+                }
+                
+                console.log('Form Data:', data);
+                alert('Form submission captured! See console for data.');
+              });
+            }
+          })
+          .catch(error => {
+            console.error('Error loading template:', error);
+            templateContainer.innerHTML = `
+              <div class="flex justify-center items-center h-full text-red-500">
+                Error loading template: ${error.message}
+              </div>
+            `;
+          });
+      }
+      
+      // Toggle edit mode
+      editModeToggle.addEventListener('change', function() {
+        if (this.checked) {
+          templateContainer.contentEditable = true;
+          templateContainer.classList.add('border-2', 'border-blue-300');
+          alert('Edit mode enabled. Changes are not saved until you click "Save Changes".');
+        } else {
+          templateContainer.contentEditable = false;
+          templateContainer.classList.remove('border-2', 'border-blue-300');
+        }
+      });
+      
+      // Reload template button
+      reloadBtn.addEventListener('click', function() {
+        if (confirm('This will discard any unsaved changes. Continue?')) {
+          if (currentTemplate) {
+            if (originalHTML) {
+              templateContainer.innerHTML = originalHTML;
+            } else {
+              loadTemplate(currentTemplate);
+            }
+            editModeToggle.checked = false;
+            templateContainer.contentEditable = false;
+            templateContainer.classList.remove('border-2', 'border-blue-300');
+          }
+        }
+      });
+      
+      // Save changes button
+      saveBtn.addEventListener('click', function() {
+        if (currentTemplate) {
+          const newHTML = templateContainer.innerHTML;
+          
+          // In a real app, you would send this to the server
+          // For now, we'll just log it and provide a download option
+          console.log('New HTML:', newHTML);
+          
+          const blob = new Blob([newHTML], {type: 'text/html'});
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `modified-${currentTemplate}`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+          
+          alert('Template saved as download. In a real application, this would be saved to the server.');
+        }
+      });
+      
+      // Template selector change event
+      templateSelector.addEventListener('change', function() {
+        if (editModeToggle.checked && currentTemplate) {
+          if (confirm('You have unsaved changes. Load new template anyway?')) {
+            loadTemplate(this.value);
+            editModeToggle.checked = false;
+            templateContainer.contentEditable = false;
+            templateContainer.classList.remove('border-2', 'border-blue-300');
+          } else {
+            // Revert selector to previous value
+            this.value = currentTemplate;
+          }
+        } else {
+          loadTemplate(this.value);
+        }
+      });
+      
+      // Load initial template if selected
+      if (templateSelector.value) {
+        loadTemplate(templateSelector.value);
+      }
+    });
+  </script>
+</body>
+</html> 

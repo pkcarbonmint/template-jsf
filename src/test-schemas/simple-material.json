@@ -1,0 +1,95 @@
+{
+  "type": "object",
+  "title": "User Profile",
+  "description": "Basic information about a user",
+  "required": ["firstName", "email"],
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "title": "First Name",
+      "description": "User's first name"
+    },
+    "lastName": {
+      "type": "string",
+      "title": "Last Name",
+      "description": "User's last name"
+    },
+    "email": {
+      "type": "string",
+      "title": "Email",
+      "description": "User's email address",
+      "format": "email"
+    },
+    "age": {
+      "type": "integer",
+      "title": "Age",
+      "description": "User's age in years",
+      "minimum": 0,
+      "maximum": 120
+    },
+    "agreeToTerms": {
+      "type": "boolean",
+      "title": "Terms Agreement",
+      "description": "I agree to the terms and conditions",
+      "default": false
+    },
+    "userType": {
+      "type": "string",
+      "title": "User Type",
+      "description": "The type of user account",
+      "enum": ["standard", "premium", "admin"],
+      "enumNames": ["Standard", "Premium", "Administrator"],
+      "default": "standard"
+    },
+    "additionalInfo": {
+      "type": "object",
+      "title": "Additional Information",
+      "description": "Optional user details",
+      "properties": {
+        "phone": {
+          "type": "string",
+          "title": "Phone Number",
+          "description": "User's phone number"
+        },
+        "address": {
+          "type": "string",
+          "title": "Address",
+          "description": "User's home address"
+        }
+      },
+      "dependencies": {
+        "phone": ["address"]
+      }
+    }
+  },
+  "conditionals": [
+    {
+      "if": {
+        "properties": {
+          "userType": {
+            "enum": ["premium", "admin"]
+          }
+        }
+      },
+      "then": {
+        "required": ["additionalInfo"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "agreeToTerms": {
+            "const": false
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "_submitDisabled": {
+            "const": true
+          }
+        }
+      }
+    }
+  ]
+} 

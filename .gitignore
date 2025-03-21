@@ -1,0 +1,19 @@
+# Node modules
+node_modules/
+
+# Build artifacts
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+
+# IDE/Editor files
+.vscode/
+.idea/
+
+# Logs and cache
+*.log
+.pnpm-store/
+.cache/

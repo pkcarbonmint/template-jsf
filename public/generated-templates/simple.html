@@ -1,0 +1,59 @@
+<form id="root" class="w-full max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md" data-schema-form>
+  <h1 class="text-2xl font-bold mb-6 text-gray-800">User</h1>
+  <div id="root" class="mb-6 p-4 border border-gray-200 rounded-md" data-schema-type="object" data-schema-id="root">
+  <h2 class="text-xl font-semibold mb-4 text-gray-700">User</h2>
+  <div class="space-y-4">
+    <div class="property-container" data-property-name="name">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium">
+      name
+      <span class="text-red-500">*</span>
+    </span>
+    <span class="block text-xs text-gray-500 mt-1">The user&#39;s full name</span>
+  </label>
+  <input 
+  type="text"
+  id="field-name"
+  name="field-name"
+  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+  data-schema-type="string"
+  data-schema-id="field-name"
+  required
+  
+  
+  
+  
+  
+/> 
+</div> 
+<div class="property-container" data-property-name="age">
+  <label class="block mb-2">
+    <span class="text-gray-700 font-medium">
+      age
+      <span class="text-red-500">*</span>
+    </span>
+    <span class="block text-xs text-gray-500 mt-1">The user&#39;s age in years</span>
+  </label>
+  <input 
+  type="number"
+  id="field-age"
+  name="field-age"
+  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+  data-schema-type="integer"
+  data-schema-id="field-age"
+  required
+  
+  
+  
+  step="1"
+/> 
+</div> 
+    
+  </div>
+</div> 
+  <div class="mt-8 flex justify-end">
+    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+      Submit
+    </button>
+  </div>
+</form> 

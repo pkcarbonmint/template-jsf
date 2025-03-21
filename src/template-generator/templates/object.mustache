@@ -1,0 +1,12 @@
+<div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="{{id}}" data-schema-id="{{id}}" data-schema-path="{{id}}">
+  {{#title}}
+  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">{{title}}</h2>
+  {{/title}}
+  {{#description}}
+  <p class="text-sm text-gray-600 mb-6">{{description}}</p>
+  {{/description}}
+  <div class="space-y-6">
+    {{{properties}}}
+    {{{conditionals}}}
+  </div>
+</div> 
