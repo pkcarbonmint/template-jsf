@@ -1,11 +1,11 @@
-<div class="property-container mb-5" data-property-name="{{name}}" data-schema-path="{{name}}">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="{{name}}" data-schema-path="{{name}}">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       {{title}}
-      {{#required}}<span class="text-red-500">*</span>{{/required}}
+      {{#required}}<span class="jsf-required">*</span>{{/required}}
     </span>
     {{#description}}
-    <span class="block text-xs text-gray-500 mt-1 mb-1">{{description}}</span>
+    <span class="jsf-desc">{{description}}</span>
     {{/description}}
   </label>
   {{{content}}}

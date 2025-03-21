@@ -1,22 +1,22 @@
-<form id="root" class="w-full max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg" data-schema-form>
-  <h1 class="text-3xl font-medium mb-8 text-gray-800">User</h1>
-  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="root" data-schema-id="root" data-schema-path="root">
-  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">User</h2>
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="name" data-schema-path="name">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<form id="root" class="jsf-form" data-schema-form>
+  <h1 class="jsf-title">User</h1>
+  <div class="jsf-object" id="root" data-schema-id="root" data-schema-path="root">
+  <h2 class="jsf-object-title">User</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="name" data-schema-path="name">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       name
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">The user&#39;s full name</span>
+    <span class="jsf-desc">The user&#39;s full name</span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-name"
     name="field-name"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-name"
     data-schema-path="field-name"
@@ -28,23 +28,23 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="age" data-schema-path="age">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="age" data-schema-path="age">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       age
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">The user&#39;s age in years</span>
+    <span class="jsf-desc">The user&#39;s age in years</span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="number"
     id="field-age"
     name="field-age"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="number"
     data-schema-id="field-age"
     data-schema-path="field-age"
@@ -55,14 +55,14 @@
     step="1"
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
     
   </div>
 </div> 
-  <div class="mt-10 flex justify-end">
-    <button type="submit" class="px-6 py-2.5 bg-blue-500 text-white rounded shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 transition-colors duration-200 uppercase text-sm font-medium tracking-wider">
+  <div class="jsf-btn-container">
+    <button type="submit" class="jsf-submit-btn">
       Submit
     </button>
   </div>

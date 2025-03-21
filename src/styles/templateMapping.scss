@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Define any custom classes that you'll use with @apply */
+  .schema-object {
+    /* Optionally add any base styles or leave empty */
+  }
+
+  // Map new template classes to tailwind classes using @apply
+  .jsf-form {
+    @apply w-full max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg;
+  }
+  .jsf-title {
+    @apply text-3xl font-medium mb-8 text-gray-800;
+  }
+  .jsf-object {
+    @apply schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200;
+  }
+  .jsf-object-title {
+    @apply text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2;
+  }
+  .jsf-object-desc {
+    @apply text-sm text-gray-600 mb-6;
+  }
+  .jsf-prop {
+    @apply property-container mb-5;
+  }
+  .jsf-label {
+    @apply block mb-2;
+  }
+  .jsf-label-text {
+    @apply text-gray-700 font-medium text-sm tracking-wide;
+  }
+  .jsf-required {
+    @apply text-red-500;
+  }
+  .jsf-desc {
+    @apply block text-xs text-gray-500 mt-1 mb-1;
+  }
+  .jsf-input-container {
+    @apply relative;
+  }
+  .jsf-input {
+    @apply w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200;
+  }
+  .jsf-focus-line {
+    @apply h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full;
+  }
+  .jsf-btn-container {
+    @apply mt-10 flex justify-end;
+  }
+  .jsf-submit-btn {
+    @apply px-6 py-2.5 bg-blue-500 text-white rounded shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 transition-colors duration-200 uppercase text-sm font-medium tracking-wider;
+  }
+  .jsf-array {
+    @apply array-container bg-gray-50 p-6 rounded-lg border border-gray-100 shadow-sm;
+  }
+  .jsf-array-items {
+    @apply array-items space-y-6;
+  }
+  .jsf-add-btn {
+    @apply add-item px-4 py-2 bg-green-500 text-white rounded shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 transition-colors duration-200 flex items-center;
+  }
+  .jsf-remove-btn {
+    @apply remove-item absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors duration-200;
+  }
+}
+.property-container {
+  /* Optionally add any base styles or leave empty */
+}
+.array-container {
+  /* Optionally add any base styles or leave empty */
+}
+.array-items {
+  /* Optionally add any base styles or leave empty */
+}
+.add-item {
+  /* Optionally add any base styles or leave empty */
+}
+.remove-item {
+  /* Optionally add any base styles or leave empty */
+}
+
+// Map new template classes to the corresponding set of old template classes
+$templates-map: (
+  ".jsf-form": "w-full max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg",
+  ".jsf-title": "text-3xl font-medium mb-8 text-gray-800",
+  ".jsf-object": "schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200",
+  ".jsf-object-title": "text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2",
+  ".jsf-object-desc": "text-sm text-gray-600 mb-6",
+  ".jsf-prop": "property-container mb-5",
+  ".jsf-label": "block mb-2",
+  ".jsf-label-text": "text-gray-700 font-medium text-sm tracking-wide",
+  ".jsf-required": "text-red-500",
+  ".jsf-desc": "block text-xs text-gray-500 mt-1 mb-1",
+  ".jsf-input-container": "relative",
+  ".jsf-input": "w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200",
+  ".jsf-focus-line": "h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full",
+  ".jsf-btn-container": "mt-10 flex justify-end",
+  ".jsf-submit-btn": "px-6 py-2.5 bg-blue-500 text-white rounded shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 transition-colors duration-200 uppercase text-sm font-medium tracking-wider",
+  ".jsf-array": "array-container bg-gray-50 p-6 rounded-lg border border-gray-100 shadow-sm",
+  ".jsf-array-items": "array-items space-y-6",
+  ".jsf-add-btn": "add-item px-4 py-2 bg-green-500 text-white rounded shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 transition-colors duration-200 flex items-center",
+  ".jsf-remove-btn": "remove-item absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors duration-200"
+);
+
+
+// Loop over the mapping so that any element with the new class
+// gets the styling of the corresponding old template classes.
+@each $new-class, $old-styles in $templates-map {
+  #{$new-class} {
+    @apply #{$old-styles};
+  }
+}

@@ -1,23 +1,23 @@
-<form id="root" class="w-full max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg" data-schema-form>
-  <h1 class="text-3xl font-medium mb-8 text-gray-800">Business Application Form</h1>
-  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="root" data-schema-id="root" data-schema-path="root">
-  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Business Application Form</h2>
-  <p class="text-sm text-gray-600 mb-6">Complete application for business registration</p>
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="applicationId" data-schema-path="applicationId">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<form id="root" class="jsf-form" data-schema-form>
+  <h1 class="jsf-title">Business Application Form</h1>
+  <div class="jsf-object" id="root" data-schema-id="root" data-schema-path="root">
+  <h2 class="jsf-object-title">Business Application Form</h2>
+  <p class="jsf-object-description">Complete application for business registration</p>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="applicationId" data-schema-path="applicationId">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Application ID
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">Auto-generated application identifier</span>
+    <span class="jsf-desc">Auto-generated application identifier</span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-applicationId"
     name="field-applicationId"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-applicationId"
     data-schema-path="field-applicationId"
@@ -29,14 +29,14 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="submissionDate" data-schema-path="submissionDate">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="submissionDate" data-schema-path="submissionDate">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Submission Date
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
   <div class="relative">
@@ -54,30 +54,30 @@
   <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="businessInfo" data-schema-path="businessInfo">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="businessInfo" data-schema-path="businessInfo">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Business Information
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-businessInfo" data-schema-id="field-businessInfo" data-schema-path="field-businessInfo">
-  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Business Information</h2>
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="name" data-schema-path="name">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+  <div class="jsf-object" id="field-businessInfo" data-schema-id="field-businessInfo" data-schema-path="field-businessInfo">
+  <h2 class="jsf-object-title">Business Information</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="name" data-schema-path="name">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Business Name
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">Legal name of the business</span>
+    <span class="jsf-desc">Legal name of the business</span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-businessInfo-name"
     name="field-businessInfo-name"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-businessInfo-name"
     data-schema-path="field-businessInfo-name"
@@ -89,23 +89,23 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="tradingName" data-schema-path="tradingName">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="tradingName" data-schema-path="tradingName">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Trading Name
       
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">Trading or operating name (if different)</span>
+    <span class="jsf-desc">Trading or operating name (if different)</span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-businessInfo-tradingName"
     name="field-businessInfo-tradingName"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-businessInfo-tradingName"
     data-schema-path="field-businessInfo-tradingName"
@@ -117,14 +117,14 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="type" data-schema-path="type">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="type" data-schema-path="type">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Business Type
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
   <div class="relative">
@@ -153,20 +153,20 @@
   <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="otherType" data-schema-path="otherType">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="otherType" data-schema-path="otherType">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Specify Other Type
       
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">If &#39;Other&#39; was selected, please specify</span>
+    <span class="jsf-desc">If &#39;Other&#39; was selected, please specify</span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-businessInfo-otherType"
     name="field-businessInfo-otherType"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-businessInfo-otherType"
     data-schema-path="field-businessInfo-otherType"
@@ -178,14 +178,14 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="industry" data-schema-path="industry">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="industry" data-schema-path="industry">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Primary Industry
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
   <div class="relative">
@@ -221,13 +221,13 @@
   <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="description" data-schema-path="description">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="description" data-schema-path="description">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Business Description
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">Brief description of business activities</span>
+    <span class="jsf-desc">Brief description of business activities</span>
   </label>
   <div class="relative">
   <textarea
@@ -245,9 +245,9 @@
   <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="establishmentDate" data-schema-path="establishmentDate">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="establishmentDate" data-schema-path="establishmentDate">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Date Established
       
     </span>
@@ -267,20 +267,20 @@
   <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="employeeCount" data-schema-path="employeeCount">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="employeeCount" data-schema-path="employeeCount">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Number of Employees
       
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">Current number of employees</span>
+    <span class="jsf-desc">Current number of employees</span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="number"
     id="field-businessInfo-employeeCount"
     name="field-businessInfo-employeeCount"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="number"
     data-schema-id="field-businessInfo-employeeCount"
     data-schema-path="field-businessInfo-employeeCount"
@@ -291,12 +291,12 @@
     step="1"
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="annualRevenue" data-schema-path="annualRevenue">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="annualRevenue" data-schema-path="annualRevenue">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Estimated Annual Revenue
       
     </span>
@@ -331,39 +331,39 @@
   </div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="contactInfo" data-schema-path="contactInfo">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="contactInfo" data-schema-path="contactInfo">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Contact Information
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-contactInfo" data-schema-id="field-contactInfo" data-schema-path="field-contactInfo">
-  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Contact Information</h2>
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="primaryContact" data-schema-path="primaryContact">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+  <div class="jsf-object" id="field-contactInfo" data-schema-id="field-contactInfo" data-schema-path="field-contactInfo">
+  <h2 class="jsf-object-title">Contact Information</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="primaryContact" data-schema-path="primaryContact">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Primary Contact
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-contactInfo-primaryContact" data-schema-id="field-contactInfo-primaryContact" data-schema-path="field-contactInfo-primaryContact">
-  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Primary Contact</h2>
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="firstName" data-schema-path="firstName">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+  <div class="jsf-object" id="field-contactInfo-primaryContact" data-schema-id="field-contactInfo-primaryContact" data-schema-path="field-contactInfo-primaryContact">
+  <h2 class="jsf-object-title">Primary Contact</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="firstName" data-schema-path="firstName">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       First Name
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-contactInfo-primaryContact-firstName"
     name="field-contactInfo-primaryContact-firstName"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-contactInfo-primaryContact-firstName"
     data-schema-path="field-contactInfo-primaryContact-firstName"
@@ -375,22 +375,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="lastName" data-schema-path="lastName">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="lastName" data-schema-path="lastName">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Last Name
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-contactInfo-primaryContact-lastName"
     name="field-contactInfo-primaryContact-lastName"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-contactInfo-primaryContact-lastName"
     data-schema-path="field-contactInfo-primaryContact-lastName"
@@ -402,22 +402,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="position" data-schema-path="position">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="position" data-schema-path="position">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Position
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-contactInfo-primaryContact-position"
     name="field-contactInfo-primaryContact-position"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-contactInfo-primaryContact-position"
     data-schema-path="field-contactInfo-primaryContact-position"
@@ -429,36 +429,36 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
     
   </div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="businessAddress" data-schema-path="businessAddress">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="businessAddress" data-schema-path="businessAddress">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Business Address
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-contactInfo-businessAddress" data-schema-id="field-contactInfo-businessAddress" data-schema-path="field-contactInfo-businessAddress">
-  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Business Address</h2>
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="street" data-schema-path="street">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+  <div class="jsf-object" id="field-contactInfo-businessAddress" data-schema-id="field-contactInfo-businessAddress" data-schema-path="field-contactInfo-businessAddress">
+  <h2 class="jsf-object-title">Business Address</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="street" data-schema-path="street">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Street Address
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-contactInfo-businessAddress-street"
     name="field-contactInfo-businessAddress-street"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-contactInfo-businessAddress-street"
     data-schema-path="field-contactInfo-businessAddress-street"
@@ -470,22 +470,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="city" data-schema-path="city">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="city" data-schema-path="city">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       City
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-contactInfo-businessAddress-city"
     name="field-contactInfo-businessAddress-city"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-contactInfo-businessAddress-city"
     data-schema-path="field-contactInfo-businessAddress-city"
@@ -497,22 +497,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="state" data-schema-path="state">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="state" data-schema-path="state">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       State&#x2F;Province
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-contactInfo-businessAddress-state"
     name="field-contactInfo-businessAddress-state"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-contactInfo-businessAddress-state"
     data-schema-path="field-contactInfo-businessAddress-state"
@@ -524,22 +524,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="zipCode" data-schema-path="zipCode">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="zipCode" data-schema-path="zipCode">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       ZIP&#x2F;Postal Code
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-contactInfo-businessAddress-zipCode"
     name="field-contactInfo-businessAddress-zipCode"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-contactInfo-businessAddress-zipCode"
     data-schema-path="field-contactInfo-businessAddress-zipCode"
@@ -551,22 +551,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="country" data-schema-path="country">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="country" data-schema-path="country">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Country
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-contactInfo-businessAddress-country"
     name="field-contactInfo-businessAddress-country"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-contactInfo-businessAddress-country"
     data-schema-path="field-contactInfo-businessAddress-country"
@@ -578,28 +578,28 @@
     value="United States"
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
     
   </div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="mailingAddress" data-schema-path="mailingAddress">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="mailingAddress" data-schema-path="mailingAddress">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Mailing Address
       
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">If different from business address</span>
+    <span class="jsf-desc">If different from business address</span>
   </label>
-  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-contactInfo-mailingAddress" data-schema-id="field-contactInfo-mailingAddress" data-schema-path="field-contactInfo-mailingAddress">
-  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Mailing Address</h2>
-  <p class="text-sm text-gray-600 mb-6">If different from business address</p>
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="sameAsBusiness" data-schema-path="sameAsBusiness">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+  <div class="jsf-object" id="field-contactInfo-mailingAddress" data-schema-id="field-contactInfo-mailingAddress" data-schema-path="field-contactInfo-mailingAddress">
+  <h2 class="jsf-object-title">Mailing Address</h2>
+  <p class="jsf-object-description">If different from business address</p>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="sameAsBusiness" data-schema-path="sameAsBusiness">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Same as Business Address
       
     </span>
@@ -623,19 +623,19 @@
   <span class="ml-3 text-sm font-medium text-gray-700">Enabled</span>
 </label> 
 </div> 
-<div class="property-container mb-5" data-property-name="street" data-schema-path="street">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="street" data-schema-path="street">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Street Address
       
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-contactInfo-mailingAddress-street"
     name="field-contactInfo-mailingAddress-street"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-contactInfo-mailingAddress-street"
     data-schema-path="field-contactInfo-mailingAddress-street"
@@ -647,22 +647,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="city" data-schema-path="city">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="city" data-schema-path="city">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       City
       
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-contactInfo-mailingAddress-city"
     name="field-contactInfo-mailingAddress-city"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-contactInfo-mailingAddress-city"
     data-schema-path="field-contactInfo-mailingAddress-city"
@@ -674,22 +674,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="state" data-schema-path="state">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="state" data-schema-path="state">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       State&#x2F;Province
       
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-contactInfo-mailingAddress-state"
     name="field-contactInfo-mailingAddress-state"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-contactInfo-mailingAddress-state"
     data-schema-path="field-contactInfo-mailingAddress-state"
@@ -701,22 +701,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="zipCode" data-schema-path="zipCode">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="zipCode" data-schema-path="zipCode">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       ZIP&#x2F;Postal Code
       
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-contactInfo-mailingAddress-zipCode"
     name="field-contactInfo-mailingAddress-zipCode"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-contactInfo-mailingAddress-zipCode"
     data-schema-path="field-contactInfo-mailingAddress-zipCode"
@@ -728,22 +728,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="country" data-schema-path="country">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="country" data-schema-path="country">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Country
       
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-contactInfo-mailingAddress-country"
     name="field-contactInfo-mailingAddress-country"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-contactInfo-mailingAddress-country"
     data-schema-path="field-contactInfo-mailingAddress-country"
@@ -755,26 +755,26 @@
     value="United States"
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
     
   </div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="phone" data-schema-path="phone">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="phone" data-schema-path="phone">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Business Phone
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-contactInfo-phone"
     name="field-contactInfo-phone"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-contactInfo-phone"
     data-schema-path="field-contactInfo-phone"
@@ -786,22 +786,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="alternatePhone" data-schema-path="alternatePhone">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="alternatePhone" data-schema-path="alternatePhone">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Alternate Phone
       
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-contactInfo-alternatePhone"
     name="field-contactInfo-alternatePhone"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-contactInfo-alternatePhone"
     data-schema-path="field-contactInfo-alternatePhone"
@@ -813,14 +813,14 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="email" data-schema-path="email">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="email" data-schema-path="email">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Business Email
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
   <div class="relative">
@@ -839,9 +839,9 @@
   <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="website" data-schema-path="website">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="website" data-schema-path="website">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Website
       
     </span>
@@ -866,30 +866,30 @@
   </div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="legalDetails" data-schema-path="legalDetails">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="legalDetails" data-schema-path="legalDetails">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Legal Information
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-legalDetails" data-schema-id="field-legalDetails" data-schema-path="field-legalDetails">
-  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Legal Information</h2>
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="taxId" data-schema-path="taxId">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+  <div class="jsf-object" id="field-legalDetails" data-schema-id="field-legalDetails" data-schema-path="field-legalDetails">
+  <h2 class="jsf-object-title">Legal Information</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="taxId" data-schema-path="taxId">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Tax Identification Number
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">EIN or other tax ID</span>
+    <span class="jsf-desc">EIN or other tax ID</span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-legalDetails-taxId"
     name="field-legalDetails-taxId"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-legalDetails-taxId"
     data-schema-path="field-legalDetails-taxId"
@@ -901,23 +901,23 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="registrationNumber" data-schema-path="registrationNumber">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="registrationNumber" data-schema-path="registrationNumber">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Business Registration Number
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">State&#x2F;local business registration</span>
+    <span class="jsf-desc">State&#x2F;local business registration</span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-legalDetails-registrationNumber"
     name="field-legalDetails-registrationNumber"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-legalDetails-registrationNumber"
     data-schema-path="field-legalDetails-registrationNumber"
@@ -929,14 +929,14 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="hasLicenses" data-schema-path="hasLicenses">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="hasLicenses" data-schema-path="hasLicenses">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Business has required licenses&#x2F;permits
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
   <label class="inline-flex items-center cursor-pointer">
@@ -958,37 +958,38 @@
   <span class="ml-3 text-sm font-medium text-gray-700">Disabled</span>
 </label> 
 </div> 
-<div class="property-container mb-5" data-property-name="licenses" data-schema-path="licenses">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="licenses" data-schema-path="licenses">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Licenses &amp; Permits
       
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">List all required licenses and permits</span>
+    <span class="jsf-desc">List all required licenses and permits</span>
   </label>
-  <div id="field-legalDetails-licenses" class="array-container bg-gray-50 p-6 rounded-lg border border-gray-100 shadow-sm" data-schema-type="array" data-schema-id="field-legalDetails-licenses" data-schema-path="field-legalDetails-licenses">
-  <h3 class="text-lg font-medium text-gray-700 mb-4 border-b border-gray-200 pb-2">Licenses &amp; Permits</h3>
-  <p class="text-sm text-gray-600 mb-4">List all required licenses and permits</p>
+  <div id="field-legalDetails-licenses" class="jsf-array" data-schema-type="array" data-schema-id="field-legalDetails-licenses" data-schema-path="field-legalDetails-licenses">
+  <h3 class="jsf-object-title">Licenses &amp; Permits</h3>
+  <p class="jsf-object-description">List all required licenses and permits</p>
 
-  <div class="array-items space-y-6">
+  <div class="jsf-array-items">
     <!-- Array item template will be cloned and inserted here dynamically -->
     <div class="array-item-template hidden">
-      <div class="array-item relative border border-gray-200 bg-white rounded-lg p-5 mb-4 shadow-sm">
-        <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-legalDetails-licenses-items" data-schema-id="field-legalDetails-licenses-items" data-schema-path="field-legalDetails-licenses-items">
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="type" data-schema-path="type">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      <div class="jsf-array-item">
+        <div class="jsf-array-item-content">
+          <div class="jsf-object" id="field-legalDetails-licenses-items" data-schema-id="field-legalDetails-licenses-items" data-schema-path="field-legalDetails-licenses-items">
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="type" data-schema-path="type">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       License Type
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-legalDetails-licenses-items-type"
     name="field-legalDetails-licenses-items-type"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-legalDetails-licenses-items-type"
     data-schema-path="field-legalDetails-licenses-items-type"
@@ -1000,22 +1001,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="number" data-schema-path="number">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="number" data-schema-path="number">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       License Number
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-legalDetails-licenses-items-number"
     name="field-legalDetails-licenses-items-number"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-legalDetails-licenses-items-number"
     data-schema-path="field-legalDetails-licenses-items-number"
@@ -1027,22 +1028,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="issuedBy" data-schema-path="issuedBy">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="issuedBy" data-schema-path="issuedBy">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Issued By
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-legalDetails-licenses-items-issuedBy"
     name="field-legalDetails-licenses-items-issuedBy"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-legalDetails-licenses-items-issuedBy"
     data-schema-path="field-legalDetails-licenses-items-issuedBy"
@@ -1054,12 +1055,12 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="issueDate" data-schema-path="issueDate">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="issueDate" data-schema-path="issueDate">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Issue Date
       
     </span>
@@ -1079,11 +1080,11 @@
   <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="expirationDate" data-schema-path="expirationDate">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="expirationDate" data-schema-path="expirationDate">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Expiration Date
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
   <div class="relative">
@@ -1104,7 +1105,8 @@
     
   </div>
 </div> 
-        <button type="button" class="remove-item absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors duration-200" aria-label="Remove item">
+        </div>
+        <button type="button" class="jsf-remove-btn" aria-label="Remove item">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -1113,8 +1115,8 @@
     </div>
   </div>
 
-  <div class="mt-4">
-    <button type="button" class="add-item px-4 py-2 bg-green-500 text-white rounded shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 transition-colors duration-200 flex items-center">
+  <div class="jsf-array-buttons">
+    <button type="button" class="jsf-add-btn">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
       </svg>
@@ -1127,19 +1129,19 @@
   </div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="financialInfo" data-schema-path="financialInfo">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="financialInfo" data-schema-path="financialInfo">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Financial Information
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-financialInfo" data-schema-id="field-financialInfo" data-schema-path="field-financialInfo">
-  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Financial Information</h2>
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="hasBankAccount" data-schema-path="hasBankAccount">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+  <div class="jsf-object" id="field-financialInfo" data-schema-id="field-financialInfo" data-schema-path="field-financialInfo">
+  <h2 class="jsf-object-title">Financial Information</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="hasBankAccount" data-schema-path="hasBankAccount">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Business has dedicated bank account
       
     </span>
@@ -1163,29 +1165,29 @@
   <span class="ml-3 text-sm font-medium text-gray-700">Disabled</span>
 </label> 
 </div> 
-<div class="property-container mb-5" data-property-name="bankInformation" data-schema-path="bankInformation">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="bankInformation" data-schema-path="bankInformation">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Bank Information
       
     </span>
   </label>
-  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-financialInfo-bankInformation" data-schema-id="field-financialInfo-bankInformation" data-schema-path="field-financialInfo-bankInformation">
-  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Bank Information</h2>
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="bankName" data-schema-path="bankName">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+  <div class="jsf-object" id="field-financialInfo-bankInformation" data-schema-id="field-financialInfo-bankInformation" data-schema-path="field-financialInfo-bankInformation">
+  <h2 class="jsf-object-title">Bank Information</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="bankName" data-schema-path="bankName">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Bank Name
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-financialInfo-bankInformation-bankName"
     name="field-financialInfo-bankInformation-bankName"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-financialInfo-bankInformation-bankName"
     data-schema-path="field-financialInfo-bankInformation-bankName"
@@ -1197,14 +1199,14 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="accountType" data-schema-path="accountType">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="accountType" data-schema-path="accountType">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Account Type
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
   <div class="relative">
@@ -1230,19 +1232,19 @@
   <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="accountNumber" data-schema-path="accountNumber">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="accountNumber" data-schema-path="accountNumber">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Account Number (Last 4 digits)
       
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-financialInfo-bankInformation-accountNumber"
     name="field-financialInfo-bankInformation-accountNumber"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-financialInfo-bankInformation-accountNumber"
     data-schema-path="field-financialInfo-bankInformation-accountNumber"
@@ -1254,22 +1256,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="routingNumber" data-schema-path="routingNumber">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="routingNumber" data-schema-path="routingNumber">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Routing Number
       
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-financialInfo-bankInformation-routingNumber"
     name="field-financialInfo-bankInformation-routingNumber"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-financialInfo-bankInformation-routingNumber"
     data-schema-path="field-financialInfo-bankInformation-routingNumber"
@@ -1281,16 +1283,16 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
     
   </div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="hasMerchantAccount" data-schema-path="hasMerchantAccount">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="hasMerchantAccount" data-schema-path="hasMerchantAccount">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Business has merchant account for payments
       
     </span>
@@ -1314,35 +1316,36 @@
   <span class="ml-3 text-sm font-medium text-gray-700">Disabled</span>
 </label> 
 </div> 
-<div class="property-container mb-5" data-property-name="merchantServices" data-schema-path="merchantServices">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="merchantServices" data-schema-path="merchantServices">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Merchant Services
       
     </span>
   </label>
-  <div id="field-financialInfo-merchantServices" class="array-container bg-gray-50 p-6 rounded-lg border border-gray-100 shadow-sm" data-schema-type="array" data-schema-id="field-financialInfo-merchantServices" data-schema-path="field-financialInfo-merchantServices">
-  <h3 class="text-lg font-medium text-gray-700 mb-4 border-b border-gray-200 pb-2">Merchant Services</h3>
+  <div id="field-financialInfo-merchantServices" class="jsf-array" data-schema-type="array" data-schema-id="field-financialInfo-merchantServices" data-schema-path="field-financialInfo-merchantServices">
+  <h3 class="jsf-object-title">Merchant Services</h3>
 
-  <div class="array-items space-y-6">
+  <div class="jsf-array-items">
     <!-- Array item template will be cloned and inserted here dynamically -->
     <div class="array-item-template hidden">
-      <div class="array-item relative border border-gray-200 bg-white rounded-lg p-5 mb-4 shadow-sm">
-        <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-financialInfo-merchantServices-items" data-schema-id="field-financialInfo-merchantServices-items" data-schema-path="field-financialInfo-merchantServices-items">
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="provider" data-schema-path="provider">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      <div class="jsf-array-item">
+        <div class="jsf-array-item-content">
+          <div class="jsf-object" id="field-financialInfo-merchantServices-items" data-schema-id="field-financialInfo-merchantServices-items" data-schema-path="field-financialInfo-merchantServices-items">
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="provider" data-schema-path="provider">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Service Provider
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-financialInfo-merchantServices-items-provider"
     name="field-financialInfo-merchantServices-items-provider"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-financialInfo-merchantServices-items-provider"
     data-schema-path="field-financialInfo-merchantServices-items-provider"
@@ -1354,22 +1357,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="accountNumber" data-schema-path="accountNumber">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="accountNumber" data-schema-path="accountNumber">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Account ID
       
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-financialInfo-merchantServices-items-accountNumber"
     name="field-financialInfo-merchantServices-items-accountNumber"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-financialInfo-merchantServices-items-accountNumber"
     data-schema-path="field-financialInfo-merchantServices-items-accountNumber"
@@ -1381,24 +1384,25 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="paymentTypes" data-schema-path="paymentTypes">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="paymentTypes" data-schema-path="paymentTypes">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Payment Types Accepted
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div id="field-financialInfo-merchantServices-items-paymentTypes" class="array-container bg-gray-50 p-6 rounded-lg border border-gray-100 shadow-sm" data-schema-type="array" data-schema-id="field-financialInfo-merchantServices-items-paymentTypes" data-schema-path="field-financialInfo-merchantServices-items-paymentTypes">
-  <h3 class="text-lg font-medium text-gray-700 mb-4 border-b border-gray-200 pb-2">Payment Types Accepted</h3>
+  <div id="field-financialInfo-merchantServices-items-paymentTypes" class="jsf-array" data-schema-type="array" data-schema-id="field-financialInfo-merchantServices-items-paymentTypes" data-schema-path="field-financialInfo-merchantServices-items-paymentTypes">
+  <h3 class="jsf-object-title">Payment Types Accepted</h3>
 
-  <div class="array-items space-y-6">
+  <div class="jsf-array-items">
     <!-- Array item template will be cloned and inserted here dynamically -->
     <div class="array-item-template hidden">
-      <div class="array-item relative border border-gray-200 bg-white rounded-lg p-5 mb-4 shadow-sm">
-        <div class="relative">
+      <div class="jsf-array-item">
+        <div class="jsf-array-item-content">
+          <div class="relative">
   <select
     id="field-financialInfo-merchantServices-items-paymentTypes-items"
     name="field-financialInfo-merchantServices-items-paymentTypes-items"
@@ -1423,7 +1427,8 @@
   </div>
   <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
 </div> 
-        <button type="button" class="remove-item absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors duration-200" aria-label="Remove item">
+        </div>
+        <button type="button" class="jsf-remove-btn" aria-label="Remove item">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -1432,8 +1437,8 @@
     </div>
   </div>
 
-  <div class="mt-4">
-    <button type="button" class="add-item px-4 py-2 bg-green-500 text-white rounded shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 transition-colors duration-200 flex items-center">
+  <div class="jsf-array-buttons">
+    <button type="button" class="jsf-add-btn">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
       </svg>
@@ -1445,7 +1450,8 @@
     
   </div>
 </div> 
-        <button type="button" class="remove-item absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors duration-200" aria-label="Remove item">
+        </div>
+        <button type="button" class="jsf-remove-btn" aria-label="Remove item">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -1454,8 +1460,8 @@
     </div>
   </div>
 
-  <div class="mt-4">
-    <button type="button" class="add-item px-4 py-2 bg-green-500 text-white rounded shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 transition-colors duration-200 flex items-center">
+  <div class="jsf-array-buttons">
+    <button type="button" class="jsf-add-btn">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
       </svg>
@@ -1468,29 +1474,30 @@
   </div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="additionalDocuments" data-schema-path="additionalDocuments">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="additionalDocuments" data-schema-path="additionalDocuments">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Additional Documents
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">Upload supporting documents</span>
+    <span class="jsf-desc">Upload supporting documents</span>
   </label>
-  <div id="field-additionalDocuments" class="array-container bg-gray-50 p-6 rounded-lg border border-gray-100 shadow-sm" data-schema-type="array" data-schema-id="field-additionalDocuments" data-schema-path="field-additionalDocuments">
-  <h3 class="text-lg font-medium text-gray-700 mb-4 border-b border-gray-200 pb-2">Additional Documents</h3>
-  <p class="text-sm text-gray-600 mb-4">Upload supporting documents</p>
+  <div id="field-additionalDocuments" class="jsf-array" data-schema-type="array" data-schema-id="field-additionalDocuments" data-schema-path="field-additionalDocuments">
+  <h3 class="jsf-object-title">Additional Documents</h3>
+  <p class="jsf-object-description">Upload supporting documents</p>
 
-  <div class="array-items space-y-6">
+  <div class="jsf-array-items">
     <!-- Array item template will be cloned and inserted here dynamically -->
     <div class="array-item-template hidden">
-      <div class="array-item relative border border-gray-200 bg-white rounded-lg p-5 mb-4 shadow-sm">
-        <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-additionalDocuments-items" data-schema-id="field-additionalDocuments-items" data-schema-path="field-additionalDocuments-items">
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="documentType" data-schema-path="documentType">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      <div class="jsf-array-item">
+        <div class="jsf-array-item-content">
+          <div class="jsf-object" id="field-additionalDocuments-items" data-schema-id="field-additionalDocuments-items" data-schema-path="field-additionalDocuments-items">
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="documentType" data-schema-path="documentType">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Document Type
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
   <div class="relative">
@@ -1519,19 +1526,19 @@
   <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="otherDocumentType" data-schema-path="otherDocumentType">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="otherDocumentType" data-schema-path="otherDocumentType">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Specify Other Document
       
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-additionalDocuments-items-otherDocumentType"
     name="field-additionalDocuments-items-otherDocumentType"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-additionalDocuments-items-otherDocumentType"
     data-schema-path="field-additionalDocuments-items-otherDocumentType"
@@ -1543,22 +1550,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="fileUpload" data-schema-path="fileUpload">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="fileUpload" data-schema-path="fileUpload">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       File
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-additionalDocuments-items-fileUpload"
     name="field-additionalDocuments-items-fileUpload"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-additionalDocuments-items-fileUpload"
     data-schema-path="field-additionalDocuments-items-fileUpload"
@@ -1570,12 +1577,12 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="description" data-schema-path="description">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="description" data-schema-path="description">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Description
       
     </span>
@@ -1599,7 +1606,8 @@
     
   </div>
 </div> 
-        <button type="button" class="remove-item absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors duration-200" aria-label="Remove item">
+        </div>
+        <button type="button" class="jsf-remove-btn" aria-label="Remove item">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -1608,8 +1616,8 @@
     </div>
   </div>
 
-  <div class="mt-4">
-    <button type="button" class="add-item px-4 py-2 bg-green-500 text-white rounded shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 transition-colors duration-200 flex items-center">
+  <div class="jsf-array-buttons">
+    <button type="button" class="jsf-add-btn">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
       </svg>
@@ -1618,13 +1626,13 @@
   </div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="termsAndConditions" data-schema-path="termsAndConditions">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="termsAndConditions" data-schema-path="termsAndConditions">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       I agree to the terms and conditions
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">By checking this box, you agree to our terms and privacy policy</span>
+    <span class="jsf-desc">By checking this box, you agree to our terms and privacy policy</span>
   </label>
   <label class="inline-flex items-center cursor-pointer">
   <div class="relative">
@@ -1645,29 +1653,29 @@
   <span class="ml-3 text-sm font-medium text-gray-700">Disabled</span>
 </label> 
 </div> 
-<div class="property-container mb-5" data-property-name="signature" data-schema-path="signature">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="signature" data-schema-path="signature">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Electronic Signature
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-signature" data-schema-id="field-signature" data-schema-path="field-signature">
-  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Electronic Signature</h2>
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="name" data-schema-path="name">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+  <div class="jsf-object" id="field-signature" data-schema-id="field-signature" data-schema-path="field-signature">
+  <h2 class="jsf-object-title">Electronic Signature</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="name" data-schema-path="name">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Full Name
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-signature-name"
     name="field-signature-name"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-signature-name"
     data-schema-path="field-signature-name"
@@ -1679,22 +1687,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="title" data-schema-path="title">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="title" data-schema-path="title">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Title&#x2F;Position
       
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-signature-title"
     name="field-signature-title"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-signature-title"
     data-schema-path="field-signature-title"
@@ -1706,14 +1714,14 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="date" data-schema-path="date">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="date" data-schema-path="date">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Date
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
   <div class="relative">
@@ -1738,8 +1746,8 @@
     
   </div>
 </div> 
-  <div class="mt-10 flex justify-end">
-    <button type="submit" class="px-6 py-2.5 bg-blue-500 text-white rounded shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 transition-colors duration-200 uppercase text-sm font-medium tracking-wider">
+  <div class="jsf-btn-container">
+    <button type="submit" class="jsf-submit-btn">
       Submit
     </button>
   </div>

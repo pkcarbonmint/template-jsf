@@ -1,23 +1,23 @@
-<form id="root" class="w-full max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg" data-schema-form>
-  <h1 class="text-3xl font-medium mb-8 text-gray-800">Product Form</h1>
-  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="root" data-schema-id="root" data-schema-path="root">
-  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Product Form</h2>
-  <p class="text-sm text-gray-600 mb-6">Create or edit a product</p>
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="name" data-schema-path="name">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<form id="root" class="jsf-form" data-schema-form>
+  <h1 class="jsf-title">Product Form</h1>
+  <div class="jsf-object" id="root" data-schema-id="root" data-schema-path="root">
+  <h2 class="jsf-object-title">Product Form</h2>
+  <p class="jsf-object-description">Create or edit a product</p>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="name" data-schema-path="name">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Product Name
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">The name of the product</span>
+    <span class="jsf-desc">The name of the product</span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-name"
     name="field-name"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-name"
     data-schema-path="field-name"
@@ -29,23 +29,23 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="sku" data-schema-path="sku">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="sku" data-schema-path="sku">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       SKU
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">Stock keeping unit</span>
+    <span class="jsf-desc">Stock keeping unit</span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-sku"
     name="field-sku"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-sku"
     data-schema-path="field-sku"
@@ -57,23 +57,23 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="price" data-schema-path="price">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="price" data-schema-path="price">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Price
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">Product price in USD</span>
+    <span class="jsf-desc">Product price in USD</span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="number"
     id="field-price"
     name="field-price"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="number"
     data-schema-id="field-price"
     data-schema-path="field-price"
@@ -84,14 +84,14 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="category" data-schema-path="category">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="category" data-schema-path="category">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Category
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
   <div class="relative">
@@ -119,11 +119,11 @@
   <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="inStock" data-schema-path="inStock">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="inStock" data-schema-path="inStock">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       In Stock
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
   <label class="inline-flex items-center cursor-pointer">
@@ -145,20 +145,20 @@
   <span class="ml-3 text-sm font-medium text-gray-700">Enabled</span>
 </label> 
 </div> 
-<div class="property-container mb-5" data-property-name="stockQuantity" data-schema-path="stockQuantity">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="stockQuantity" data-schema-path="stockQuantity">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Stock Quantity
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">Number of items in stock</span>
+    <span class="jsf-desc">Number of items in stock</span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="number"
     id="field-stockQuantity"
     name="field-stockQuantity"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="number"
     data-schema-id="field-stockQuantity"
     data-schema-path="field-stockQuantity"
@@ -169,16 +169,16 @@
     step="1"
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="description" data-schema-path="description">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="description" data-schema-path="description">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Description
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">Product description</span>
+    <span class="jsf-desc">Product description</span>
   </label>
   <div class="relative">
   <textarea
@@ -196,29 +196,30 @@
   <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="images" data-schema-path="images">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="images" data-schema-path="images">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Product Images
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">Images of the product</span>
+    <span class="jsf-desc">Images of the product</span>
   </label>
-  <div id="field-images" class="array-container bg-gray-50 p-6 rounded-lg border border-gray-100 shadow-sm" data-schema-type="array" data-schema-id="field-images" data-schema-path="field-images">
-  <h3 class="text-lg font-medium text-gray-700 mb-4 border-b border-gray-200 pb-2">Product Images</h3>
-  <p class="text-sm text-gray-600 mb-4">Images of the product</p>
+  <div id="field-images" class="jsf-array" data-schema-type="array" data-schema-id="field-images" data-schema-path="field-images">
+  <h3 class="jsf-object-title">Product Images</h3>
+  <p class="jsf-object-description">Images of the product</p>
 
-  <div class="array-items space-y-6">
+  <div class="jsf-array-items">
     <!-- Array item template will be cloned and inserted here dynamically -->
     <div class="array-item-template hidden">
-      <div class="array-item relative border border-gray-200 bg-white rounded-lg p-5 mb-4 shadow-sm">
-        <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-images-items" data-schema-id="field-images-items" data-schema-path="field-images-items">
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="url" data-schema-path="url">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      <div class="jsf-array-item">
+        <div class="jsf-array-item-content">
+          <div class="jsf-object" id="field-images-items" data-schema-id="field-images-items" data-schema-path="field-images-items">
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="url" data-schema-path="url">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Image URL
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
   <div class="relative">
@@ -237,20 +238,20 @@
   <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="alt" data-schema-path="alt">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="alt" data-schema-path="alt">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Alt Text
       
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">Alternative text for the image</span>
+    <span class="jsf-desc">Alternative text for the image</span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-images-items-alt"
     name="field-images-items-alt"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-images-items-alt"
     data-schema-path="field-images-items-alt"
@@ -262,12 +263,12 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="isPrimary" data-schema-path="isPrimary">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="isPrimary" data-schema-path="isPrimary">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Primary Image
       
     </span>
@@ -294,7 +295,8 @@
     
   </div>
 </div> 
-        <button type="button" class="remove-item absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors duration-200" aria-label="Remove item">
+        </div>
+        <button type="button" class="jsf-remove-btn" aria-label="Remove item">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -303,8 +305,8 @@
     </div>
   </div>
 
-  <div class="mt-4">
-    <button type="button" class="add-item px-4 py-2 bg-green-500 text-white rounded shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 transition-colors duration-200 flex items-center">
+  <div class="jsf-array-buttons">
+    <button type="button" class="jsf-add-btn">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
       </svg>
@@ -313,37 +315,38 @@
   </div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="variants" data-schema-path="variants">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="variants" data-schema-path="variants">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Product Variants
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
-    <span class="block text-xs text-gray-500 mt-1 mb-1">Different variations of the product</span>
+    <span class="jsf-desc">Different variations of the product</span>
   </label>
-  <div id="field-variants" class="array-container bg-gray-50 p-6 rounded-lg border border-gray-100 shadow-sm" data-schema-type="array" data-schema-id="field-variants" data-schema-path="field-variants">
-  <h3 class="text-lg font-medium text-gray-700 mb-4 border-b border-gray-200 pb-2">Product Variants</h3>
-  <p class="text-sm text-gray-600 mb-4">Different variations of the product</p>
+  <div id="field-variants" class="jsf-array" data-schema-type="array" data-schema-id="field-variants" data-schema-path="field-variants">
+  <h3 class="jsf-object-title">Product Variants</h3>
+  <p class="jsf-object-description">Different variations of the product</p>
 
-  <div class="array-items space-y-6">
+  <div class="jsf-array-items">
     <!-- Array item template will be cloned and inserted here dynamically -->
     <div class="array-item-template hidden">
-      <div class="array-item relative border border-gray-200 bg-white rounded-lg p-5 mb-4 shadow-sm">
-        <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-variants-items" data-schema-id="field-variants-items" data-schema-path="field-variants-items">
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="name" data-schema-path="name">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+      <div class="jsf-array-item">
+        <div class="jsf-array-item-content">
+          <div class="jsf-object" id="field-variants-items" data-schema-id="field-variants-items" data-schema-path="field-variants-items">
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="name" data-schema-path="name">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Variant Name
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-variants-items-name"
     name="field-variants-items-name"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-variants-items-name"
     data-schema-path="field-variants-items-name"
@@ -355,22 +358,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="price" data-schema-path="price">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="price" data-schema-path="price">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Variant Price
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="number"
     id="field-variants-items-price"
     name="field-variants-items-price"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="number"
     data-schema-id="field-variants-items-price"
     data-schema-path="field-variants-items-price"
@@ -381,22 +384,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="sku" data-schema-path="sku">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="sku" data-schema-path="sku">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Variant SKU
       
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="text"
     id="field-variants-items-sku"
     name="field-variants-items-sku"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="string"
     data-schema-id="field-variants-items-sku"
     data-schema-path="field-variants-items-sku"
@@ -408,12 +411,12 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="inStock" data-schema-path="inStock">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="inStock" data-schema-path="inStock">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       In Stock
       
     </span>
@@ -440,7 +443,8 @@
     
   </div>
 </div> 
-        <button type="button" class="remove-item absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors duration-200" aria-label="Remove item">
+        </div>
+        <button type="button" class="jsf-remove-btn" aria-label="Remove item">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -449,8 +453,8 @@
     </div>
   </div>
 
-  <div class="mt-4">
-    <button type="button" class="add-item px-4 py-2 bg-green-500 text-white rounded shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 transition-colors duration-200 flex items-center">
+  <div class="jsf-array-buttons">
+    <button type="button" class="jsf-add-btn">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
       </svg>
@@ -459,29 +463,29 @@
   </div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="metadata" data-schema-path="metadata">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="metadata" data-schema-path="metadata">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Product Metadata
-      <span class="text-red-500">*</span>
+      <span class="jsf-required">*</span>
     </span>
   </label>
-  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-metadata" data-schema-id="field-metadata" data-schema-path="field-metadata">
-  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Product Metadata</h2>
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="weight" data-schema-path="weight">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+  <div class="jsf-object" id="field-metadata" data-schema-id="field-metadata" data-schema-path="field-metadata">
+  <h2 class="jsf-object-title">Product Metadata</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="weight" data-schema-path="weight">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Weight (kg)
       
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="number"
     id="field-metadata-weight"
     name="field-metadata-weight"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="number"
     data-schema-id="field-metadata-weight"
     data-schema-path="field-metadata-weight"
@@ -492,32 +496,32 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="dimensions" data-schema-path="dimensions">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="dimensions" data-schema-path="dimensions">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Dimensions
       
     </span>
   </label>
-  <div class="schema-object bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200" id="field-metadata-dimensions" data-schema-id="field-metadata-dimensions" data-schema-path="field-metadata-dimensions">
-  <h2 class="text-xl font-medium mb-6 text-gray-700 border-b border-gray-200 pb-2">Dimensions</h2>
-  <div class="space-y-6">
-    <div class="property-container mb-5" data-property-name="length" data-schema-path="length">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+  <div class="jsf-object" id="field-metadata-dimensions" data-schema-id="field-metadata-dimensions" data-schema-path="field-metadata-dimensions">
+  <h2 class="jsf-object-title">Dimensions</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="length" data-schema-path="length">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Length (cm)
       
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="number"
     id="field-metadata-dimensions-length"
     name="field-metadata-dimensions-length"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="number"
     data-schema-id="field-metadata-dimensions-length"
     data-schema-path="field-metadata-dimensions-length"
@@ -528,22 +532,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="width" data-schema-path="width">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="width" data-schema-path="width">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Width (cm)
       
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="number"
     id="field-metadata-dimensions-width"
     name="field-metadata-dimensions-width"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="number"
     data-schema-id="field-metadata-dimensions-width"
     data-schema-path="field-metadata-dimensions-width"
@@ -554,22 +558,22 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="height" data-schema-path="height">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="height" data-schema-path="height">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Height (cm)
       
     </span>
   </label>
-  <div class="relative">
+  <div class="jsf-input-container">
   <input 
     type="number"
     id="field-metadata-dimensions-height"
     name="field-metadata-dimensions-height"
-    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200"
+    class="jsf-input"
     data-schema-type="number"
     data-schema-id="field-metadata-dimensions-height"
     data-schema-path="field-metadata-dimensions-height"
@@ -580,16 +584,16 @@
     
     placeholder=" "
   />
-  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+  <div class="jsf-focus-line"></div>
 </div> 
 </div> 
     
   </div>
 </div> 
 </div> 
-<div class="property-container mb-5" data-property-name="manufactureDate" data-schema-path="manufactureDate">
-  <label class="block mb-2">
-    <span class="text-gray-700 font-medium text-sm tracking-wide">
+<div class="jsf-prop" data-property-name="manufactureDate" data-schema-path="manufactureDate">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
       Manufacture Date
       
     </span>
@@ -616,8 +620,8 @@
     
   </div>
 </div> 
-  <div class="mt-10 flex justify-end">
-    <button type="submit" class="px-6 py-2.5 bg-blue-500 text-white rounded shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 transition-colors duration-200 uppercase text-sm font-medium tracking-wider">
+  <div class="jsf-btn-container">
+    <button type="submit" class="jsf-submit-btn">
       Submit
     </button>
   </div>
