@@ -292,6 +292,7 @@ export async function generateTemplateAsync(schema: SchemaNode, templatesDir: st
   // Render form template with content
   const result = Mustache.render(formTemplate, {
     formId: schema.id,
+    schemaId: schema.id,
     title: schema.title || 'Form',
     content: formContent
   });

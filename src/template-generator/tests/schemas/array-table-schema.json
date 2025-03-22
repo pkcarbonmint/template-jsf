@@ -1,0 +1,132 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Array Table Test Schema",
+  "description": "Schema to test array table layout with column definitions",
+  "properties": {
+    "contacts": {
+      "type": "array",
+      "title": "Contacts",
+      "description": "List of contacts",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Contact's full name"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "title": "Email",
+            "description": "Contact's email address"
+          },
+          "phone": {
+            "type": "string",
+            "title": "Phone",
+            "description": "Contact's phone number",
+            "pattern": "^[0-9\\-\\+\\(\\)\\s]+$"
+          },
+          "age": {
+            "type": "integer",
+            "title": "Age",
+            "description": "Contact's age",
+            "minimum": 18,
+            "maximum": 120
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Contact's status",
+            "enum": ["active", "inactive", "pending"],
+            "enumNames": ["Active", "Inactive", "Pending"]
+          },
+          "isVIP": {
+            "type": "boolean",
+            "title": "VIP",
+            "description": "Whether the contact is a VIP"
+          }
+        },
+        "required": ["name", "email"]
+      },
+      "layout": {
+        "displayType": "table",
+        "columns": [
+          { "field": "name", "label": "Name", "width": "25%" },
+          { "field": "email", "label": "Email", "width": "25%" },
+          { "field": "phone", "label": "Phone", "width": "15%" },
+          { "field": "age", "label": "Age", "width": "10%" },
+          { "field": "status", "label": "Status", "width": "10%" },
+          { "field": "isVIP", "label": "VIP", "width": "5%" },
+          { "field": "actions", "label": "Actions", "width": "10%" }
+        ],
+        "actions": ["edit", "delete", "moveUp", "moveDown"],
+        "itemLabel": "Contact"
+      }
+    },
+    "simpleList": {
+      "type": "array",
+      "title": "Simple List",
+      "description": "A simple list of strings",
+      "items": {
+        "type": "string"
+      },
+      "layout": {
+        "displayType": "table",
+        "columns": [
+          { "field": "value", "label": "Value", "width": "90%" },
+          { "field": "actions", "label": "Actions", "width": "10%" }
+        ],
+        "actions": ["delete", "moveUp", "moveDown"],
+        "itemLabel": "Item"
+      }
+    },
+    "taskList": {
+      "type": "array",
+      "title": "Task List",
+      "description": "List of tasks",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Task title"
+          },
+          "completed": {
+            "type": "boolean",
+            "title": "Completed",
+            "description": "Is the task completed?"
+          },
+          "priority": {
+            "type": "string",
+            "title": "Priority",
+            "description": "Task priority",
+            "enum": ["low", "medium", "high"],
+            "enumNames": ["Low", "Medium", "High"]
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "date",
+            "title": "Due Date",
+            "description": "Task due date"
+          }
+        },
+        "required": ["title"]
+      },
+      "layout": {
+        "displayType": "table",
+        "columns": [
+          { "field": "completed", "label": "", "width": "5%" },
+          { "field": "title", "label": "Task", "width": "40%" },
+          { "field": "priority", "label": "Priority", "width": "15%" },
+          { "field": "dueDate", "label": "Due Date", "width": "20%" },
+          { "field": "actions", "label": "Actions", "width": "20%" }
+        ],
+        "actions": ["edit", "delete"],
+        "itemLabel": "Task"
+      }
+    }
+  }
+} 

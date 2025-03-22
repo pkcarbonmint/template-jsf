@@ -1,0 +1,93 @@
+{{! Mustache template for array items in table layout }}
+<div class="array-table-container" id="{{containerId}}-container">
+  <table class="array-table" id="{{containerId}}" data-schema-id="{{schemaId}}">
+    <thead>
+      <tr>
+        {{#columns}}
+        <th style="width:{{width}}">{{label}}</th>
+        {{/columns}}
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="array-row-template hidden">
+        {{#columns}}
+        {{#isActionColumn}}
+        <td class="actions">
+          {{#actions}}
+          {{#isEdit}}
+          <button type="button" class="action-edit" title="Edit">
+            <span class="icon-edit"></span>
+            <span class="sr-only">Edit</span>
+          </button>
+          {{/isEdit}}
+          {{#isMoveUp}}
+          <button type="button" class="action-move-up" title="Move Up">
+            <span class="icon-arrow-up"></span>
+            <span class="sr-only">Move Up</span>
+          </button>
+          {{/isMoveUp}}
+          {{#isMoveDown}}
+          <button type="button" class="action-move-down" title="Move Down">
+            <span class="icon-arrow-down"></span>
+            <span class="sr-only">Move Down</span>
+          </button>
+          {{/isMoveDown}}
+          {{#isDelete}}
+          <button type="button" class="action-delete" title="Delete">
+            <span class="icon-trash"></span>
+            <span class="sr-only">Delete</span>
+          </button>
+          {{/isDelete}}
+          {{/actions}}
+        </td>
+        {{/isActionColumn}}
+        {{^isActionColumn}}
+        <td data-field="{{field}}">
+          {{#fieldTemplate}}
+          {{{fieldTemplate}}}
+          {{/fieldTemplate}}
+          {{^fieldTemplate}}
+          {{#isBoolean}}
+          <input type="checkbox" id="field-{{field}}" name="field-{{field}}" data-schema-id="items.{{field}}" />
+          {{/isBoolean}}
+          {{#isNumber}}
+          <input type="number" id="field-{{field}}" name="field-{{field}}" data-schema-id="items.{{field}}" />
+          {{/isNumber}}
+          {{#isString}}
+          {{#isEmail}}
+          <input type="email" id="field-{{field}}" name="field-{{field}}" data-schema-id="items.{{field}}" />
+          {{/isEmail}}
+          {{#isDate}}
+          <input type="date" id="field-{{field}}" name="field-{{field}}" data-schema-id="items.{{field}}" />
+          {{/isDate}}
+          {{^isEmail}}
+          {{^isDate}}
+          <input type="text" id="field-{{field}}" name="field-{{field}}" data-schema-id="items.{{field}}" />
+          {{/isDate}}
+          {{/isEmail}}
+          {{/isString}}
+          {{#isEnum}}
+          <select id="field-{{field}}" name="field-{{field}}" data-schema-id="items.{{field}}">
+            <option value="">-- Select --</option>
+            {{#options}}
+            <option value="{{value}}">{{label}}</option>
+            {{/options}}
+          </select>
+          {{/isEnum}}
+          {{/fieldTemplate}}
+        </td>
+        {{/isActionColumn}}
+        {{/columns}}
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="{{columnCount}}">
+          <button type="button" class="add-item">
+            <span class="icon-plus"></span> Add {{itemLabel}}
+          </button>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div> 

@@ -1,32 +1,9 @@
-{{! Form template }}
 <div class="schema-form-container">
-  <form id="{{formId}}" class="schema-form" data-schema-id="{{schemaId}}">
-    {{#sections}}
-    <section class="form-section" id="section-{{id}}">
-      {{#title}}<h2 class="section-title">{{title}}</h2>{{/title}}
-      {{#description}}<p class="section-description">{{description}}</p>{{/description}}
-      
-      <div class="section-fields">
-        {{#fields}}
-        <div class="form-field-container" id="container-{{id}}">
-          {{{html}}}
-        </div>
-        {{/fields}}
-      </div>
-    </section>
-    {{/sections}}
-    
-    {{^sections}}
-    {{#content}}
-    <div class="form-content">
-      {{{.}}}
-    </div>
-    {{/content}}
-    {{/sections}}
+  <form id="root" class="schema-form" data-schema-id="root">
     
     <div class="form-actions">
-      <button type="submit" class="btn-submit">{{submitLabel}}</button>
-      <button type="button" class="btn-cancel">{{cancelLabel}}</button>
+      <button type="submit" class="btn-submit"></button>
+      <button type="button" class="btn-cancel"></button>
     </div>
   </form>
 </div>
@@ -37,7 +14,7 @@
 <script type="text/javascript">
   // Initialize form
   (function() {
-    const form = document.getElementById('{{formId}}');
+    const form = document.getElementById('root');
     if (!form) return;
     
     // Initialize array tables if the handlers are available
