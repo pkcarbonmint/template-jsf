@@ -15,8 +15,8 @@ let templateGenerator;
 // Load the template generator modules
 try {
   // Load compiled modules from dist directory
-  schemaParser = require('./dist/cli/lib/schema-parser');
-  generator = require('./dist/cli/lib/generator');
+  schemaParser = require('./dist/cli/template-generator/lib/schema-parser');
+  generator = require('./dist/cli/template-generator/lib/generator');
 } catch (error) {
   parentPort.postMessage({
     type: 'log',
@@ -52,7 +52,7 @@ async function processSchema(schemaFile, schemaDir, outputDir, templatesDir) {
     }
     
     // Generate the HTML template
-    const html = generator.generateTemplate(parsedSchema, templatesDir);
+    const html = await generator.generateTemplateAsync(parsedSchema, templatesDir);
     
     // Create output directory if it doesn't exist
     const outputFileDir = path.dirname(outputPath);

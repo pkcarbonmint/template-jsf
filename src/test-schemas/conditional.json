@@ -133,7 +133,7 @@
   },
   "else": {
     "properties": {
-      "_submitDisabled": { "const": true }
+      "_submitDisabled2": { "const": true }
     }
   },
   "allOf": [

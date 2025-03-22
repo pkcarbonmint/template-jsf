@@ -85,7 +85,7 @@
       },
       "then": {
         "properties": {
-          "_submitDisabled": {
+          "_submitDisabled1": {
             "const": true
           }
         }

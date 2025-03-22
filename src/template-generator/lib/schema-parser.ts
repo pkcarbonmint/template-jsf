@@ -24,6 +24,8 @@ export type SchemaNode = {
   children?: SchemaNode[];
   // Additional UI specific properties
   inputType?: string;
+  layout?: 'grid' | 'vertical' | 'tabs' | 'wizard' | 'vtabs';
+  'x-layout'?: string; // Add x-layout property
 };
 
 export type Conditional = {
@@ -145,4 +147,4 @@ export function parseSchema(schema: any, path: string = '', parentRequired: stri
 // Helper function to generate unique IDs for schema nodes
 function generateId(path: string): string {
   return path ? `field-${path.replace(/\./g, '-')}` : 'root';
-} 
+}

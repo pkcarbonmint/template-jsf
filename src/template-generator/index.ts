@@ -5,7 +5,7 @@ import * as path from 'path';
 import { program } from 'commander';
 import Mustache from 'mustache';
 import { pipe } from 'fp-ts/function';
-import { generateTemplate } from './lib/generator';
+import { generateTemplateAsync } from './lib/generator';
 import { parseSchema } from './lib/schema-parser';
 
 // Process command line arguments
@@ -47,7 +47,7 @@ async function main() {
     const parsedSchema = parseSchema(schema);
     
     // Generate template from parsed schema
-    const htmlTemplate = generateTemplate(parsedSchema, options.templates);
+    const htmlTemplate = await generateTemplateAsync(parsedSchema, options.templates);
     
     // Create directory for output file if it doesn't exist
     const outputDir = path.dirname(options.output);
@@ -65,4 +65,4 @@ async function main() {
   }
 }
 
-main(); 
+main();

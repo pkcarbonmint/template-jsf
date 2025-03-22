@@ -66,6 +66,157 @@
   .jsf-remove-btn {
     @apply remove-item absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors duration-200;
   }
+
+  .jsfgrid {
+    @apply grid grid-cols-2 gap-4;
+  }
+
+  .nav {
+    @apply flex flex-wrap list-none mb-4;
+  }
+
+  .nav-tabs {
+    @apply border-b border-gray-200;
+  }
+
+  .nav-item {
+    @apply mr-2;
+  }
+
+  .nav-link {
+    @apply block py-2 px-4 border border-transparent rounded-t-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50;
+  }
+
+  .nav-link.active {
+    @apply bg-white border-b-0 border-blue-500 text-blue-700 font-medium;
+  }
+
+  .tab-content {
+    @apply py-4;
+  }
+
+  .tab-pane {
+    @apply hidden;
+  }
+
+  .tab-pane.active {
+    @apply block;
+  }
+
+  .wizard {
+    @apply space-y-4;
+  }
+
+  .wizard-step {
+    @apply p-4 border border-gray-200 rounded-lg shadow-sm;
+  }
+
+  .tabs {
+    @apply w-full;
+  }
+
+  .tabs-nav {
+    @apply flex border-b border-gray-200;
+  }
+
+  .tabs-nav-item {
+    @apply block py-2 px-4 text-gray-700 hover:text-blue-500 focus:outline-none;
+  }
+
+  .tab-content {
+    @apply p-4 hidden;
+
+    &:target {
+      @apply block;
+    }
+  }
+
+  .tab-content:target {
+    @apply block;
+  }
+
+  .wizard-container {
+    @apply bg-white p-6 rounded-lg shadow-md;
+  }
+
+  // Vertical tabs styling
+  .vtabs-container {
+    @apply bg-white p-6 rounded-lg shadow-md;
+  }
+  
+  .vtabs-title {
+    @apply text-xl font-medium mb-4 text-gray-700;
+  }
+  
+  .vtabs-description {
+    @apply text-sm text-gray-600 mb-4;
+  }
+
+  .vtabs {
+    @apply flex flex-row border border-gray-200 rounded-lg overflow-hidden;
+  }
+
+  .vtabs-nav {
+    @apply flex flex-col w-1/4 bg-gray-50 border-r border-gray-200;
+  }
+
+  .vtabs-nav-item {
+    @apply block py-3 px-4 text-gray-700 hover:bg-gray-100 focus:outline-none border-l-4 border-transparent;
+  }
+
+  .vtabs-nav-item:target {
+    @apply border-blue-500 bg-white text-blue-700 font-medium;
+  }
+
+  .vtabs-content {
+    @apply w-3/4 p-0;
+  }
+
+  .vtab-content {
+    @apply hidden p-6;
+  }
+
+  .vtab-content:target {
+    @apply block;
+  }
+
+  // End vertical tabs styling
+
+  .steps {
+    @apply flex justify-between mb-4;
+  }
+
+  .step {
+    @apply flex flex-col items-center;
+  }
+
+  .step-number {
+    @apply w-8 h-8 rounded-full bg-gray-200 text-gray-700 font-bold flex items-center justify-center mb-2;
+  }
+
+  .step-title {
+    @apply text-sm text-gray-500;
+  }
+
+  .wizard {
+    @apply space-y-4;
+  }
+
+  .wizard-step {
+    @apply p-4 border border-gray-200 rounded-lg shadow-sm hidden; /* Hide all steps initially */
+  }
+
+  .wizard-step.active {
+    @apply block; /* Show the active step */
+  }
+
+  .navigation {
+    @apply flex justify-between mt-4;
+  }
+
+  .error {
+    @apply border-red-500;
+  }
 }
 .property-container {
   /* Optionally add any base styles or leave empty */
@@ -103,14 +254,30 @@ $templates-map: (
   ".jsf-array": "array-container bg-gray-50 p-6 rounded-lg border border-gray-100 shadow-sm",
   ".jsf-array-items": "array-items space-y-6",
   ".jsf-add-btn": "add-item px-4 py-2 bg-green-500 text-white rounded shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 transition-colors duration-200 flex items-center",
-  ".jsf-remove-btn": "remove-item absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors duration-200"
+  ".jsf-remove-btn": "remove-item absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors duration-200",
+  ".jsfgrid": "grid grid-cols-2 gap-4",
+  ".tabs": "w-full",
+  ".tabs-nav": "flex border-b border-gray-200",
+  ".tabs-nav-item": "block py-2 px-4 text-gray-700 hover:text-blue-500 focus:outline-none",
+  ".tab-content": "p-4 hidden",
+  ".tab-content:target": "block",
+  ".wizard": "space-y-4",
+  ".wizard-step": "p-4 border border-gray-200 rounded-lg shadow-sm",
+  ".wizard-container": "bg-white p-6 rounded-lg shadow-md",
+  ".steps": "flex justify-between mb-4",
+  ".step": "flex flex-col items-center",
+  ".step-number": "w-8 h-8 rounded-full bg-gray-200 text-gray-700 font-bold flex items-center justify-center mb-2",
+  ".step-title": "text-sm text-gray-500",
+  ".navigation": "flex justify-between mt-4",
+  // Add vertical tabs to templates map
+  ".vtabs-container": "bg-white p-6 rounded-lg shadow-md",
+  ".vtabs-title": "text-xl font-medium mb-4 text-gray-700",
+  ".vtabs-description": "text-sm text-gray-600 mb-4",
+  ".vtabs": "flex flex-row border border-gray-200 rounded-lg overflow-hidden",
+  ".vtabs-nav": "flex flex-col w-1/4 bg-gray-50 border-r border-gray-200",
+  ".vtabs-nav-item": "block py-3 px-4 text-gray-700 hover:bg-gray-100 focus:outline-none border-l-4 border-transparent",
+  ".vtabs-nav-item:target": "border-blue-500 bg-white text-blue-700 font-medium",
+  ".vtabs-content": "w-3/4 p-0",
+  ".vtab-content": "hidden p-6",
+  ".vtab-content:target": "block"
 );
-
-
-// Loop over the mapping so that any element with the new class
-// gets the styling of the corresponding old template classes.
-@each $new-class, $old-styles in $templates-map {
-  #{$new-class} {
-    @apply #{$old-styles};
-  }
-}
