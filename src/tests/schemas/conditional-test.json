@@ -1,0 +1,99 @@
+{
+  "type": "object",
+  "title": "Conditional Form",
+  "properties": {
+    "userType": {
+      "type": "string",
+      "title": "User Type",
+      "enum": [
+        "individual",
+        "company"
+      ]
+    },
+    "firstName": {
+      "type": "string",
+      "title": "First Name"
+    },
+    "lastName": {
+      "type": "string",
+      "title": "Last Name"
+    },
+    "companyName": {
+      "type": "string",
+      "title": "Company Name"
+    },
+    "businessType": {
+      "type": "string",
+      "title": "Business Type",
+      "enum": [
+        "llc",
+        "corporation",
+        "partnership"
+      ]
+    },
+    "contactInfo": {
+      "type": "object",
+      "title": "Contact Information",
+      "properties": {
+        "email": {
+          "type": "string",
+          "title": "Email",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string",
+          "title": "Phone"
+        }
+      }
+    },
+    "agree": {
+      "type": "boolean",
+      "title": "I agree to terms"
+    },
+    "additionalTerms": {
+      "type": "boolean",
+      "title": "I agree to additional terms"
+    }
+  },
+  "required": [
+    "userType",
+    "agree"
+  ],
+  "if": {
+    "properties": {
+      "userType": {
+        "enum": [
+          "individual"
+        ]
+      }
+    }
+  },
+  "then": {
+    "required": [
+      "firstName",
+      "lastName"
+    ]
+  },
+  "else": {
+    "required": [
+      "companyName",
+      "businessType"
+    ]
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "agree": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "additionalTerms"
+        ]
+      }
+    }
+  ]
+}

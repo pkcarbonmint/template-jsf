@@ -28,7 +28,8 @@
     "test:jest:generator": "node src/template-generator/tests/run-jest-tests.js generator",
     "test:jest:runtime": "node src/template-generator/tests/run-jest-tests.js runtime",
     "test:jest:layout": "node src/template-generator/tests/run-jest-tests.js layout",
-    "test:jest:all": "node src/template-generator/tests/run-jest-tests.js --all"
+    "test:jest:all": "node src/template-generator/tests/run-jest-tests.js --all",
+    "test:jest:validation": "node src/template-generator/tests/run-jest-tests.js -- --testPathPattern=validation.test.js"
   },
   "keywords": [],
   "author": "",
