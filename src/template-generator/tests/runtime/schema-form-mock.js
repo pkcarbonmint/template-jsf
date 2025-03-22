@@ -23,6 +23,12 @@ class MockSchemaForm {
     // Initialize
     this.setupForm();
     
+    // Populate form fields with initial data
+    this.updateFormFields();
+    
+    // Evaluate conditionals with initial data
+    this.evaluateConditions();
+    
     // Debug mode
     if (options.debug) {
       this.debugEmitter();
@@ -144,24 +150,24 @@ class MockSchemaForm {
     const conditionalFields = this.element.querySelectorAll('[data-condition]');
     
     conditionalFields.forEach(field => {
-      const condition = field.getAttribute('data-condition');
+      const conditionString = field.getAttribute('data-condition');
       
-      if (condition) {
-        // Parse condition (format: "fieldName=value")
-        const [fieldName, expectedValue] = condition.split('=');
-        
-        // Get actual value from form data
-        const actualValue = this.getFormValue(fieldName);
-        
-        // Compare values
+      if (conditionString) {
         let isVisible = false;
         
-        if (expectedValue === 'true') {
-          isVisible = Boolean(actualValue) === true;
-        } else if (expectedValue === 'false') {
-          isVisible = Boolean(actualValue) === false;
-        } else {
-          isVisible = actualValue === expectedValue;
+        // Check if we have AND conditions (contains &)
+        if (conditionString.includes('&')) {
+          const conditions = conditionString.split('&');
+          isVisible = conditions.every(condition => this.checkSingleCondition(condition));
+        }
+        // Check if we have OR conditions (contains |)
+        else if (conditionString.includes('|')) {
+          const conditions = conditionString.split('|');
+          isVisible = conditions.some(condition => this.checkSingleCondition(condition));
+        }
+        // Simple single condition
+        else {
+          isVisible = this.checkSingleCondition(conditionString);
         }
         
         // Update visibility
@@ -175,6 +181,25 @@ class MockSchemaForm {
         this.trackFieldVisibility(field.getAttribute('data-schema-path'), isVisible);
       }
     });
+  }
+  
+  /**
+   * Check a single condition (format: "fieldName=value")
+   */
+  checkSingleCondition(condition) {
+    const [fieldName, expectedValue] = condition.trim().split('=');
+    
+    // Get actual value from form data
+    const actualValue = this.getFormValue(fieldName);
+    
+    // Compare values
+    if (expectedValue === 'true') {
+      return Boolean(actualValue) === true;
+    } else if (expectedValue === 'false') {
+      return Boolean(actualValue) === false;
+    } else {
+      return String(actualValue) === expectedValue;
+    }
   }
   
   getFormValue(path) {
@@ -278,19 +303,54 @@ class MockSchemaForm {
       const fieldId = this.getFieldId(input);
       
       if (fieldId) {
-        const value = this.getFormValue(fieldId);
-        
-        if (value !== undefined) {
-          if (input.type === 'checkbox') {
-            input.checked = Boolean(value);
-          } else if (input.type === 'radio') {
-            input.checked = (input.value === value);
-          } else if (input.tagName === 'SELECT' && input.multiple && Array.isArray(value)) {
-            Array.from(input.options).forEach(option => {
-              option.selected = value.includes(option.value);
-            });
+        // Check for array notation
+        if (fieldId.includes('[') && fieldId.includes(']')) {
+          const arrayMatch = fieldId.match(/(.+)\[(\d+)\]/);
+          if (arrayMatch) {
+            const arrayPath = arrayMatch[1];
+            const index = parseInt(arrayMatch[2], 10);
+            
+            const arrayValue = this.formData[arrayPath];
+            if (Array.isArray(arrayValue) && index < arrayValue.length) {
+              const value = arrayValue[index];
+              
+              if (input.type === 'checkbox') {
+                input.checked = Boolean(value);
+              } else if (input.type === 'radio') {
+                input.checked = (input.value === value);
+              } else {
+                input.value = value !== undefined ? value : '';
+              }
+            }
+          }
+        } else {
+          const value = this.getFormValue(fieldId);
+          
+          if (value !== undefined) {
+            if (input.type === 'checkbox') {
+              input.checked = Boolean(value);
+            } else if (input.type === 'radio') {
+              input.checked = (input.value === value);
+            } else if (input.tagName === 'SELECT' && input.multiple && Array.isArray(value)) {
+              Array.from(input.options).forEach(option => {
+                option.selected = value.includes(option.value);
+              });
+            } else if (input.tagName === 'SELECT') {
+              // Make sure select elements are updated correctly
+              input.value = value.toString();
+              
+              // If value not found in options, select first option
+              if (input.selectedIndex === -1 && input.options.length > 0) {
+                input.selectedIndex = 0;
+              }
+            } else {
+              input.value = value;
+            }
           } else {
-            input.value = value;
+            // Set empty value for undefined fields
+            if (input.type !== 'checkbox' && input.type !== 'radio') {
+              input.value = '';
+            }
           }
         }
       }
