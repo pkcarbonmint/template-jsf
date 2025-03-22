@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Conditional Form",
+  "description": "A form with conditional fields that show/hide based on user input",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Name",
+      "description": "Your full name"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "title": "Email",
+      "description": "Your email address"
+    },
+    "showMoreInfo": {
+      "type": "boolean",
+      "title": "Show Additional Information",
+      "description": "Check this to provide additional information",
+      "default": false
+    },
+    "additionalInfo": {
+      "type": "object",
+      "title": "Additional Information",
+      "description": "More details about you",
+      "properties": {
+        "phone": {
+          "type": "string",
+          "title": "Phone Number",
+          "description": "Your phone number"
+        },
+        "address": {
+          "type": "string",
+          "title": "Address",
+          "description": "Your address"
+        },
+        "birthdate": {
+          "type": "string",
+          "format": "date",
+          "title": "Date of Birth",
+          "description": "Your date of birth"
+        }
+      },
+      "required": ["phone"]
+    },
+    "preferences": {
+      "type": "object",
+      "title": "Preferences",
+      "properties": {
+        "receiveEmails": {
+          "type": "boolean",
+          "title": "Receive Emails",
+          "description": "Would you like to receive email updates?",
+          "default": true
+        },
+        "theme": {
+          "type": "string",
+          "title": "Theme",
+          "description": "Select your preferred theme",
+          "enum": ["light", "dark", "system"],
+          "default": "system"
+        }
+      }
+    }
+  },
+  "required": ["name", "email"],
+  "dependencies": {
+    "showMoreInfo": {
+      "oneOf": [
+        {
+          "properties": {
+            "showMoreInfo": { "enum": [true] },
+            "additionalInfo": { "required": ["phone"] }
+          }
+        },
+        {
+          "properties": {
+            "showMoreInfo": { "enum": [false] }
+          }
+        }
+      ]
+    }
+  }
+} 

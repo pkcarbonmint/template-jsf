@@ -4,34 +4,36 @@ import * as A from 'fp-ts/Array';
 import * as R from 'fp-ts/Record';
 
 // Types for our intermediate representation
-export type SchemaNode = {
+export interface SchemaNode {
   id: string;
-  type: string;
+  type: 'object' | 'array' | 'string' | 'number' | 'integer' | 'boolean';
   title?: string;
   description?: string;
-  required: boolean;
   properties?: Record<string, SchemaNode>;
   items?: SchemaNode;
-  enum?: any[];
-  conditionals?: Conditional[];
-  minimum?: number;
-  maximum?: number;
+  required?: boolean;
+  format?: string;
   minLength?: number;
   maxLength?: number;
+  minimum?: number;
+  maximum?: number;
   pattern?: string;
-  format?: string;
+  enum?: any[];
   default?: any;
-  children?: SchemaNode[];
-  // Additional UI specific properties
-  inputType?: string;
-  layout?: 'grid' | 'vertical' | 'tabs' | 'wizard' | 'vtabs';
-  'x-layout'?: string; // Add x-layout property
-};
+  readOnly?: boolean;
+  writeOnly?: boolean;
+  'x-layout'?: string;
+  layout?: string;
+  layoutOptions?: any;
+  conditionals?: Conditional[];
+  additionalProperties?: any;
+  inputType?: string; // Used for HTML input type attribute
+}
 
-export type Conditional = {
+export interface Conditional {
   type: 'if' | 'then' | 'else' | 'allOf' | 'anyOf' | 'oneOf' | 'not';
   schema: SchemaNode | SchemaNode[];
-};
+}
 
 // Main schema parsing function
 export function parseSchema(schema: any, path: string = '', parentRequired: string[] = []): SchemaNode {

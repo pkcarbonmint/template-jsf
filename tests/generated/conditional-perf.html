@@ -1,0 +1,261 @@
+<form id="root" class="jsf-form" data-schema-form>
+  <h1 class="jsf-title">Conditional Form</h1>
+  <div class="jsf-object" id="root" data-schema-id="root" data-schema-path="root">
+  <h2 class="jsf-object-title">Conditional Form</h2>
+  <p class="jsf-object-description">A form with conditional fields that show&#x2F;hide based on user input</p>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="name" data-schema-path="name">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Name
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">Your full name</span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-name"
+    name="field-name"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-name"
+    data-schema-path="field-name"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="email" data-schema-path="email">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Email
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">Your email address</span>
+  </label>
+  <div class="relative">
+  <input 
+    type="email"
+    id="field-email"
+    name="field-email"
+    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+    data-schema-type="email"
+    data-schema-id="field-email"
+    data-schema-path="field-email"
+    required
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="showMoreInfo" data-schema-path="showMoreInfo">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Show Additional Information
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">Check this to provide additional information</span>
+  </label>
+  <label class="inline-flex items-center cursor-pointer">
+  <div class="relative">
+    <input 
+      type="checkbox"
+      id="field-showMoreInfo"
+      name="field-showMoreInfo"
+      class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+      data-schema-type="boolean"
+      data-schema-id="field-showMoreInfo"
+      data-schema-path="field-showMoreInfo"
+      required
+      
+    />
+    <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500">
+    </div>
+  </div>
+  <span class="ml-3 text-sm font-medium text-gray-700">Disabled</span>
+</label> 
+</div> 
+<div class="jsf-prop" data-property-name="additionalInfo" data-schema-path="additionalInfo">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Additional Information
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">More details about you</span>
+  </label>
+  <div class="jsf-object" id="field-additionalInfo" data-schema-id="field-additionalInfo" data-schema-path="field-additionalInfo">
+  <h2 class="jsf-object-title">Additional Information</h2>
+  <p class="jsf-object-description">More details about you</p>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="phone" data-schema-path="phone">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Phone Number
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">Your phone number</span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-additionalInfo-phone"
+    name="field-additionalInfo-phone"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-additionalInfo-phone"
+    data-schema-path="field-additionalInfo-phone"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="address" data-schema-path="address">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Address
+      
+    </span>
+    <span class="jsf-desc">Your address</span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-additionalInfo-address"
+    name="field-additionalInfo-address"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-additionalInfo-address"
+    data-schema-path="field-additionalInfo-address"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="birthdate" data-schema-path="birthdate">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Date of Birth
+      
+    </span>
+    <span class="jsf-desc">Your date of birth</span>
+  </label>
+  <div class="relative">
+  <input 
+    type="date"
+    id="field-additionalInfo-birthdate"
+    name="field-additionalInfo-birthdate"
+    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+    data-schema-type="date"
+    data-schema-id="field-additionalInfo-birthdate"
+    data-schema-path="field-additionalInfo-birthdate"
+    
+    
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="preferences" data-schema-path="preferences">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Preferences
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-object" id="field-preferences" data-schema-id="field-preferences" data-schema-path="field-preferences">
+  <h2 class="jsf-object-title">Preferences</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="receiveEmails" data-schema-path="receiveEmails">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Receive Emails
+      
+    </span>
+    <span class="jsf-desc">Would you like to receive email updates?</span>
+  </label>
+  <label class="inline-flex items-center cursor-pointer">
+  <div class="relative">
+    <input 
+      type="checkbox"
+      id="field-preferences-receiveEmails"
+      name="field-preferences-receiveEmails"
+      class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+      data-schema-type="boolean"
+      data-schema-id="field-preferences-receiveEmails"
+      data-schema-path="field-preferences-receiveEmails"
+      
+      checked
+    />
+    <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500">
+    </div>
+  </div>
+  <span class="ml-3 text-sm font-medium text-gray-700">Enabled</span>
+</label> 
+</div> 
+<div class="jsf-prop" data-property-name="theme" data-schema-path="theme">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Theme
+      
+    </span>
+    <span class="jsf-desc">Select your preferred theme</span>
+  </label>
+  <div class="relative">
+  <select
+    id="field-preferences-theme"
+    name="field-preferences-theme"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 appearance-none"
+    data-schema-type="enum"
+    data-schema-id="field-preferences-theme"
+    data-schema-path="field-preferences-theme"
+    
+  >
+    <option value="">-- Select --</option>
+    <option value="light">light</option>
+    <option value="dark">dark</option>
+    <option value="system">system</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+    </svg>
+  </div>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+  <div class="jsf-btn-container">
+    <button type="submit" class="jsf-submit-btn">
+      Submit
+    </button>
+  </div>
+</form> 

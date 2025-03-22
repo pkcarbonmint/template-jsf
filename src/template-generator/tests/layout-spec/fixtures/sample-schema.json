@@ -1,0 +1,114 @@
+{
+  "id": "sampleForm",
+  "type": "object",
+  "title": "Sample Form",
+  "properties": {
+    "personalInfo": {
+      "id": "sampleForm.personalInfo",
+      "type": "object",
+      "title": "Personal Information",
+      "properties": {
+        "firstName": {
+          "id": "sampleForm.personalInfo.firstName",
+          "type": "string",
+          "title": "First Name",
+          "required": true
+        },
+        "lastName": {
+          "id": "sampleForm.personalInfo.lastName",
+          "type": "string",
+          "title": "Last Name",
+          "required": true
+        },
+        "dateOfBirth": {
+          "id": "sampleForm.personalInfo.dateOfBirth",
+          "type": "string",
+          "format": "date",
+          "title": "Date of Birth"
+        }
+      }
+    },
+    "contactDetails": {
+      "id": "sampleForm.contactDetails",
+      "type": "object",
+      "title": "Contact Details",
+      "properties": {
+        "email": {
+          "id": "sampleForm.contactDetails.email",
+          "type": "string",
+          "format": "email",
+          "title": "Email Address",
+          "required": true
+        },
+        "phone": {
+          "id": "sampleForm.contactDetails.phone",
+          "type": "string",
+          "title": "Phone Number"
+        },
+        "address": {
+          "id": "sampleForm.contactDetails.address",
+          "type": "object",
+          "title": "Address",
+          "properties": {
+            "street": {
+              "id": "sampleForm.contactDetails.address.street",
+              "type": "string",
+              "title": "Street"
+            },
+            "city": {
+              "id": "sampleForm.contactDetails.address.city",
+              "type": "string",
+              "title": "City"
+            },
+            "state": {
+              "id": "sampleForm.contactDetails.address.state",
+              "type": "string",
+              "title": "State"
+            },
+            "zipCode": {
+              "id": "sampleForm.contactDetails.address.zipCode",
+              "type": "string",
+              "title": "Zip Code"
+            }
+          }
+        }
+      }
+    },
+    "preferences": {
+      "id": "sampleForm.preferences",
+      "type": "object",
+      "title": "Preferences",
+      "properties": {
+        "theme": {
+          "id": "sampleForm.preferences.theme",
+          "type": "string",
+          "title": "Theme",
+          "enum": ["light", "dark", "system"]
+        },
+        "notifications": {
+          "id": "sampleForm.preferences.notifications",
+          "type": "boolean",
+          "title": "Enable Notifications",
+          "default": true
+        },
+        "privacy": {
+          "id": "sampleForm.preferences.privacy",
+          "type": "object",
+          "title": "Privacy Settings",
+          "properties": {
+            "shareData": {
+              "id": "sampleForm.preferences.privacy.shareData",
+              "type": "boolean",
+              "title": "Share Usage Data"
+            },
+            "marketing": {
+              "id": "sampleForm.preferences.privacy.marketing",
+              "type": "boolean",
+              "title": "Receive Marketing Emails"
+            }
+          }
+        }
+      }
+    }
+  }
+} 

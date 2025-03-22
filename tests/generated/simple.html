@@ -1,0 +1,168 @@
+<form id="root" class="jsf-form" data-schema-form>
+  <h1 class="jsf-title">Simple Form</h1>
+  <div id="root" data-schema-id="root" class="jsfgrid grid-cols-2 gap-4">
+  <h3>Simple Form</h3>
+  <p>A simple form for testing basic functionality</p>
+  <div class="jsf-prop" data-property-name="name" data-schema-path="name">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Name
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">Your full name</span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-name"
+    name="field-name"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-name"
+    data-schema-path="field-name"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="email" data-schema-path="email">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Email
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">Your email address</span>
+  </label>
+  <div class="relative">
+  <input 
+    type="email"
+    id="field-email"
+    name="field-email"
+    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+    data-schema-type="email"
+    data-schema-id="field-email"
+    data-schema-path="field-email"
+    required
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="age" data-schema-path="age">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Age
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">Your age</span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="number"
+    id="field-age"
+    name="field-age"
+    class="jsf-input"
+    data-schema-type="number"
+    data-schema-id="field-age"
+    data-schema-path="field-age"
+    required
+    
+    max="120"
+    
+    step="1"
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="website" data-schema-path="website">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Website
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">Your website URL</span>
+  </label>
+  <div class="relative">
+  <input 
+    type="url"
+    id="field-website"
+    name="field-website"
+    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+    data-schema-type="url"
+    data-schema-id="field-website"
+    data-schema-path="field-website"
+    required
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="bio" data-schema-path="bio">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Biography
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">A short biography about yourself</span>
+  </label>
+  <div class="relative">
+  <textarea
+    id="field-bio"
+    name="field-bio"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 resize-y min-h-[120px]"
+    data-schema-type="string"
+    data-schema-id="field-bio"
+    data-schema-path="field-bio"
+    required
+    
+    data-maxlength="500"
+    placeholder=" "
+  ></textarea>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="consent" data-schema-path="consent">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Terms and Conditions
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">I agree to the terms and conditions</span>
+  </label>
+  <label class="inline-flex items-center cursor-pointer">
+  <div class="relative">
+    <input 
+      type="checkbox"
+      id="field-consent"
+      name="field-consent"
+      class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+      data-schema-type="boolean"
+      data-schema-id="field-consent"
+      data-schema-path="field-consent"
+      required
+      
+    />
+    <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500">
+    </div>
+  </div>
+  <span class="ml-3 text-sm font-medium text-gray-700">Disabled</span>
+</label> 
+</div> 
+  
+</div>
+
+  <div class="jsf-btn-container">
+    <button type="submit" class="jsf-submit-btn">
+      Submit
+    </button>
+  </div>
+</form> 

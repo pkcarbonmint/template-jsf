@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Simple Form",
+  "description": "A simple form for testing basic functionality",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Name",
+      "description": "Your full name"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "title": "Email",
+      "description": "Your email address"
+    },
+    "age": {
+      "type": "integer",
+      "title": "Age",
+      "description": "Your age",
+      "minimum": 0,
+      "maximum": 120
+    },
+    "website": {
+      "type": "string",
+      "format": "uri",
+      "title": "Website",
+      "description": "Your website URL"
+    },
+    "bio": {
+      "type": "string",
+      "title": "Biography",
+      "description": "A short biography about yourself",
+      "maxLength": 500
+    },
+    "consent": {
+      "type": "boolean",
+      "title": "Terms and Conditions",
+      "description": "I agree to the terms and conditions",
+      "default": false
+    }
+  },
+  "required": ["name", "email", "consent"]
+} 

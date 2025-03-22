@@ -1,0 +1,49 @@
+{
+  "order": ["personalInfo", "contactDetails", "preferences"],
+  "layout": "vertical",
+  "description": "Sample form layout",
+  
+  "personalInfo": {
+    "layout": "grid",
+    "options": {
+      "columns": 2,
+      "gap": "1rem"
+    },
+    "order": ["firstName", "lastName", "dateOfBirth"],
+    "classNames": "primary-section"
+  },
+  
+  "contactDetails": {
+    "layout": "vertical",
+    "options": {
+      "padding": "1rem"
+    },
+    "order": ["email", "phone", "address"],
+    
+    "address": {
+      "layout": "grid",
+      "options": {
+        "columns": 2
+      }
+    }
+  },
+  
+  "preferences": {
+    "layout": "tabs",
+    "options": {
+      "tabPosition": "left"
+    },
+    "order": ["theme", "notifications", "privacy"]
+  },
+  
+  "responsive": {
+    "small": {
+      "personalInfo": {
+        "layout": "vertical"
+      },
+      "preferences": {
+        "layout": "vtabs"
+      }
+    }
+  }
+} 
