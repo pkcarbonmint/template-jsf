@@ -1,0 +1,52 @@
+{
+  "type": "object",
+  "title": "Contact Form",
+  "description": "Contact form with basic information",
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "title": "First Name",
+      "description": "First name of the person"
+    },
+    "lastName": {
+      "type": "string",
+      "title": "Last Name",
+      "description": "Last name of the person"
+    },
+    "email": {
+      "type": "string",
+      "title": "Email",
+      "description": "Email address",
+      "format": "email"
+    },
+    "phone": {
+      "type": "string",
+      "title": "Phone Number",
+      "description": "Contact phone number"
+    },
+    "subject": {
+      "type": "string",
+      "title": "Subject",
+      "description": "Message subject"
+    },
+    "message": {
+      "type": "string",
+      "title": "Message",
+      "description": "Your message",
+      "maxLength": 1000
+    },
+    "preferredContact": {
+      "type": "string",
+      "title": "Preferred Contact Method",
+      "description": "How would you like to be contacted?",
+      "enum": ["email", "phone", "any"],
+      "enumNames": ["Email", "Phone", "Either"]
+    },
+    "urgent": {
+      "type": "boolean",
+      "title": "Urgent",
+      "description": "Is this message urgent?"
+    }
+  },
+  "required": ["firstName", "lastName", "email", "message"]
+} 

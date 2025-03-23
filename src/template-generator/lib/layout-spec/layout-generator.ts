@@ -1,14 +1,17 @@
-import { SchemaNode } from '../schema-parser';
+import { parseSchema, SchemaNode } from '../schema-parser';
 import { LayoutSpecification, LayoutType, LayoutOptions } from './layout-types';
 
 /**
  * Generates a layout specification from a schema
- * @param schema The schema to generate a layout specification for
+ * @param schemaJson The JSON string of the schema to generate a layout specification for
  * @param level The nesting level (default: 0)
  * @param parentLayout The layout of the parent (if any)
  * @returns A layout specification
  */
-export function generateLayoutSpec(schema: SchemaNode, level: number = 0, parentLayout?: LayoutType): LayoutSpecification {
+export function generateLayoutSpec(schemaJson: string, level: number = 0, parentLayout?: LayoutType): LayoutSpecification {
+  // Parse the JSON string into a schema object
+  const schema = parseSchema(JSON.parse(schemaJson));
+
   // Create a base layout specification
   const spec: LayoutSpecification = {
     layout: determineLayoutType(schema, level, parentLayout),
@@ -28,7 +31,7 @@ export function generateLayoutSpec(schema: SchemaNode, level: number = 0, parent
   // Process properties recursively
   if (schema.properties) {
     for (const [key, propNode] of Object.entries(schema.properties)) {
-      spec[key] = generateLayoutSpec(propNode, level + 1, spec.layout);
+      spec[key] = generateLayoutSpec(JSON.stringify(propNode), level + 1, spec.layout);
     }
   }
   
@@ -108,13 +111,13 @@ function processConditionals(conditionals: any[], level: number): any[] {
     if (conditional.type === 'if' || conditional.type === 'then' || conditional.type === 'else') {
       // For if/then/else, process the schema
       if (conditional.schema) {
-        result.spec = generateLayoutSpec(conditional.schema, level + 1);
+        result.spec = generateLayoutSpec(JSON.stringify(conditional.schema), level + 1);
       }
     } else if (conditional.type === 'allOf' || conditional.type === 'anyOf' || conditional.type === 'oneOf') {
       // For allOf/anyOf/oneOf, process the array of schemas
       if (Array.isArray(conditional.schema)) {
         result.specs = conditional.schema.map((subSchema: SchemaNode) => 
-          generateLayoutSpec(subSchema, level + 1)
+          generateLayoutSpec(JSON.stringify(subSchema), level + 1)
         );
       }
     }
@@ -166,7 +169,7 @@ function determineLayoutType(schema: SchemaNode, level: number = 0, parentLayout
     if (propCount > 10) {
       // If more than 10 properties, consider using tabs if properties are objects
       const hasObjectProperties = schema.properties ? 
-        Object.values(schema.properties).some(prop => prop.type === 'object') : false;
+        Object.values(schema.properties).some((prop: SchemaNode) => prop.type === 'object') : false;
       
       if (hasObjectProperties) {
         return 'tabs';

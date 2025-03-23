@@ -1,0 +1,1228 @@
+<div class="schema-form-container">
+  <form id="root" class="schema-form" data-schema-id="root">
+    
+    <div class="form-content">
+      <div class="jsf-object" id="root" data-schema-id="root" data-schema-path="root">
+  <h2 class="jsf-object-title">Product Catalog Entry</h2>
+  <p class="jsf-object-description">Complete product details with multiple sections and layout options</p>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="basicInfo" data-schema-path="basicInfo">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Basic Information
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">Essential product information</span>
+  </label>
+  <div class="jsf-object" id="field-basicInfo" data-schema-id="field-basicInfo" data-schema-path="field-basicInfo">
+  <h2 class="jsf-object-title">Basic Information</h2>
+  <p class="jsf-object-description">Essential product information</p>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="productName" data-schema-path="productName">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Product Name
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">Name of the product</span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-basicInfo-productName"
+    name="field-basicInfo-productName"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-basicInfo-productName"
+    data-schema-path="field-basicInfo-productName"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="sku" data-schema-path="sku">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      SKU
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">Stock keeping unit</span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-basicInfo-sku"
+    name="field-basicInfo-sku"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-basicInfo-sku"
+    data-schema-path="field-basicInfo-sku"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="shortDescription" data-schema-path="shortDescription">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Short Description
+      
+    </span>
+    <span class="jsf-desc">Brief product description</span>
+  </label>
+  <div class="relative">
+  <textarea
+    id="field-basicInfo-shortDescription"
+    name="field-basicInfo-shortDescription"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 resize-y min-h-[120px]"
+    data-schema-type="string"
+    data-schema-id="field-basicInfo-shortDescription"
+    data-schema-path="field-basicInfo-shortDescription"
+    
+    
+    
+    placeholder=" "
+  ></textarea>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="category" data-schema-path="category">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Category
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="relative">
+  <select
+    id="field-basicInfo-category"
+    name="field-basicInfo-category"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 appearance-none"
+    data-schema-type="enum"
+    data-schema-id="field-basicInfo-category"
+    data-schema-path="field-basicInfo-category"
+    required
+  >
+    <option value="">-- Select --</option>
+    <option value="Electronics">Electronics</option>
+    <option value="Clothing">Clothing</option>
+    <option value="Home &amp; Garden">Home &amp; Garden</option>
+    <option value="Books">Books</option>
+    <option value="Toys">Toys</option>
+    <option value="Food">Food</option>
+    <option value="Other">Other</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+    </svg>
+  </div>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="status" data-schema-path="status">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Status
+      
+    </span>
+  </label>
+  <div class="relative">
+  <select
+    id="field-basicInfo-status"
+    name="field-basicInfo-status"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 appearance-none"
+    data-schema-type="enum"
+    data-schema-id="field-basicInfo-status"
+    data-schema-path="field-basicInfo-status"
+    
+  >
+    <option value="">-- Select --</option>
+    <option value="Draft">Draft</option>
+    <option value="Published">Published</option>
+    <option value="Archived">Archived</option>
+    <option value="Out of Stock">Out of Stock</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+    </svg>
+  </div>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="detailedInfo" data-schema-path="detailedInfo">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Detailed Information
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-object" id="field-detailedInfo" data-schema-id="field-detailedInfo" data-schema-path="field-detailedInfo">
+  <h2 class="jsf-object-title">Detailed Information</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="fullDescription" data-schema-path="fullDescription">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Full Description
+      
+    </span>
+    <span class="jsf-desc">Complete product description with formatting</span>
+  </label>
+  <div class="relative">
+  <textarea
+    id="field-detailedInfo-fullDescription"
+    name="field-detailedInfo-fullDescription"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 resize-y min-h-[120px]"
+    data-schema-type="string"
+    data-schema-id="field-detailedInfo-fullDescription"
+    data-schema-path="field-detailedInfo-fullDescription"
+    
+    
+    
+    placeholder=" "
+  ></textarea>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="features" data-schema-path="features">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Product Features
+      
+    </span>
+    <span class="jsf-desc">List of product features</span>
+  </label>
+  <div id="field-detailedInfo-features" class="jsf-array" data-schema-type="array" data-schema-id="field-detailedInfo-features" data-schema-path="field-detailedInfo-features">
+  <h3 class="jsf-object-title">Product Features</h3>
+  <p class="jsf-object-description">List of product features</p>
+
+  <div class="jsf-array-items">
+    <!-- Array item template will be cloned and inserted here dynamically -->
+    <div class="array-item-template hidden">
+      <div class="jsf-array-item">
+        <div class="jsf-array-item-content">
+          <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-detailedInfo-features-items"
+    name="field-detailedInfo-features-items"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-detailedInfo-features-items"
+    data-schema-path="field-detailedInfo-features-items"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+        </div>
+        <button type="button" class="jsf-remove-btn" aria-label="Remove item">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="jsf-array-buttons">
+    <button type="button" class="jsf-add-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+      Add Item
+    </button>
+  </div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="specifications" data-schema-path="specifications">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Specifications
+      
+    </span>
+    <span class="jsf-desc">Technical specifications</span>
+  </label>
+  <div id="field-detailedInfo-specifications" class="jsf-array" data-schema-type="array" data-schema-id="field-detailedInfo-specifications" data-schema-path="field-detailedInfo-specifications">
+  <h3 class="jsf-object-title">Specifications</h3>
+  <p class="jsf-object-description">Technical specifications</p>
+
+  <div class="jsf-array-items">
+    <!-- Array item template will be cloned and inserted here dynamically -->
+    <div class="array-item-template hidden">
+      <div class="jsf-array-item">
+        <div class="jsf-array-item-content">
+          <div class="jsf-object" id="field-detailedInfo-specifications-items" data-schema-id="field-detailedInfo-specifications-items" data-schema-path="field-detailedInfo-specifications-items">
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="name" data-schema-path="name">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Specification Name
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-detailedInfo-specifications-items-name"
+    name="field-detailedInfo-specifications-items-name"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-detailedInfo-specifications-items-name"
+    data-schema-path="field-detailedInfo-specifications-items-name"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="value" data-schema-path="value">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Value
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-detailedInfo-specifications-items-value"
+    name="field-detailedInfo-specifications-items-value"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-detailedInfo-specifications-items-value"
+    data-schema-path="field-detailedInfo-specifications-items-value"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="unit" data-schema-path="unit">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Unit
+      
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-detailedInfo-specifications-items-unit"
+    name="field-detailedInfo-specifications-items-unit"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-detailedInfo-specifications-items-unit"
+    data-schema-path="field-detailedInfo-specifications-items-unit"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+        </div>
+        <button type="button" class="jsf-remove-btn" aria-label="Remove item">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="jsf-array-buttons">
+    <button type="button" class="jsf-add-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+      Add Item
+    </button>
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="pricing" data-schema-path="pricing">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Pricing &amp; Inventory
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div id="field-pricing" data-schema-id="field-pricing" class="jsfgrid grid-cols-2 gap-4">
+  <h3>Pricing &amp; Inventory</h3>
+  <p></p>
+  <div class="jsf-prop" data-property-name="basePrice" data-schema-path="basePrice">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Base Price
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="number"
+    id="field-pricing-basePrice"
+    name="field-pricing-basePrice"
+    class="jsf-input"
+    data-schema-type="number"
+    data-schema-id="field-pricing-basePrice"
+    data-schema-path="field-pricing-basePrice"
+    required
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="currency" data-schema-path="currency">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Currency
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="relative">
+  <select
+    id="field-pricing-currency"
+    name="field-pricing-currency"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 appearance-none"
+    data-schema-type="enum"
+    data-schema-id="field-pricing-currency"
+    data-schema-path="field-pricing-currency"
+    required
+  >
+    <option value="">-- Select --</option>
+    <option value="USD">USD</option>
+    <option value="EUR">EUR</option>
+    <option value="GBP">GBP</option>
+    <option value="JPY">JPY</option>
+    <option value="CAD">CAD</option>
+    <option value="AUD">AUD</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+    </svg>
+  </div>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="onSale" data-schema-path="onSale">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      On Sale
+      
+    </span>
+  </label>
+  <label class="inline-flex items-center cursor-pointer">
+  <div class="relative">
+    <input 
+      type="checkbox"
+      id="field-pricing-onSale"
+      name="field-pricing-onSale"
+      class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+      data-schema-type="boolean"
+      data-schema-id="field-pricing-onSale"
+      data-schema-path="field-pricing-onSale"
+      
+      
+    />
+    <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500">
+    </div>
+  </div>
+  <span class="ml-3 text-sm font-medium text-gray-700">Disabled</span>
+</label> 
+</div> 
+<div class="jsf-prop" data-property-name="salePrice" data-schema-path="salePrice">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Sale Price
+      
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="number"
+    id="field-pricing-salePrice"
+    name="field-pricing-salePrice"
+    class="jsf-input"
+    data-schema-type="number"
+    data-schema-id="field-pricing-salePrice"
+    data-schema-path="field-pricing-salePrice"
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="inventory" data-schema-path="inventory">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Inventory Information
+      
+    </span>
+  </label>
+  <div class="jsf-object" id="field-pricing-inventory" data-schema-id="field-pricing-inventory" data-schema-path="field-pricing-inventory">
+  <h2 class="jsf-object-title">Inventory Information</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="inStock" data-schema-path="inStock">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      In Stock
+      
+    </span>
+  </label>
+  <label class="inline-flex items-center cursor-pointer">
+  <div class="relative">
+    <input 
+      type="checkbox"
+      id="field-pricing-inventory-inStock"
+      name="field-pricing-inventory-inStock"
+      class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+      data-schema-type="boolean"
+      data-schema-id="field-pricing-inventory-inStock"
+      data-schema-path="field-pricing-inventory-inStock"
+      
+      checked
+    />
+    <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500">
+    </div>
+  </div>
+  <span class="ml-3 text-sm font-medium text-gray-700">Enabled</span>
+</label> 
+</div> 
+<div class="jsf-prop" data-property-name="quantity" data-schema-path="quantity">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Quantity
+      
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="number"
+    id="field-pricing-inventory-quantity"
+    name="field-pricing-inventory-quantity"
+    class="jsf-input"
+    data-schema-type="number"
+    data-schema-id="field-pricing-inventory-quantity"
+    data-schema-path="field-pricing-inventory-quantity"
+    
+    
+    
+    
+    step="1"
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="warehouse" data-schema-path="warehouse">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Warehouse Location
+      
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-pricing-inventory-warehouse"
+    name="field-pricing-inventory-warehouse"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-pricing-inventory-warehouse"
+    data-schema-path="field-pricing-inventory-warehouse"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="variants" data-schema-path="variants">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Product Variants
+      
+    </span>
+  </label>
+  <div id="field-pricing-variants" class="jsf-array" data-schema-type="array" data-schema-id="field-pricing-variants" data-schema-path="field-pricing-variants">
+  <h3 class="jsf-object-title">Product Variants</h3>
+
+  <div class="jsf-array-items">
+    <!-- Array item template will be cloned and inserted here dynamically -->
+    <div class="array-item-template hidden">
+      <div class="jsf-array-item">
+        <div class="jsf-array-item-content">
+          <div class="jsf-object" id="field-pricing-variants-items" data-schema-id="field-pricing-variants-items" data-schema-path="field-pricing-variants-items">
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="name" data-schema-path="name">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Variant Name
+      
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-pricing-variants-items-name"
+    name="field-pricing-variants-items-name"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-pricing-variants-items-name"
+    data-schema-path="field-pricing-variants-items-name"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="options" data-schema-path="options">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Options
+      
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-pricing-variants-items-options"
+    name="field-pricing-variants-items-options"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-pricing-variants-items-options"
+    data-schema-path="field-pricing-variants-items-options"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="price" data-schema-path="price">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Price
+      
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="number"
+    id="field-pricing-variants-items-price"
+    name="field-pricing-variants-items-price"
+    class="jsf-input"
+    data-schema-type="number"
+    data-schema-id="field-pricing-variants-items-price"
+    data-schema-path="field-pricing-variants-items-price"
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="stock" data-schema-path="stock">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Stock
+      
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="number"
+    id="field-pricing-variants-items-stock"
+    name="field-pricing-variants-items-stock"
+    class="jsf-input"
+    data-schema-type="number"
+    data-schema-id="field-pricing-variants-items-stock"
+    data-schema-path="field-pricing-variants-items-stock"
+    
+    
+    
+    
+    step="1"
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+        </div>
+        <button type="button" class="jsf-remove-btn" aria-label="Remove item">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="jsf-array-buttons">
+    <button type="button" class="jsf-add-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+      Add Item
+    </button>
+  </div>
+</div> 
+</div> 
+  
+</div>
+
+</div> 
+<div class="jsf-prop" data-property-name="media" data-schema-path="media">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Media &amp; Attachments
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-object" id="field-media" data-schema-id="field-media" data-schema-path="field-media">
+  <h2 class="jsf-object-title">Media &amp; Attachments</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="images" data-schema-path="images">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Product Images
+      
+    </span>
+  </label>
+  <div id="field-media-images" class="jsf-array" data-schema-type="array" data-schema-id="field-media-images" data-schema-path="field-media-images">
+  <h3 class="jsf-object-title">Product Images</h3>
+
+  <div class="jsf-array-items">
+    <!-- Array item template will be cloned and inserted here dynamically -->
+    <div class="array-item-template hidden">
+      <div class="jsf-array-item">
+        <div class="jsf-array-item-content">
+          <div class="jsf-object" id="field-media-images-items" data-schema-id="field-media-images-items" data-schema-path="field-media-images-items">
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="url" data-schema-path="url">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Image URL
+      
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="url"
+    id="field-media-images-items-url"
+    name="field-media-images-items-url"
+    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+    data-schema-type="url"
+    data-schema-id="field-media-images-items-url"
+    data-schema-path="field-media-images-items-url"
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="alt" data-schema-path="alt">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Alt Text
+      
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-media-images-items-alt"
+    name="field-media-images-items-alt"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-media-images-items-alt"
+    data-schema-path="field-media-images-items-alt"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="isPrimary" data-schema-path="isPrimary">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Primary Image
+      
+    </span>
+  </label>
+  <label class="inline-flex items-center cursor-pointer">
+  <div class="relative">
+    <input 
+      type="checkbox"
+      id="field-media-images-items-isPrimary"
+      name="field-media-images-items-isPrimary"
+      class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+      data-schema-type="boolean"
+      data-schema-id="field-media-images-items-isPrimary"
+      data-schema-path="field-media-images-items-isPrimary"
+      
+      
+    />
+    <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500">
+    </div>
+  </div>
+  <span class="ml-3 text-sm font-medium text-gray-700">Disabled</span>
+</label> 
+</div> 
+    
+  </div>
+</div> 
+        </div>
+        <button type="button" class="jsf-remove-btn" aria-label="Remove item">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="jsf-array-buttons">
+    <button type="button" class="jsf-add-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+      Add Item
+    </button>
+  </div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="videos" data-schema-path="videos">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Product Videos
+      
+    </span>
+  </label>
+  <div id="field-media-videos" class="jsf-array" data-schema-type="array" data-schema-id="field-media-videos" data-schema-path="field-media-videos">
+  <h3 class="jsf-object-title">Product Videos</h3>
+
+  <div class="jsf-array-items">
+    <!-- Array item template will be cloned and inserted here dynamically -->
+    <div class="array-item-template hidden">
+      <div class="jsf-array-item">
+        <div class="jsf-array-item-content">
+          <div class="relative">
+  <input 
+    type="url"
+    id="field-media-videos-items"
+    name="field-media-videos-items"
+    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+    data-schema-type="url"
+    data-schema-id="field-media-videos-items"
+    data-schema-path="field-media-videos-items"
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+        </div>
+        <button type="button" class="jsf-remove-btn" aria-label="Remove item">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="jsf-array-buttons">
+    <button type="button" class="jsf-add-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+      Add Item
+    </button>
+  </div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="attachments" data-schema-path="attachments">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Attachments
+      
+    </span>
+    <span class="jsf-desc">Product manuals or guides</span>
+  </label>
+  <div id="field-media-attachments" class="jsf-array" data-schema-type="array" data-schema-id="field-media-attachments" data-schema-path="field-media-attachments">
+  <h3 class="jsf-object-title">Attachments</h3>
+  <p class="jsf-object-description">Product manuals or guides</p>
+
+  <div class="jsf-array-items">
+    <!-- Array item template will be cloned and inserted here dynamically -->
+    <div class="array-item-template hidden">
+      <div class="jsf-array-item">
+        <div class="jsf-array-item-content">
+          <div class="jsf-object" id="field-media-attachments-items" data-schema-id="field-media-attachments-items" data-schema-path="field-media-attachments-items">
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="name" data-schema-path="name">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Name
+      
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-media-attachments-items-name"
+    name="field-media-attachments-items-name"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-media-attachments-items-name"
+    data-schema-path="field-media-attachments-items-name"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="url" data-schema-path="url">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      URL
+      
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="url"
+    id="field-media-attachments-items-url"
+    name="field-media-attachments-items-url"
+    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+    data-schema-type="url"
+    data-schema-id="field-media-attachments-items-url"
+    data-schema-path="field-media-attachments-items-url"
+    
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="type" data-schema-path="type">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Type
+      
+    </span>
+  </label>
+  <div class="relative">
+  <select
+    id="field-media-attachments-items-type"
+    name="field-media-attachments-items-type"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 appearance-none"
+    data-schema-type="enum"
+    data-schema-id="field-media-attachments-items-type"
+    data-schema-path="field-media-attachments-items-type"
+    
+  >
+    <option value="">-- Select --</option>
+    <option value="Manual">Manual</option>
+    <option value="Guide">Guide</option>
+    <option value="Specification Sheet">Specification Sheet</option>
+    <option value="Warranty">Warranty</option>
+    <option value="Other">Other</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+    </svg>
+  </div>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+        </div>
+        <button type="button" class="jsf-remove-btn" aria-label="Remove item">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="jsf-array-buttons">
+    <button type="button" class="jsf-add-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+      Add Item
+    </button>
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" class="btn-submit"></button>
+      <button type="button" class="btn-cancel"></button>
+    </div>
+  </form>
+</div>
+
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/array-table.css">
+
+<script type="text/javascript">
+  // Initialize form
+  (function() {
+    const form = document.getElementById('root');
+    if (!form) return;
+    
+    // Initialize array tables if the handlers are available
+    if (typeof window.ArrayTableHandlers !== 'undefined') {
+      window.ArrayTableHandlers.initArrayTables(form);
+    } else {
+      // Fallback initialization for array tables
+      const arrayTables = form.querySelectorAll('.array-table');
+      
+      arrayTables.forEach(table => {
+        const tbody = table.querySelector('tbody');
+        const rowTemplate = table.querySelector('.array-row-template');
+        const addButton = table.querySelector('.add-item');
+        
+        if (!tbody || !rowTemplate || !addButton) return;
+        
+        // Setup add item button
+        addButton.addEventListener('click', function() {
+          // Clone the template
+          const newRow = rowTemplate.cloneNode(true);
+          
+          // Remove template class
+          newRow.classList.remove('array-row-template');
+          newRow.classList.remove('hidden');
+          
+          // Generate unique IDs
+          const timestamp = Date.now();
+          const random = Math.floor(Math.random() * 10000);
+          const uniqueId = `${timestamp}-${random}`;
+          
+          // Update IDs and names
+          const inputs = newRow.querySelectorAll('input, select, textarea');
+          inputs.forEach(input => {
+            if (input.id) {
+              const newId = `${input.id}_${uniqueId}`;
+              input.id = newId;
+            }
+            
+            if (input.name) {
+              input.name = `${input.name}_${uniqueId}`;
+            }
+          });
+          
+          // Append the new row
+          tbody.appendChild(newRow);
+        });
+        
+        // Add initial row if table is empty
+        if (tbody.querySelectorAll('tr:not(.array-row-template)').length === 0) {
+          addButton.click();
+        }
+        
+        // Handle delete buttons
+        tbody.addEventListener('click', function(event) {
+          const target = event.target;
+          
+          if (target.classList.contains('action-delete') || target.closest('.action-delete')) {
+            const row = target.closest('tr');
+            if (!row) return;
+            
+            // Get all visible rows
+            const visibleRows = Array.from(tbody.querySelectorAll('tr')).filter(r => 
+              !r.classList.contains('array-row-template') && 
+              !r.classList.contains('hidden')
+            );
+            
+            // Only remove if there's more than one row
+            if (visibleRows.length > 1) {
+              row.remove();
+            }
+          }
+        });
+      });
+    }
+    
+    // Form submission handling
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      // Collect form data
+      const formData = new FormData(form);
+      const data = {};
+      
+      for (const [key, value] of formData.entries()) {
+        // Handle special cases like checkboxes, arrays, etc.
+        if (key.includes('[]')) {
+          const cleanKey = key.replace('[]', '');
+          if (!data[cleanKey]) {
+            data[cleanKey] = [];
+          }
+          data[cleanKey].push(value);
+        } else {
+          data[key] = value;
+        }
+      }
+      
+      // Handle array tables
+      const arrayTables = form.querySelectorAll('.array-table');
+      arrayTables.forEach(table => {
+        const schemaId = table.getAttribute('data-schema-id');
+        if (!schemaId) return;
+        
+        // Get the array data
+        let arrayData = [];
+        
+        if (typeof window.ArrayTableHandlers !== 'undefined') {
+          // Use the array table handlers if available
+          arrayData = window.ArrayTableHandlers.getArrayTableData(table, window.schemaRegistry[schemaId]);
+        } else {
+          // Fallback data collection
+          const tbody = table.querySelector('tbody');
+          if (!tbody) return;
+          
+          const rows = Array.from(tbody.querySelectorAll('tr')).filter(row => 
+            !row.classList.contains('array-row-template') && 
+            !row.classList.contains('hidden')
+          );
+          
+          arrayData = rows.map(row => {
+            const rowData = {};
+            const cells = row.querySelectorAll('td[data-field]');
+            
+            cells.forEach(cell => {
+              const fieldName = cell.getAttribute('data-field');
+              if (fieldName === 'actions') return;
+              
+              const input = cell.querySelector('input, select, textarea');
+              if (input) {
+                if (input.type === 'checkbox') {
+                  rowData[fieldName] = input.checked;
+                } else {
+                  rowData[fieldName] = input.value;
+                }
+              }
+            });
+            
+            return rowData;
+          });
+        }
+        
+        // Add array data to the form data
+        data[schemaId] = arrayData;
+      });
+      
+      // Emit form submit event with data
+      const submitEvent = new CustomEvent('schema-form:submit', {
+        bubbles: true,
+        cancelable: true,
+        detail: { formId: form.id, data: data }
+      });
+      
+      form.dispatchEvent(submitEvent);
+    });
+  })();
+</script> 

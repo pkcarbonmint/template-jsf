@@ -1,0 +1,233 @@
+{
+  "form": [
+    {
+      "type": "tabs",
+      "tabs": [
+        {
+          "title": "General",
+          "items": [
+            {
+              "type": "section",
+              "htmlClass": "row",
+              "items": [
+                {
+                  "key": "basicInfo.name",
+                  "htmlClass": "col-md-8"
+                },
+                {
+                  "key": "basicInfo.sku",
+                  "htmlClass": "col-md-4"
+                },
+                {
+                  "key": "basicInfo.description",
+                  "type": "textarea",
+                  "htmlClass": "col-md-12"
+                },
+                {
+                  "key": "basicInfo.shortDescription",
+                  "type": "textarea",
+                  "htmlClass": "col-md-12"
+                },
+                {
+                  "key": "basicInfo.status",
+                  "type": "select",
+                  "htmlClass": "col-md-4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Pricing",
+          "items": [
+            {
+              "type": "section",
+              "htmlClass": "row",
+              "items": [
+                {
+                  "key": "pricing.price",
+                  "htmlClass": "col-md-4"
+                },
+                {
+                  "key": "pricing.salePrice",
+                  "htmlClass": "col-md-4"
+                },
+                {
+                  "key": "pricing.costPrice",
+                  "htmlClass": "col-md-4"
+                },
+                {
+                  "key": "pricing.taxable",
+                  "htmlClass": "col-md-6"
+                },
+                {
+                  "key": "pricing.taxClass",
+                  "type": "select",
+                  "htmlClass": "col-md-6",
+                  "condition": "model.pricing.taxable"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Inventory",
+          "items": [
+            {
+              "type": "section",
+              "htmlClass": "row",
+              "items": [
+                {
+                  "key": "inventory.manageStock",
+                  "htmlClass": "col-md-12"
+                },
+                {
+                  "key": "inventory.stockQuantity",
+                  "htmlClass": "col-md-4",
+                  "condition": "model.inventory.manageStock"
+                },
+                {
+                  "key": "inventory.backorders",
+                  "type": "select",
+                  "htmlClass": "col-md-4",
+                  "condition": "model.inventory.manageStock"
+                },
+                {
+                  "key": "inventory.lowStockThreshold",
+                  "htmlClass": "col-md-4",
+                  "condition": "model.inventory.manageStock"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Shipping",
+          "items": [
+            {
+              "type": "section",
+              "htmlClass": "row",
+              "items": [
+                {
+                  "key": "shipping.weight",
+                  "htmlClass": "col-md-6"
+                },
+                {
+                  "key": "shipping.shippingClass",
+                  "htmlClass": "col-md-6"
+                },
+                {
+                  "type": "fieldset",
+                  "title": "Dimensions",
+                  "htmlClass": "col-md-12",
+                  "items": [
+                    {
+                      "key": "shipping.dimensions.length",
+                      "htmlClass": "col-md-4"
+                    },
+                    {
+                      "key": "shipping.dimensions.width",
+                      "htmlClass": "col-md-4"
+                    },
+                    {
+                      "key": "shipping.dimensions.height",
+                      "htmlClass": "col-md-4"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Attributes",
+          "items": [
+            {
+              "key": "attributes",
+              "type": "array-table",
+              "title": "Product Attributes",
+              "items": [
+                {
+                  "key": "attributes[].name",
+                  "title": "Name"
+                },
+                {
+                  "key": "attributes[].value",
+                  "title": "Value"
+                },
+                {
+                  "key": "attributes[].visible",
+                  "title": "Visible"
+                }
+              ],
+              "modalFields": [
+                "name",
+                "value",
+                "visible"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Variants",
+          "items": [
+            {
+              "key": "variants",
+              "type": "array-table",
+              "title": "Product Variants",
+              "items": [
+                {
+                  "key": "variants[].sku",
+                  "title": "SKU"
+                },
+                {
+                  "key": "variants[].price",
+                  "title": "Price"
+                },
+                {
+                  "key": "variants[].stockQuantity",
+                  "title": "Stock"
+                }
+              ],
+              "modalFields": [
+                "sku",
+                "attributes",
+                "price",
+                "stockQuantity"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Images",
+          "items": [
+            {
+              "key": "images",
+              "type": "array-table",
+              "title": "Product Images",
+              "items": [
+                {
+                  "key": "images[].url",
+                  "title": "URL"
+                },
+                {
+                  "key": "images[].alt",
+                  "title": "Alt Text"
+                },
+                {
+                  "key": "images[].position",
+                  "title": "Position"
+                }
+              ],
+              "modalFields": [
+                "url",
+                "alt",
+                "position"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+} 

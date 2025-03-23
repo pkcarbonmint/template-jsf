@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabbed Form Layout</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="array-table.css">
+</head>
+<body>
+  <div class="schema-form-container">
+    <h1 class="form-title">Candidate Profile</h1>
+    
+    <form id="tabbed-form" class="schema-form">
+      <!-- Horizontal Tabs Layout -->
+      <div class="tabs-container" data-tab-layout="horizontal">
+        <ul class="tabs-nav">
+          <li class="tab-item active" data-tab-target="personal">Personal Info</li>
+          <li class="tab-item" data-tab-target="education">Education</li>
+          <li class="tab-item" data-tab-target="experience">Experience</li>
+          <li class="tab-item" data-tab-target="skills">Skills & Interests</li>
+        </ul>
+        
+        <div class="tabs-content">
+          <!-- Personal Info Tab -->
+          <div id="personal" class="tab-pane active">
+            <div class="form-section">
+              <h2 class="section-title">Personal Information</h2>
+              
+              <div class="form-grid-2">
+                <div class="form-field-container">
+                  <label class="field-label" for="firstName">First Name <span class="required">*</span></label>
+                  <input type="text" id="firstName" name="firstName" class="field-input" required>
+                </div>
+                
+                <div class="form-field-container">
+                  <label class="field-label" for="lastName">Last Name <span class="required">*</span></label>
+                  <input type="text" id="lastName" name="lastName" class="field-input" required>
+                </div>
+              </div>
+              
+              <div class="form-grid-2">
+                <div class="form-field-container">
+                  <label class="field-label" for="email">Email Address <span class="required">*</span></label>
+                  <input type="email" id="email" name="email" class="field-input" required>
+                </div>
+                
+                <div class="form-field-container">
+                  <label class="field-label" for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" class="field-input">
+                </div>
+              </div>
+              
+              <div class="form-field-container">
+                <label class="field-label" for="address">Address</label>
+                <textarea id="address" name="address" class="field-input" rows="3"></textarea>
+              </div>
+              
+              <div class="form-grid-3">
+                <div class="form-field-container">
+                  <label class="field-label" for="city">City</label>
+                  <input type="text" id="city" name="city" class="field-input">
+                </div>
+                
+                <div class="form-field-container">
+                  <label class="field-label" for="state">State/Province</label>
+                  <input type="text" id="state" name="state" class="field-input">
+                </div>
+                
+                <div class="form-field-container">
+                  <label class="field-label" for="zipCode">Zip/Postal Code</label>
+                  <input type="text" id="zipCode" name="zipCode" class="field-input">
+                </div>
+              </div>
+              
+              <div class="form-field-container">
+                <label class="field-label" for="country">Country</label>
+                <select id="country" name="country" class="field-input">
+                  <option value="">Select Country</option>
+                  <option value="US">United States</option>
+                  <option value="CA">Canada</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="AU">Australia</option>
+                  <option value="IN">India</option>
+                  <!-- More options can be added here -->
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Education Tab -->
+          <div id="education" class="tab-pane">
+            <div class="form-section">
+              <h2 class="section-title">Educational Background</h2>
+              
+              <div class="form-field-container">
+                <label class="field-label" for="highestDegree">Highest Degree</label>
+                <select id="highestDegree" name="highestDegree" class="field-input">
+                  <option value="">Select Highest Degree</option>
+                  <option value="high-school">High School Diploma</option>
+                  <option value="associate">Associate's Degree</option>
+                  <option value="bachelor">Bachelor's Degree</option>
+                  <option value="master">Master's Degree</option>
+                  <option value="doctorate">Doctorate/PhD</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              
+              <div class="form-subsection">
+                <h3 class="subsection-title">Education History</h3>
+                
+                <div class="array-table-container" data-array-name="educationHistory">
+                  <table class="array-table">
+                    <thead>
+                      <tr>
+                        <th>Degree/Certificate</th>
+                        <th>Institution</th>
+                        <th>Year</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="educationHistory-items">
+                      <!-- Items will be populated dynamically -->
+                    </tbody>
+                  </table>
+                  
+                  <button type="button" class="btn-add-item" data-array-name="educationHistory">
+                    Add Education
+                  </button>
+                </div>
+              </div>
+              
+              <div class="form-field-container">
+                <label class="field-label" for="additionalCerts">Additional Certifications</label>
+                <textarea id="additionalCerts" name="additionalCerts" class="field-input" rows="3"></textarea>
+                <p class="field-description">List any additional certifications not included above</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Experience Tab -->
+          <div id="experience" class="tab-pane">
+            <div class="form-section">
+              <h2 class="section-title">Work Experience</h2>
+              
+              <div class="form-field-container">
+                <label class="field-label" for="yearsOfExperience">Years of Experience</label>
+                <input type="number" id="yearsOfExperience" name="yearsOfExperience" class="field-input" min="0" max="50">
+              </div>
+              
+              <div class="form-subsection">
+                <h3 class="subsection-title">Employment History</h3>
+                
+                <div class="array-table-container" data-array-name="employmentHistory">
+                  <table class="array-table">
+                    <thead>
+                      <tr>
+                        <th>Position</th>
+                        <th>Company</th>
+                        <th>Duration</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="employmentHistory-items">
+                      <!-- Items will be populated dynamically -->
+                    </tbody>
+                  </table>
+                  
+                  <button type="button" class="btn-add-item" data-array-name="employmentHistory">
+                    Add Employment
+                  </button>
+                </div>
+              </div>
+              
+              <div class="form-field-container">
+                <label class="field-label" for="achievements">Key Achievements</label>
+                <textarea id="achievements" name="achievements" class="field-input" rows="3"></textarea>
+                <p class="field-description">List your key professional achievements</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Skills Tab -->
+          <div id="skills" class="tab-pane">
+            <div class="form-section">
+              <h2 class="section-title">Skills & Interests</h2>
+              
+              <div class="form-subsection">
+                <h3 class="subsection-title">Technical Skills</h3>
+                
+                <div class="form-field-container">
+                  <div class="string-array-container" data-array-name="technicalSkills">
+                    <div class="string-array-items" id="technicalSkills-items">
+                      <!-- String items will be populated dynamically -->
+                    </div>
+                    <div class="string-array-input-container">
+                      <input type="text" class="string-array-input" id="technicalSkills-input" placeholder="Add a technical skill">
+                      <button type="button" class="btn-add-string-item" data-array-name="technicalSkills">Add</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-subsection">
+                <h3 class="subsection-title">Soft Skills</h3>
+                
+                <div class="form-field-container">
+                  <div class="string-array-container" data-array-name="softSkills">
+                    <div class="string-array-items" id="softSkills-items">
+                      <!-- String items will be populated dynamically -->
+                    </div>
+                    <div class="string-array-input-container">
+                      <input type="text" class="string-array-input" id="softSkills-input" placeholder="Add a soft skill">
+                      <button type="button" class="btn-add-string-item" data-array-name="softSkills">Add</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-subsection">
+                <h3 class="subsection-title">Languages</h3>
+                
+                <div class="form-field-container">
+                  <div class="string-array-container" data-array-name="languages">
+                    <div class="string-array-items" id="languages-items">
+                      <!-- String items will be populated dynamically -->
+                    </div>
+                    <div class="string-array-input-container">
+                      <input type="text" class="string-array-input" id="languages-input" placeholder="Add a language">
+                      <button type="button" class="btn-add-string-item" data-array-name="languages">Add</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-field-container">
+                <label class="field-label" for="interests">Interests & Hobbies</label>
+                <textarea id="interests" name="interests" class="field-input" rows="3"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" id="prev-tab" class="btn-secondary">Previous</button>
+        <button type="button" id="next-tab" class="btn-primary">Next</button>
+        <button type="submit" id="submit-form" class="btn-submit">Submit</button>
+      </div>
+    </form>
+  </div>
+  
+  <!-- Education History Modal -->
+  <div id="educationHistory-modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <h2 class="modal-title">Education Details</h2>
+      
+      <form id="educationHistory-form" class="modal-form">
+        <input type="hidden" id="educationHistory-index" name="index" value="-1">
+        
+        <div class="form-field-container">
+          <label class="field-label" for="educationHistory-degree">Degree/Certificate <span class="required">*</span></label>
+          <input type="text" id="educationHistory-degree" name="degree" class="field-input" required>
+        </div>
+        
+        <div class="form-field-container">
+          <label class="field-label" for="educationHistory-institution">Institution <span class="required">*</span></label>
+          <input type="text" id="educationHistory-institution" name="institution" class="field-input" required>
+        </div>
+        
+        <div class="form-field-container">
+          <label class="field-label" for="educationHistory-year">Year <span class="required">*</span></label>
+          <input type="number" id="educationHistory-year" name="year" class="field-input" min="1900" max="2099" required>
+        </div>
+        
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel modal-cancel">Cancel</button>
+          <button type="submit" class="btn-submit modal-save">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Employment History Modal -->
+  <div id="employmentHistory-modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <h2 class="modal-title">Employment Details</h2>
+      
+      <form id="employmentHistory-form" class="modal-form">
+        <input type="hidden" id="employmentHistory-index" name="index" value="-1">
+        
+        <div class="form-field-container">
+          <label class="field-label" for="employmentHistory-position">Position <span class="required">*</span></label>
+          <input type="text" id="employmentHistory-position" name="position" class="field-input" required>
+        </div>
+        
+        <div class="form-field-container">
+          <label class="field-label" for="employmentHistory-company">Company <span class="required">*</span></label>
+          <input type="text" id="employmentHistory-company" name="company" class="field-input" required>
+        </div>
+        
+        <div class="form-field-container">
+          <label class="field-label" for="employmentHistory-duration">Duration <span class="required">*</span></label>
+          <input type="text" id="employmentHistory-duration" name="duration" class="field-input" placeholder="e.g. Jan 2018 - Dec 2020" required>
+        </div>
+        
+        <div class="form-field-container">
+          <label class="field-label" for="employmentHistory-description">Description</label>
+          <textarea id="employmentHistory-description" name="description" class="field-input" rows="3"></textarea>
+        </div>
+        
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel modal-cancel">Cancel</button>
+          <button type="submit" class="btn-submit modal-save">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <script src="array-table-handlers.js"></script>
+  <script src="layout-handlers.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize the array tables
+      initArrayTableHandlers();
+      
+      // Initialize tab handlers
+      initTabHandlers();
+      
+      // Initialize navigation buttons
+      const tabNav = document.querySelector('.tabs-nav');
+      const tabItems = Array.from(tabNav.querySelectorAll('.tab-item'));
+      const prevBtn = document.getElementById('prev-tab');
+      const nextBtn = document.getElementById('next-tab');
+      const submitBtn = document.getElementById('submit-form');
+      
+      // Initially hide the submit button, show only on last tab
+      submitBtn.style.display = 'none';
+      
+      // Handle previous button click
+      prevBtn.addEventListener('click', function() {
+        const activeTab = tabNav.querySelector('.tab-item.active');
+        const activeIndex = tabItems.indexOf(activeTab);
+        
+        if (activeIndex > 0) {
+          const prevTab = tabItems[activeIndex - 1];
+          switchToTab(prevTab.getAttribute('data-tab-target'));
+          updateNavButtons();
+        }
+      });
+      
+      // Handle next button click
+      nextBtn.addEventListener('click', function() {
+        const activeTab = tabNav.querySelector('.tab-item.active');
+        const activeIndex = tabItems.indexOf(activeTab);
+        
+        if (activeIndex < tabItems.length - 1) {
+          const nextTab = tabItems[activeIndex + 1];
+          switchToTab(nextTab.getAttribute('data-tab-target'));
+          updateNavButtons();
+        }
+      });
+      
+      // Update navigation buttons based on active tab
+      function updateNavButtons() {
+        const activeTab = tabNav.querySelector('.tab-item.active');
+        const activeIndex = tabItems.indexOf(activeTab);
+        
+        prevBtn.disabled = activeIndex === 0;
+        
+        if (activeIndex === tabItems.length - 1) {
+          nextBtn.style.display = 'none';
+          submitBtn.style.display = 'inline-block';
+        } else {
+          nextBtn.style.display = 'inline-block';
+          submitBtn.style.display = 'none';
+        }
+      }
+      
+      // Switch to a specific tab
+      function switchToTab(tabId) {
+        // Deactivate all tabs
+        document.querySelectorAll('.tab-item').forEach(item => {
+          item.classList.remove('active');
+        });
+        
+        document.querySelectorAll('.tab-pane').forEach(pane => {
+          pane.classList.remove('active');
+        });
+        
+        // Activate the selected tab
+        document.querySelector(`.tab-item[data-tab-target="${tabId}"]`).classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+      }
+      
+      // Initialize button states
+      updateNavButtons();
+      
+      // Handle form submission
+      document.getElementById('tabbed-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(this);
+        const formDataObject = {};
+        
+        // Add basic form fields
+        for (const [key, value] of formData.entries()) {
+          formDataObject[key] = value;
+        }
+        
+        // Add array data
+        formDataObject.educationHistory = getArrayItems('educationHistory');
+        formDataObject.employmentHistory = getArrayItems('employmentHistory');
+        formDataObject.technicalSkills = getStringArrayItems('technicalSkills');
+        formDataObject.softSkills = getStringArrayItems('softSkills');
+        formDataObject.languages = getStringArrayItems('languages');
+        
+        // Do something with the form data (e.g., submit to server)
+        console.log('Form submitted:', formDataObject);
+        alert('Profile submitted successfully!');
+      });
+    });
+  </script>
+</body>
+</html> 

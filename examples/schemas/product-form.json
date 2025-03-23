@@ -1,0 +1,217 @@
+{
+  "type": "object",
+  "title": "Product Form",
+  "description": "Form for adding or editing a product",
+  "properties": {
+    "basicInfo": {
+      "type": "object",
+      "title": "Basic Information",
+      "description": "Basic product information",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Product Name",
+          "description": "Name of the product"
+        },
+        "sku": {
+          "type": "string",
+          "title": "SKU",
+          "description": "Stock keeping unit"
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "Product description"
+        },
+        "shortDescription": {
+          "type": "string",
+          "title": "Short Description",
+          "description": "Short product description"
+        },
+        "status": {
+          "type": "string",
+          "title": "Status",
+          "description": "Product status",
+          "enum": ["draft", "active", "inactive", "discontinued"],
+          "enumNames": ["Draft", "Active", "Inactive", "Discontinued"]
+        }
+      },
+      "required": ["name", "sku"]
+    },
+    "pricing": {
+      "type": "object",
+      "title": "Pricing",
+      "description": "Product pricing information",
+      "properties": {
+        "price": {
+          "type": "number",
+          "title": "Price",
+          "description": "Regular price"
+        },
+        "salePrice": {
+          "type": "number",
+          "title": "Sale Price",
+          "description": "Sale price (if applicable)"
+        },
+        "costPrice": {
+          "type": "number",
+          "title": "Cost Price",
+          "description": "Cost of the product"
+        },
+        "taxable": {
+          "type": "boolean",
+          "title": "Taxable",
+          "description": "Is this product taxable?"
+        },
+        "taxClass": {
+          "type": "string",
+          "title": "Tax Class",
+          "description": "Tax class for this product",
+          "enum": ["standard", "reduced", "zero"]
+        }
+      },
+      "required": ["price"]
+    },
+    "inventory": {
+      "type": "object",
+      "title": "Inventory",
+      "description": "Inventory information",
+      "properties": {
+        "manageStock": {
+          "type": "boolean",
+          "title": "Manage Stock",
+          "description": "Enable stock management"
+        },
+        "stockQuantity": {
+          "type": "integer",
+          "title": "Stock Quantity",
+          "description": "Current stock quantity"
+        },
+        "backorders": {
+          "type": "string",
+          "title": "Backorders",
+          "description": "Allow backorders?",
+          "enum": ["no", "notify", "yes"],
+          "enumNames": ["Do not allow", "Allow, but notify customer", "Allow"]
+        },
+        "lowStockThreshold": {
+          "type": "integer",
+          "title": "Low Stock Threshold",
+          "description": "Low stock threshold"
+        }
+      }
+    },
+    "shipping": {
+      "type": "object",
+      "title": "Shipping",
+      "description": "Shipping information",
+      "properties": {
+        "weight": {
+          "type": "number",
+          "title": "Weight (kg)",
+          "description": "Product weight in kilograms"
+        },
+        "dimensions": {
+          "type": "object",
+          "title": "Dimensions",
+          "properties": {
+            "length": {
+              "type": "number",
+              "title": "Length (cm)"
+            },
+            "width": {
+              "type": "number",
+              "title": "Width (cm)"
+            },
+            "height": {
+              "type": "number",
+              "title": "Height (cm)"
+            }
+          }
+        },
+        "shippingClass": {
+          "type": "string",
+          "title": "Shipping Class",
+          "description": "Shipping class"
+        }
+      }
+    },
+    "attributes": {
+      "type": "array",
+      "title": "Attributes",
+      "description": "Product attributes",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Attribute Name"
+          },
+          "value": {
+            "type": "string",
+            "title": "Attribute Value"
+          },
+          "visible": {
+            "type": "boolean",
+            "title": "Visible on Product Page"
+          }
+        },
+        "required": ["name", "value"]
+      }
+    },
+    "variants": {
+      "type": "array",
+      "title": "Variants",
+      "description": "Product variants",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sku": {
+            "type": "string",
+            "title": "Variant SKU"
+          },
+          "attributes": {
+            "type": "object",
+            "title": "Variant Attributes",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "price": {
+            "type": "number",
+            "title": "Variant Price"
+          },
+          "stockQuantity": {
+            "type": "integer",
+            "title": "Variant Stock Quantity"
+          }
+        },
+        "required": ["sku"]
+      }
+    },
+    "images": {
+      "type": "array",
+      "title": "Images",
+      "description": "Product images",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Image URL"
+          },
+          "alt": {
+            "type": "string",
+            "title": "Alt Text"
+          },
+          "position": {
+            "type": "integer",
+            "title": "Position"
+          }
+        },
+        "required": ["url"]
+      }
+    }
+  },
+  "required": ["basicInfo", "pricing"]
+} 

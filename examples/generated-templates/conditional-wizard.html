@@ -1,0 +1,1219 @@
+<div class="schema-form-container">
+  <form id="root" class="schema-form" data-schema-id="root">
+    
+    <div class="form-content">
+      <div id="root" data-schema-id="root" class="jsfgrid grid-cols-2 gap-4">
+  <h3>Registration Form</h3>
+  <p>User registration with conditional fields and wizard layout</p>
+  <div class="jsf-prop" data-property-name="personalInfo" data-schema-path="personalInfo">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Personal Information
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">Basic user details</span>
+  </label>
+  <div id="field-personalInfo" data-schema-id="field-personalInfo" class="jsfgrid grid-cols-2 gap-4">
+  <h3>Personal Information</h3>
+  <p>Basic user details</p>
+  <div class="jsf-prop" data-property-name="firstName" data-schema-path="firstName">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      First Name
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-personalInfo-firstName"
+    name="field-personalInfo-firstName"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-personalInfo-firstName"
+    data-schema-path="field-personalInfo-firstName"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="lastName" data-schema-path="lastName">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Last Name
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-personalInfo-lastName"
+    name="field-personalInfo-lastName"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-personalInfo-lastName"
+    data-schema-path="field-personalInfo-lastName"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="email" data-schema-path="email">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Email Address
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="email"
+    id="field-personalInfo-email"
+    name="field-personalInfo-email"
+    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+    data-schema-type="email"
+    data-schema-id="field-personalInfo-email"
+    data-schema-path="field-personalInfo-email"
+    required
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="phoneNumber" data-schema-path="phoneNumber">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Phone Number
+      
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-personalInfo-phoneNumber"
+    name="field-personalInfo-phoneNumber"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-personalInfo-phoneNumber"
+    data-schema-path="field-personalInfo-phoneNumber"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="dateOfBirth" data-schema-path="dateOfBirth">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Date of Birth
+      
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="date"
+    id="field-personalInfo-dateOfBirth"
+    name="field-personalInfo-dateOfBirth"
+    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+    data-schema-type="date"
+    data-schema-id="field-personalInfo-dateOfBirth"
+    data-schema-path="field-personalInfo-dateOfBirth"
+    
+    
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="userType" data-schema-path="userType">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      User Type
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="relative">
+  <select
+    id="field-personalInfo-userType"
+    name="field-personalInfo-userType"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 appearance-none"
+    data-schema-type="enum"
+    data-schema-id="field-personalInfo-userType"
+    data-schema-path="field-personalInfo-userType"
+    required
+  >
+    <option value="">-- Select --</option>
+    <option value="individual">individual</option>
+    <option value="business">business</option>
+    <option value="nonprofit">nonprofit</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+    </svg>
+  </div>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+  
+</div>
+
+</div> 
+<div class="jsf-prop" data-property-name="businessInfo" data-schema-path="businessInfo">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Business Information
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">Required for business accounts</span>
+  </label>
+  <div class="jsf-object" id="field-businessInfo" data-schema-id="field-businessInfo" data-schema-path="field-businessInfo">
+  <h2 class="jsf-object-title">Business Information</h2>
+  <p class="jsf-object-description">Required for business accounts</p>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="companyName" data-schema-path="companyName">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Company Name
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-businessInfo-companyName"
+    name="field-businessInfo-companyName"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-businessInfo-companyName"
+    data-schema-path="field-businessInfo-companyName"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="taxId" data-schema-path="taxId">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Tax ID&#x2F;EIN
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-businessInfo-taxId"
+    name="field-businessInfo-taxId"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-businessInfo-taxId"
+    data-schema-path="field-businessInfo-taxId"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="industry" data-schema-path="industry">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Industry
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="relative">
+  <select
+    id="field-businessInfo-industry"
+    name="field-businessInfo-industry"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 appearance-none"
+    data-schema-type="enum"
+    data-schema-id="field-businessInfo-industry"
+    data-schema-path="field-businessInfo-industry"
+    required
+  >
+    <option value="">-- Select --</option>
+    <option value="Technology">Technology</option>
+    <option value="Healthcare">Healthcare</option>
+    <option value="Manufacturing">Manufacturing</option>
+    <option value="Retail">Retail</option>
+    <option value="Finance">Finance</option>
+    <option value="Education">Education</option>
+    <option value="Other">Other</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+    </svg>
+  </div>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="employeeCount" data-schema-path="employeeCount">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Number of Employees
+      
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="number"
+    id="field-businessInfo-employeeCount"
+    name="field-businessInfo-employeeCount"
+    class="jsf-input"
+    data-schema-type="number"
+    data-schema-id="field-businessInfo-employeeCount"
+    data-schema-path="field-businessInfo-employeeCount"
+    
+    min="1"
+    
+    
+    step="1"
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="businessType" data-schema-path="businessType">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Business Type
+      
+    </span>
+  </label>
+  <div class="relative">
+  <select
+    id="field-businessInfo-businessType"
+    name="field-businessInfo-businessType"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 appearance-none"
+    data-schema-type="enum"
+    data-schema-id="field-businessInfo-businessType"
+    data-schema-path="field-businessInfo-businessType"
+    
+  >
+    <option value="">-- Select --</option>
+    <option value="Sole Proprietorship">Sole Proprietorship</option>
+    <option value="Partnership">Partnership</option>
+    <option value="LLC">LLC</option>
+    <option value="Corporation">Corporation</option>
+    <option value="Other">Other</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+    </svg>
+  </div>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+    <div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="if">
+  <div class="jsf-object" id="field-businessInfo-if" data-schema-id="field-businessInfo-if" data-schema-path="field-businessInfo-if">
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="industry" data-schema-path="industry">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      industry
+      
+    </span>
+  </label>
+  <div class="jsf-object" id="field-businessInfo-if-industry" data-schema-id="field-businessInfo-if-industry" data-schema-path="field-businessInfo-if-industry">
+  <div class="jsf-object-content">
+    
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="then">
+  <div class="jsf-object" id="field-businessInfo-then" data-schema-id="field-businessInfo-then" data-schema-path="field-businessInfo-then">
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="otherIndustry" data-schema-path="otherIndustry">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Please Specify Industry
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-businessInfo-then-otherIndustry"
+    name="field-businessInfo-then-otherIndustry"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-businessInfo-then-otherIndustry"
+    data-schema-path="field-businessInfo-then-otherIndustry"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+  </div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="nonprofitInfo" data-schema-path="nonprofitInfo">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Nonprofit Information
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">Required for nonprofit organizations</span>
+  </label>
+  <div class="jsf-object" id="field-nonprofitInfo" data-schema-id="field-nonprofitInfo" data-schema-path="field-nonprofitInfo">
+  <h2 class="jsf-object-title">Nonprofit Information</h2>
+  <p class="jsf-object-description">Required for nonprofit organizations</p>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="organizationName" data-schema-path="organizationName">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Organization Name
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-nonprofitInfo-organizationName"
+    name="field-nonprofitInfo-organizationName"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-nonprofitInfo-organizationName"
+    data-schema-path="field-nonprofitInfo-organizationName"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="taxExemptId" data-schema-path="taxExemptId">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Tax Exempt ID
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-nonprofitInfo-taxExemptId"
+    name="field-nonprofitInfo-taxExemptId"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-nonprofitInfo-taxExemptId"
+    data-schema-path="field-nonprofitInfo-taxExemptId"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="missionStatement" data-schema-path="missionStatement">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Mission Statement
+      
+    </span>
+  </label>
+  <div class="relative">
+  <textarea
+    id="field-nonprofitInfo-missionStatement"
+    name="field-nonprofitInfo-missionStatement"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 resize-y min-h-[120px]"
+    data-schema-type="string"
+    data-schema-id="field-nonprofitInfo-missionStatement"
+    data-schema-path="field-nonprofitInfo-missionStatement"
+    
+    
+    
+    placeholder=" "
+  ></textarea>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="foundingYear" data-schema-path="foundingYear">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Year Founded
+      
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="number"
+    id="field-nonprofitInfo-foundingYear"
+    name="field-nonprofitInfo-foundingYear"
+    class="jsf-input"
+    data-schema-type="number"
+    data-schema-id="field-nonprofitInfo-foundingYear"
+    data-schema-path="field-nonprofitInfo-foundingYear"
+    
+    min="1800"
+    max="2023"
+    
+    step="1"
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="address" data-schema-path="address">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Address Information
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-object" id="field-address" data-schema-id="field-address" data-schema-path="field-address">
+  <h2 class="jsf-object-title">Address Information</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="street" data-schema-path="street">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Street Address
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-address-street"
+    name="field-address-street"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-address-street"
+    data-schema-path="field-address-street"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="city" data-schema-path="city">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      City
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-address-city"
+    name="field-address-city"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-address-city"
+    data-schema-path="field-address-city"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="state" data-schema-path="state">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      State&#x2F;Province
+      
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-address-state"
+    name="field-address-state"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-address-state"
+    data-schema-path="field-address-state"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="zipCode" data-schema-path="zipCode">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Zip&#x2F;Postal Code
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-address-zipCode"
+    name="field-address-zipCode"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-address-zipCode"
+    data-schema-path="field-address-zipCode"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="country" data-schema-path="country">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Country
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-address-country"
+    name="field-address-country"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-address-country"
+    data-schema-path="field-address-country"
+    required
+    
+    
+    
+    
+    value="United States"
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="preferences" data-schema-path="preferences">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Preferences
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-object" id="field-preferences" data-schema-id="field-preferences" data-schema-path="field-preferences">
+  <h2 class="jsf-object-title">Preferences</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="receiveNewsletter" data-schema-path="receiveNewsletter">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Receive Newsletter
+      
+    </span>
+  </label>
+  <label class="inline-flex items-center cursor-pointer">
+  <div class="relative">
+    <input 
+      type="checkbox"
+      id="field-preferences-receiveNewsletter"
+      name="field-preferences-receiveNewsletter"
+      class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+      data-schema-type="boolean"
+      data-schema-id="field-preferences-receiveNewsletter"
+      data-schema-path="field-preferences-receiveNewsletter"
+      
+      checked
+    />
+    <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500">
+    </div>
+  </div>
+  <span class="ml-3 text-sm font-medium text-gray-700">Enabled</span>
+</label> 
+</div> 
+<div class="jsf-prop" data-property-name="communicationPreferences" data-schema-path="communicationPreferences">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Communication Preferences
+      
+    </span>
+  </label>
+  <div id="field-preferences-communicationPreferences" class="jsf-array" data-schema-type="array" data-schema-id="field-preferences-communicationPreferences" data-schema-path="field-preferences-communicationPreferences">
+  <h3 class="jsf-object-title">Communication Preferences</h3>
+
+  <div class="jsf-array-items">
+    <!-- Array item template will be cloned and inserted here dynamically -->
+    <div class="array-item-template hidden">
+      <div class="jsf-array-item">
+        <div class="jsf-array-item-content">
+          <div class="relative">
+  <select
+    id="field-preferences-communicationPreferences-items"
+    name="field-preferences-communicationPreferences-items"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 appearance-none"
+    data-schema-type="enum"
+    data-schema-id="field-preferences-communicationPreferences-items"
+    data-schema-path="field-preferences-communicationPreferences-items"
+    
+  >
+    <option value="">-- Select --</option>
+    <option value="Email">Email</option>
+    <option value="SMS">SMS</option>
+    <option value="Phone">Phone</option>
+    <option value="Mail">Mail</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+    </svg>
+  </div>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+        </div>
+        <button type="button" class="jsf-remove-btn" aria-label="Remove item">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="jsf-array-buttons">
+    <button type="button" class="jsf-add-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+      Add Item
+    </button>
+  </div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="interests" data-schema-path="interests">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Interests
+      
+    </span>
+  </label>
+  <div id="field-preferences-interests" class="jsf-array" data-schema-type="array" data-schema-id="field-preferences-interests" data-schema-path="field-preferences-interests">
+  <h3 class="jsf-object-title">Interests</h3>
+
+  <div class="jsf-array-items">
+    <!-- Array item template will be cloned and inserted here dynamically -->
+    <div class="array-item-template hidden">
+      <div class="jsf-array-item">
+        <div class="jsf-array-item-content">
+          <div class="jsf-object" id="field-preferences-interests-items" data-schema-id="field-preferences-interests-items" data-schema-path="field-preferences-interests-items">
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="category" data-schema-path="category">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Category
+      
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-preferences-interests-items-category"
+    name="field-preferences-interests-items-category"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-preferences-interests-items-category"
+    data-schema-path="field-preferences-interests-items-category"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="specificInterests" data-schema-path="specificInterests">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Specific Interests
+      
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-preferences-interests-items-specificInterests"
+    name="field-preferences-interests-items-specificInterests"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-preferences-interests-items-specificInterests"
+    data-schema-path="field-preferences-interests-items-specificInterests"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="priority" data-schema-path="priority">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Priority
+      
+    </span>
+  </label>
+  <div class="relative">
+  <select
+    id="field-preferences-interests-items-priority"
+    name="field-preferences-interests-items-priority"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 appearance-none"
+    data-schema-type="enum"
+    data-schema-id="field-preferences-interests-items-priority"
+    data-schema-path="field-preferences-interests-items-priority"
+    
+  >
+    <option value="">-- Select --</option>
+    <option value="High">High</option>
+    <option value="Medium">Medium</option>
+    <option value="Low">Low</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+    </svg>
+  </div>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+        </div>
+        <button type="button" class="jsf-remove-btn" aria-label="Remove item">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="jsf-array-buttons">
+    <button type="button" class="jsf-add-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+      Add Item
+    </button>
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="termsAndConditions" data-schema-path="termsAndConditions">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Terms and Conditions
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-object" id="field-termsAndConditions" data-schema-id="field-termsAndConditions" data-schema-path="field-termsAndConditions">
+  <h2 class="jsf-object-title">Terms and Conditions</h2>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="acceptTerms" data-schema-path="acceptTerms">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      I accept the Terms and Conditions
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <label class="inline-flex items-center cursor-pointer">
+  <div class="relative">
+    <input 
+      type="checkbox"
+      id="field-termsAndConditions-acceptTerms"
+      name="field-termsAndConditions-acceptTerms"
+      class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+      data-schema-type="boolean"
+      data-schema-id="field-termsAndConditions-acceptTerms"
+      data-schema-path="field-termsAndConditions-acceptTerms"
+      required
+      
+    />
+    <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500">
+    </div>
+  </div>
+  <span class="ml-3 text-sm font-medium text-gray-700">Disabled</span>
+</label> 
+</div> 
+<div class="jsf-prop" data-property-name="acceptPrivacyPolicy" data-schema-path="acceptPrivacyPolicy">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      I accept the Privacy Policy
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <label class="inline-flex items-center cursor-pointer">
+  <div class="relative">
+    <input 
+      type="checkbox"
+      id="field-termsAndConditions-acceptPrivacyPolicy"
+      name="field-termsAndConditions-acceptPrivacyPolicy"
+      class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+      data-schema-type="boolean"
+      data-schema-id="field-termsAndConditions-acceptPrivacyPolicy"
+      data-schema-path="field-termsAndConditions-acceptPrivacyPolicy"
+      required
+      
+    />
+    <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500">
+    </div>
+  </div>
+  <span class="ml-3 text-sm font-medium text-gray-700">Disabled</span>
+</label> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+  <div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="allOf">
+  <div class="jsf-object" id="field--allOf-0" data-schema-id="field--allOf-0" data-schema-path="field--allOf-0">
+  <div class="jsf-object-content">
+    
+    <div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="if">
+  <div class="jsf-object" id="field--allOf-0-if" data-schema-id="field--allOf-0-if" data-schema-path="field--allOf-0-if">
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="personalInfo" data-schema-path="personalInfo">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      personalInfo
+      
+    </span>
+  </label>
+  <div class="jsf-object" id="field--allOf-0-if-personalInfo" data-schema-id="field--allOf-0-if-personalInfo" data-schema-path="field--allOf-0-if-personalInfo">
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="userType" data-schema-path="userType">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      userType
+      
+    </span>
+  </label>
+  <div class="jsf-object" id="field--allOf-0-if-personalInfo-userType" data-schema-id="field--allOf-0-if-personalInfo-userType" data-schema-path="field--allOf-0-if-personalInfo-userType">
+  <div class="jsf-object-content">
+    
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="then">
+  <div class="jsf-object" id="field--allOf-0-then" data-schema-id="field--allOf-0-then" data-schema-path="field--allOf-0-then">
+  <div class="jsf-object-content">
+    
+    
+  </div>
+</div> 
+</div> 
+  </div>
+</div> 
+<div class="jsf-object" id="field--allOf-1" data-schema-id="field--allOf-1" data-schema-path="field--allOf-1">
+  <div class="jsf-object-content">
+    
+    <div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="if">
+  <div class="jsf-object" id="field--allOf-1-if" data-schema-id="field--allOf-1-if" data-schema-path="field--allOf-1-if">
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="personalInfo" data-schema-path="personalInfo">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      personalInfo
+      
+    </span>
+  </label>
+  <div class="jsf-object" id="field--allOf-1-if-personalInfo" data-schema-id="field--allOf-1-if-personalInfo" data-schema-path="field--allOf-1-if-personalInfo">
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="userType" data-schema-path="userType">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      userType
+      
+    </span>
+  </label>
+  <div class="jsf-object" id="field--allOf-1-if-personalInfo-userType" data-schema-id="field--allOf-1-if-personalInfo-userType" data-schema-path="field--allOf-1-if-personalInfo-userType">
+  <div class="jsf-object-content">
+    
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+</div> 
+<div class="conditional-container my-6 bg-gray-50 border-l-4 border-blue-400 p-4 rounded-r-md" data-conditional-type="then">
+  <div class="jsf-object" id="field--allOf-1-then" data-schema-id="field--allOf-1-then" data-schema-path="field--allOf-1-then">
+  <div class="jsf-object-content">
+    
+    
+  </div>
+</div> 
+</div> 
+  </div>
+</div> 
+</div> 
+</div>
+
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" class="btn-submit"></button>
+      <button type="button" class="btn-cancel"></button>
+    </div>
+  </form>
+</div>
+
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/array-table.css">
+
+<script type="text/javascript">
+  // Initialize form
+  (function() {
+    const form = document.getElementById('root');
+    if (!form) return;
+    
+    // Initialize array tables if the handlers are available
+    if (typeof window.ArrayTableHandlers !== 'undefined') {
+      window.ArrayTableHandlers.initArrayTables(form);
+    } else {
+      // Fallback initialization for array tables
+      const arrayTables = form.querySelectorAll('.array-table');
+      
+      arrayTables.forEach(table => {
+        const tbody = table.querySelector('tbody');
+        const rowTemplate = table.querySelector('.array-row-template');
+        const addButton = table.querySelector('.add-item');
+        
+        if (!tbody || !rowTemplate || !addButton) return;
+        
+        // Setup add item button
+        addButton.addEventListener('click', function() {
+          // Clone the template
+          const newRow = rowTemplate.cloneNode(true);
+          
+          // Remove template class
+          newRow.classList.remove('array-row-template');
+          newRow.classList.remove('hidden');
+          
+          // Generate unique IDs
+          const timestamp = Date.now();
+          const random = Math.floor(Math.random() * 10000);
+          const uniqueId = `${timestamp}-${random}`;
+          
+          // Update IDs and names
+          const inputs = newRow.querySelectorAll('input, select, textarea');
+          inputs.forEach(input => {
+            if (input.id) {
+              const newId = `${input.id}_${uniqueId}`;
+              input.id = newId;
+            }
+            
+            if (input.name) {
+              input.name = `${input.name}_${uniqueId}`;
+            }
+          });
+          
+          // Append the new row
+          tbody.appendChild(newRow);
+        });
+        
+        // Add initial row if table is empty
+        if (tbody.querySelectorAll('tr:not(.array-row-template)').length === 0) {
+          addButton.click();
+        }
+        
+        // Handle delete buttons
+        tbody.addEventListener('click', function(event) {
+          const target = event.target;
+          
+          if (target.classList.contains('action-delete') || target.closest('.action-delete')) {
+            const row = target.closest('tr');
+            if (!row) return;
+            
+            // Get all visible rows
+            const visibleRows = Array.from(tbody.querySelectorAll('tr')).filter(r => 
+              !r.classList.contains('array-row-template') && 
+              !r.classList.contains('hidden')
+            );
+            
+            // Only remove if there's more than one row
+            if (visibleRows.length > 1) {
+              row.remove();
+            }
+          }
+        });
+      });
+    }
+    
+    // Form submission handling
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      // Collect form data
+      const formData = new FormData(form);
+      const data = {};
+      
+      for (const [key, value] of formData.entries()) {
+        // Handle special cases like checkboxes, arrays, etc.
+        if (key.includes('[]')) {
+          const cleanKey = key.replace('[]', '');
+          if (!data[cleanKey]) {
+            data[cleanKey] = [];
+          }
+          data[cleanKey].push(value);
+        } else {
+          data[key] = value;
+        }
+      }
+      
+      // Handle array tables
+      const arrayTables = form.querySelectorAll('.array-table');
+      arrayTables.forEach(table => {
+        const schemaId = table.getAttribute('data-schema-id');
+        if (!schemaId) return;
+        
+        // Get the array data
+        let arrayData = [];
+        
+        if (typeof window.ArrayTableHandlers !== 'undefined') {
+          // Use the array table handlers if available
+          arrayData = window.ArrayTableHandlers.getArrayTableData(table, window.schemaRegistry[schemaId]);
+        } else {
+          // Fallback data collection
+          const tbody = table.querySelector('tbody');
+          if (!tbody) return;
+          
+          const rows = Array.from(tbody.querySelectorAll('tr')).filter(row => 
+            !row.classList.contains('array-row-template') && 
+            !row.classList.contains('hidden')
+          );
+          
+          arrayData = rows.map(row => {
+            const rowData = {};
+            const cells = row.querySelectorAll('td[data-field]');
+            
+            cells.forEach(cell => {
+              const fieldName = cell.getAttribute('data-field');
+              if (fieldName === 'actions') return;
+              
+              const input = cell.querySelector('input, select, textarea');
+              if (input) {
+                if (input.type === 'checkbox') {
+                  rowData[fieldName] = input.checked;
+                } else {
+                  rowData[fieldName] = input.value;
+                }
+              }
+            });
+            
+            return rowData;
+          });
+        }
+        
+        // Add array data to the form data
+        data[schemaId] = arrayData;
+      });
+      
+      // Emit form submit event with data
+      const submitEvent = new CustomEvent('schema-form:submit', {
+        bubbles: true,
+        cancelable: true,
+        detail: { formId: form.id, data: data }
+      });
+      
+      form.dispatchEvent(submitEvent);
+    });
+  })();
+</script> 

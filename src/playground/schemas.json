@@ -1,0 +1,58 @@
+{
+  "userSchema": {
+    "$id": "user",
+    "type": "object",
+    "properties": {
+      "name": { "type": "string" },
+      "age": { "type": "number" },
+      "email": { "type": "string", "format": "email" },
+      "address": {
+        "type": "object",
+        "properties": {
+          "street": { "type": "string" },
+          "city": { "type": "string" },
+          "zip": { "type": "string" }
+        },
+        "required": ["street", "city", "zip"]
+      }
+    },
+    "required": ["name", "email"]
+  },
+  "productSchema": {
+    "$id": "product",
+    "type": "object",
+    "properties": {
+      "id": { "type": "string" },
+      "name": { "type": "string" },
+      "price": { "type": "number" },
+      "inStock": { "type": "boolean" },
+      "variants": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "size": { "type": "string" },
+            "color": { "type": "string" },
+            "stock": { "type": "number" }
+          },
+          "required": ["size", "color"]
+        }
+      }
+    },
+    "required": ["id", "name", "price"]
+  },
+  "orderSchema": {
+    "$id": "order",
+    "type": "object",
+    "properties": {
+      "userId": { "type": "string" },
+      "products": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "totalAmount": { "type": "number" },
+      "status": { "type": "string", "enum": ["pending", "completed", "canceled"] }
+    },
+    "required": ["userId", "products", "totalAmount"]
+  }
+}

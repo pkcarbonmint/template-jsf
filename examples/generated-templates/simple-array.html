@@ -1,0 +1,440 @@
+<div class="schema-form-container">
+  <form id="root" class="schema-form" data-schema-id="root">
+    
+    <div class="form-content">
+      <div class="jsf-object" id="root" data-schema-id="root" data-schema-path="root">
+  <h2 class="jsf-object-title">Simple Form with Array Table</h2>
+  <p class="jsf-object-description">A form demonstrating array tables and other input types</p>
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="name" data-schema-path="name">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Name
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">Your full name</span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-name"
+    name="field-name"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-name"
+    data-schema-path="field-name"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="email" data-schema-path="email">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Email Address
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">Your contact email</span>
+  </label>
+  <div class="relative">
+  <input 
+    type="email"
+    id="field-email"
+    name="field-email"
+    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+    data-schema-type="email"
+    data-schema-id="field-email"
+    data-schema-path="field-email"
+    required
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="contacts" data-schema-path="contacts">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Contacts
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">List of contacts</span>
+  </label>
+  <div id="field-contacts" class="jsf-array" data-schema-type="array" data-schema-id="field-contacts" data-schema-path="field-contacts">
+  <h3 class="jsf-object-title">Contacts</h3>
+  <p class="jsf-object-description">List of contacts</p>
+
+  <div class="jsf-array-items">
+    <!-- Array item template will be cloned and inserted here dynamically -->
+    <div class="array-item-template hidden">
+      <div class="jsf-array-item">
+        <div class="jsf-array-item-content">
+          <div class="jsf-object" id="field-contacts-items" data-schema-id="field-contacts-items" data-schema-path="field-contacts-items">
+  <div class="jsf-object-content">
+    <div class="jsf-prop" data-property-name="name" data-schema-path="name">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Contact Name
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-contacts-items-name"
+    name="field-contacts-items-name"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-contacts-items-name"
+    data-schema-path="field-contacts-items-name"
+    required
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="email" data-schema-path="email">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Contact Email
+      <span class="jsf-required">*</span>
+    </span>
+  </label>
+  <div class="relative">
+  <input 
+    type="email"
+    id="field-contacts-items-email"
+    name="field-contacts-items-email"
+    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+    data-schema-type="email"
+    data-schema-id="field-contacts-items-email"
+    data-schema-path="field-contacts-items-email"
+    required
+    
+    placeholder=" "
+  />
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="phone" data-schema-path="phone">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Phone Number
+      
+    </span>
+  </label>
+  <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-contacts-items-phone"
+    name="field-contacts-items-phone"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-contacts-items-phone"
+    data-schema-path="field-contacts-items-phone"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="type" data-schema-path="type">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Contact Type
+      
+    </span>
+  </label>
+  <div class="relative">
+  <select
+    id="field-contacts-items-type"
+    name="field-contacts-items-type"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 appearance-none"
+    data-schema-type="enum"
+    data-schema-id="field-contacts-items-type"
+    data-schema-path="field-contacts-items-type"
+    
+  >
+    <option value="">-- Select --</option>
+    <option value="Personal">Personal</option>
+    <option value="Business">Business</option>
+    <option value="Family">Family</option>
+    <option value="Other">Other</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+    </svg>
+  </div>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+        </div>
+        <button type="button" class="jsf-remove-btn" aria-label="Remove item">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="jsf-array-buttons">
+    <button type="button" class="jsf-add-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+      Add Item
+    </button>
+  </div>
+</div> 
+</div> 
+<div class="jsf-prop" data-property-name="tags" data-schema-path="tags">
+  <label class="jsf-label">
+    <span class="jsf-label-text">
+      Tags
+      <span class="jsf-required">*</span>
+    </span>
+    <span class="jsf-desc">Simple string array of tags</span>
+  </label>
+  <div id="field-tags" class="jsf-array" data-schema-type="array" data-schema-id="field-tags" data-schema-path="field-tags">
+  <h3 class="jsf-object-title">Tags</h3>
+  <p class="jsf-object-description">Simple string array of tags</p>
+
+  <div class="jsf-array-items">
+    <!-- Array item template will be cloned and inserted here dynamically -->
+    <div class="array-item-template hidden">
+      <div class="jsf-array-item">
+        <div class="jsf-array-item-content">
+          <div class="jsf-input-container">
+  <input 
+    type="text"
+    id="field-tags-items"
+    name="field-tags-items"
+    class="jsf-input"
+    data-schema-type="string"
+    data-schema-id="field-tags-items"
+    data-schema-path="field-tags-items"
+    
+    
+    
+    
+    
+    
+    placeholder=" "
+  />
+  <div class="jsf-focus-line"></div>
+</div> 
+        </div>
+        <button type="button" class="jsf-remove-btn" aria-label="Remove item">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="jsf-array-buttons">
+    <button type="button" class="jsf-add-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+      Add Item
+    </button>
+  </div>
+</div> 
+</div> 
+    
+  </div>
+</div> 
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" class="btn-submit"></button>
+      <button type="button" class="btn-cancel"></button>
+    </div>
+  </form>
+</div>
+
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/array-table.css">
+
+<script type="text/javascript">
+  // Initialize form
+  (function() {
+    const form = document.getElementById('root');
+    if (!form) return;
+    
+    // Initialize array tables if the handlers are available
+    if (typeof window.ArrayTableHandlers !== 'undefined') {
+      window.ArrayTableHandlers.initArrayTables(form);
+    } else {
+      // Fallback initialization for array tables
+      const arrayTables = form.querySelectorAll('.array-table');
+      
+      arrayTables.forEach(table => {
+        const tbody = table.querySelector('tbody');
+        const rowTemplate = table.querySelector('.array-row-template');
+        const addButton = table.querySelector('.add-item');
+        
+        if (!tbody || !rowTemplate || !addButton) return;
+        
+        // Setup add item button
+        addButton.addEventListener('click', function() {
+          // Clone the template
+          const newRow = rowTemplate.cloneNode(true);
+          
+          // Remove template class
+          newRow.classList.remove('array-row-template');
+          newRow.classList.remove('hidden');
+          
+          // Generate unique IDs
+          const timestamp = Date.now();
+          const random = Math.floor(Math.random() * 10000);
+          const uniqueId = `${timestamp}-${random}`;
+          
+          // Update IDs and names
+          const inputs = newRow.querySelectorAll('input, select, textarea');
+          inputs.forEach(input => {
+            if (input.id) {
+              const newId = `${input.id}_${uniqueId}`;
+              input.id = newId;
+            }
+            
+            if (input.name) {
+              input.name = `${input.name}_${uniqueId}`;
+            }
+          });
+          
+          // Append the new row
+          tbody.appendChild(newRow);
+        });
+        
+        // Add initial row if table is empty
+        if (tbody.querySelectorAll('tr:not(.array-row-template)').length === 0) {
+          addButton.click();
+        }
+        
+        // Handle delete buttons
+        tbody.addEventListener('click', function(event) {
+          const target = event.target;
+          
+          if (target.classList.contains('action-delete') || target.closest('.action-delete')) {
+            const row = target.closest('tr');
+            if (!row) return;
+            
+            // Get all visible rows
+            const visibleRows = Array.from(tbody.querySelectorAll('tr')).filter(r => 
+              !r.classList.contains('array-row-template') && 
+              !r.classList.contains('hidden')
+            );
+            
+            // Only remove if there's more than one row
+            if (visibleRows.length > 1) {
+              row.remove();
+            }
+          }
+        });
+      });
+    }
+    
+    // Form submission handling
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      // Collect form data
+      const formData = new FormData(form);
+      const data = {};
+      
+      for (const [key, value] of formData.entries()) {
+        // Handle special cases like checkboxes, arrays, etc.
+        if (key.includes('[]')) {
+          const cleanKey = key.replace('[]', '');
+          if (!data[cleanKey]) {
+            data[cleanKey] = [];
+          }
+          data[cleanKey].push(value);
+        } else {
+          data[key] = value;
+        }
+      }
+      
+      // Handle array tables
+      const arrayTables = form.querySelectorAll('.array-table');
+      arrayTables.forEach(table => {
+        const schemaId = table.getAttribute('data-schema-id');
+        if (!schemaId) return;
+        
+        // Get the array data
+        let arrayData = [];
+        
+        if (typeof window.ArrayTableHandlers !== 'undefined') {
+          // Use the array table handlers if available
+          arrayData = window.ArrayTableHandlers.getArrayTableData(table, window.schemaRegistry[schemaId]);
+        } else {
+          // Fallback data collection
+          const tbody = table.querySelector('tbody');
+          if (!tbody) return;
+          
+          const rows = Array.from(tbody.querySelectorAll('tr')).filter(row => 
+            !row.classList.contains('array-row-template') && 
+            !row.classList.contains('hidden')
+          );
+          
+          arrayData = rows.map(row => {
+            const rowData = {};
+            const cells = row.querySelectorAll('td[data-field]');
+            
+            cells.forEach(cell => {
+              const fieldName = cell.getAttribute('data-field');
+              if (fieldName === 'actions') return;
+              
+              const input = cell.querySelector('input, select, textarea');
+              if (input) {
+                if (input.type === 'checkbox') {
+                  rowData[fieldName] = input.checked;
+                } else {
+                  rowData[fieldName] = input.value;
+                }
+              }
+            });
+            
+            return rowData;
+          });
+        }
+        
+        // Add array data to the form data
+        data[schemaId] = arrayData;
+      });
+      
+      // Emit form submit event with data
+      const submitEvent = new CustomEvent('schema-form:submit', {
+        bubbles: true,
+        cancelable: true,
+        detail: { formId: form.id, data: data }
+      });
+      
+      form.dispatchEvent(submitEvent);
+    });
+  })();
+</script> 

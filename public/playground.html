@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Schema Form Playground</title>
+  <link rel="stylesheet" href="css/playground.css">
+  <!-- CodeMirror CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/theme/monokai.min.css">
+  <!-- Load CodeMirror and JSON mode -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/lint/lint.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/lint/json-lint.min.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="header-content">
+        <h1>JSON Schema Form Playground</h1>
+        <div class="header-actions">
+          <button id="new-schema-btn" class="btn btn-secondary">New Schema</button>
+          <button id="save-schema-btn" class="btn btn-primary">Save Schema</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-content">
+      <div class="sidebar">
+        <div class="sidebar-section">
+          <h2>Schemas</h2>
+          <select id="schema-select" class="schema-select">
+            <option value="">Select a schema</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div class="editors">
+          <div class="editor-container">
+            <div class="editor-header">
+              <h2>Schema</h2>
+              <div class="editor-actions">
+                <button id="format-schema-btn" class="btn btn-sm">Format</button>
+              </div>
+            </div>
+            <textarea id="schema-editor"></textarea>
+          </div>
+
+          <div class="editor-container">
+            <div class="editor-header">
+              <h2>Layout</h2>
+              <div class="editor-actions">
+                <button id="format-layout-btn" class="btn btn-sm">Format</button>
+              </div>
+            </div>
+            <textarea id="layout-editor"></textarea>
+          </div>
+        </div>
+
+        <div class="preview-container">
+          <div class="preview-header">
+            <h2>Preview</h2>
+            <div class="preview-actions">
+              <button id="refresh-preview-btn" class="btn btn-sm">Refresh</button>
+            </div>
+          </div>
+          <div id="template-preview" class="template-preview">
+            <div class="empty-state">
+              <div class="empty-state-icon">📝</div>
+              <h3>Select a schema to preview</h3>
+              <p>Edit the schema or layout and see the changes in real-time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      <p>JSON Schema Form Generator</p>
+    </footer>
+  </div>
+
+  <!-- Load the playground scripts -->
+  <script src="js/playground.js"></script>
+</body>
+</html> 

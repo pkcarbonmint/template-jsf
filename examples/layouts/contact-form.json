@@ -1,0 +1,38 @@
+{
+  "form": [
+    {
+      "key": "firstName",
+      "htmlClass": "col-md-6"
+    },
+    {
+      "key": "lastName",
+      "htmlClass": "col-md-6"
+    },
+    {
+      "key": "email",
+      "htmlClass": "col-md-6"
+    },
+    {
+      "key": "phone",
+      "htmlClass": "col-md-6"
+    },
+    {
+      "key": "subject",
+      "htmlClass": "col-md-12"
+    },
+    {
+      "key": "message",
+      "type": "textarea",
+      "htmlClass": "col-md-12"
+    },
+    {
+      "key": "preferredContact",
+      "type": "radios",
+      "htmlClass": "col-md-6"
+    },
+    {
+      "key": "urgent",
+      "htmlClass": "col-md-6"
+    }
+  ]
+} 

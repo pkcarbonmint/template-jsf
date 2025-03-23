@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Schema Form Template Playground</title>
+  <style>
+    :root {
+      --primary-color: #3b82f6;
+      --primary-hover: #2563eb;
+      --secondary-color: #6b7280;
+      --secondary-hover: #4b5563;
+      --success-color: #10b981;
+      --error-color: #ef4444;
+      --warning-color: #f59e0b;
+      --background-color: #f3f4f6;
+      --border-color: #d1d5db;
+      --text-color: #1f2937;
+      --text-light: #6b7280;
+      --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.5;
+      color: var(--text-color);
+      background-color: var(--background-color);
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    header {
+      background-color: white;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    
+    .controls {
+      background-color: white;
+      padding: 1rem;
+      margin: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: var(--shadow);
+    }
+    
+    .control-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    label {
+      font-weight: 500;
+    }
+    
+    select, button {
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      border: 1px solid var(--border-color);
+      background-color: white;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+    
+    select {
+      min-width: 200px;
+    }
+    
+    button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      border-color: var(--primary-hover);
+    }
+    
+    .btn-secondary {
+      background-color: white;
+      color: var(--text-color);
+      border-color: var(--border-color);
+    }
+    
+    .btn-secondary:hover {
+      background-color: var(--background-color);
+    }
+    
+    main {
+      flex: 1;
+      padding: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .template-container {
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      flex-grow: 1;
+      margin-bottom: 1rem;
+      min-height: 400px;
+    }
+    
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: var(--text-light);
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .empty-state-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .results-container {
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      margin-top: 1rem;
+      display: none;
+    }
+    
+    .results-container h2 {
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+    }
+    
+    pre {
+      background-color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 0.25rem;
+      overflow: auto;
+      font-family: monospace;
+      font-size: 0.875rem;
+    }
+    
+    footer {
+      background-color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-light);
+      margin-top: auto;
+    }
+    
+    .form-mode-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    /* Toggle Switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+    }
+    
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--secondary-color);
+      transition: .4s;
+      border-radius: 24px;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+      background-color: var(--primary-color);
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+    
+    /* Loading spinner */
+    .loading {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      border-top-color: var(--primary-color);
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <h1>JSON Schema Form Template Playground</h1>
+        <div class="btn-group">
+          <button id="reload-template" class="btn-secondary">
+            ↻ Reload
+          </button>
+          <button id="save-template" class="btn-primary">
+            💾 Save
+          </button>
+        </div>
+      </div>
+    </header>
+    
+    <div class="controls">
+      <div class="control-row">
+        <div class="control-group">
+          <label for="template-select">Template:</label>
+          <select id="template-select">
+            <option value="">Select a template</option>
+            <option value="simple-array">Simple Array</option>
+            <option value="complex-layout">Complex Layout</option>
+            <option value="conditional-wizard">Conditional Wizard</option>
+            <option value="modal-form-demo">Modal Form Demo</option>
+            <option value="simple-form">Simple User Form</option>
+            <option value="registration-with-array">Registration with Array Tables</option>
+            <option value="tabbed-form">Tabbed Form Layout</option>
+            <option value="wizard-form">Wizard Form</option>
+          </select>
+        </div>
+        
+        <div class="form-mode-toggle">
+          <label for="edit-mode">Edit Mode:</label>
+          <label class="switch">
+            <input type="checkbox" id="edit-mode">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    
+    <main>
+      <div class="template-container" id="template-container">
+        <div class="empty-state" id="empty-state">
+          <div class="empty-state-icon">📝</div>
+          <h2>Select a template to get started</h2>
+          <p>Choose a template from the dropdown above to load it here.</p>
+        </div>
+        <div class="loading" id="loading">
+          <div class="spinner"></div>
+        </div>
+        <div id="template-content"></div>
+      </div>
+      
+      <div class="results-container" id="results-container">
+        <h2>Form Submission Data</h2>
+        <pre id="form-data"></pre>
+      </div>
+    </main>
+    
+    <footer>
+      <p>© 2023 JSON Schema Form Generator</p>
+    </footer>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // DOM Elements
+      const templateSelect = document.getElementById('template-select');
+      const templateContainer = document.getElementById('template-container');
+      const templateContent = document.getElementById('template-content');
+      const emptyState = document.getElementById('empty-state');
+      const loading = document.getElementById('loading');
+      const editModeToggle = document.getElementById('edit-mode');
+      const resultsContainer = document.getElementById('results-container');
+      const formDataDisplay = document.getElementById('form-data');
+      const reloadButton = document.getElementById('reload-template');
+      const saveButton = document.getElementById('save-template');
+      
+      // Current template state
+      let currentTemplate = '';
+      let editMode = false;
+      let originalContent = '';
+      let arrayTableHandlersInitialized = false;
+      let layoutHandlersInitialized = false;
+      
+      // Initialize array table handlers if script exists
+      function initializeHandlers() {
+        if (typeof initArrayTableHandlers === 'function' && !arrayTableHandlersInitialized) {
+          initArrayTableHandlers();
+          arrayTableHandlersInitialized = true;
+          console.log('Array table handlers initialized');
+        }
+        
+        if (typeof initTabHandlers === 'function' && !layoutHandlersInitialized) {
+          initTabHandlers();
+          initVerticalTabs();
+          initWizardHandlers();
+          initConditionalVisibility();
+          layoutHandlersInitialized = true;
+          console.log('Layout handlers initialized');
+        }
+      }
+      
+      // Load a template
+      function loadTemplate(templateName) {
+        if (!templateName) {
+          emptyState.style.display = 'flex';
+          templateContent.style.display = 'none';
+          resultsContainer.style.display = 'none';
+          currentTemplate = '';
+          return;
+        }
+        
+        currentTemplate = templateName;
+        
+        // Show loading
+        emptyState.style.display = 'none';
+        templateContent.style.display = 'none';
+        loading.style.display = 'flex';
+        
+        // Fetch the template
+        fetch(`generated-templates/${templateName}.html`)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+          })
+          .then(html => {
+            // Store original content
+            originalContent = html;
+            
+            // Display the template
+            templateContent.innerHTML = html;
+            templateContent.style.display = 'block';
+            loading.style.display = 'none';
+            
+            // Initialize any handlers
+            setTimeout(initializeHandlers, 100);
+            
+            // Setup form submission
+            const forms = templateContent.querySelectorAll('form');
+            forms.forEach(form => {
+              form.addEventListener('submit', handleFormSubmit);
+            });
+            
+            // Apply edit mode if enabled
+            applyEditMode();
+          })
+          .catch(error => {
+            console.error('Error loading template:', error);
+            templateContent.innerHTML = `<div class="error">Error loading template: ${error.message}</div>`;
+            templateContent.style.display = 'block';
+            loading.style.display = 'none';
+          });
+      }
+      
+      // Handle form submission
+      function handleFormSubmit(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(e.target);
+        const formDataObject = {};
+        
+        // Add basic form fields
+        for (const [key, value] of formData.entries()) {
+          if (formDataObject[key]) {
+            // Handle multiple values for same key (checkboxes)
+            if (!Array.isArray(formDataObject[key])) {
+              formDataObject[key] = [formDataObject[key]];
+            }
+            formDataObject[key].push(value);
+          } else {
+            formDataObject[key] = value;
+          }
+        }
+        
+        // Add array items if they exist
+        if (typeof getArrayItems === 'function') {
+          const arrayContainers = e.target.querySelectorAll('.array-table-container');
+          arrayContainers.forEach(container => {
+            const arrayName = container.getAttribute('data-array-name');
+            if (arrayName) {
+              formDataObject[arrayName] = getArrayItems(arrayName);
+            }
+          });
+          
+          const stringArrayContainers = e.target.querySelectorAll('.string-array-container');
+          stringArrayContainers.forEach(container => {
+            const arrayName = container.getAttribute('data-array-name');
+            if (arrayName) {
+              formDataObject[arrayName] = getStringArrayItems(arrayName);
+            }
+          });
+        }
+        
+        // Display the results
+        formDataDisplay.textContent = JSON.stringify(formDataObject, null, 2);
+        resultsContainer.style.display = 'block';
+        
+        // Scroll to results
+        resultsContainer.scrollIntoView({ behavior: 'smooth' });
+        
+        console.log('Form submitted:', formDataObject);
+      }
+      
+      // Apply or remove edit mode
+      function applyEditMode() {
+        if (!currentTemplate) return;
+        
+        if (editMode) {
+          templateContent.contentEditable = 'true';
+          templateContent.style.border = '2px dashed var(--primary-color)';
+          templateContent.style.padding = '1rem';
+          
+          // Disable form submissions in edit mode
+          const forms = templateContent.querySelectorAll('form');
+          forms.forEach(form => {
+            form.onsubmit = e => e.preventDefault();
+          });
+        } else {
+          templateContent.contentEditable = 'false';
+          templateContent.style.border = 'none';
+          templateContent.style.padding = '0';
+          
+          // Re-enable form submissions
+          const forms = templateContent.querySelectorAll('form');
+          forms.forEach(form => {
+            form.onsubmit = handleFormSubmit;
+          });
+        }
+      }
+      
+      // Event Listeners
+      templateSelect.addEventListener('change', function() {
+        loadTemplate(this.value);
+      });
+      
+      editModeToggle.addEventListener('change', function() {
+        editMode = this.checked;
+        applyEditMode();
+      });
+      
+      reloadButton.addEventListener('click', function() {
+        if (currentTemplate) {
+          // Reset to original content if in edit mode
+          if (editMode && originalContent) {
+            templateContent.innerHTML = originalContent;
+            
+            // Re-initialize handlers
+            setTimeout(initializeHandlers, 100);
+            
+            alert('Template has been reset to original content.');
+          } else {
+            // Reload the current template
+            loadTemplate(currentTemplate);
+          }
+        }
+      });
+      
+      saveButton.addEventListener('click', function() {
+        if (!currentTemplate) return;
+        
+        if (editMode) {
+          // Save the edited content
+          const content = templateContent.innerHTML;
+          
+          // In a real app, you would save this to the server
+          console.log('Template content saved:', content);
+          
+          // Store as new original to prevent losing changes on reload
+          originalContent = content;
+          
+          alert('Template changes have been saved.');
+        } else {
+          alert('Enable Edit Mode to make changes before saving.');
+        }
+      });
+      
+      // Load initial template if specified in URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialTemplate = urlParams.get('template');
+      
+      if (initialTemplate) {
+        templateSelect.value = initialTemplate;
+        loadTemplate(initialTemplate);
+      }
+    });
+  </script>
+</body>
+</html> 

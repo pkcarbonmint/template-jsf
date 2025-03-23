@@ -34,6 +34,164 @@
     .action-button.secondary:hover {
       background-color: #4b5563;
     }
+    
+    /* Array table styles */
+    .array-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+    }
+    
+    .array-table th, .array-table td {
+      padding: 0.75rem;
+      border: 1px solid #e5e7eb;
+    }
+    
+    .array-table th {
+      background-color: #f9fafb;
+      font-weight: 500;
+      text-align: left;
+    }
+    
+    .array-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .array-action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 0.25rem;
+      background-color: #f3f4f6;
+      border: 1px solid #d1d5db;
+      color: #374151;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .array-action-btn:hover {
+      background-color: #e5e7eb;
+    }
+    
+    .array-action-btn.edit:hover {
+      background-color: #bfdbfe;
+      border-color: #3b82f6;
+      color: #3b82f6;
+    }
+    
+    .array-action-btn.delete:hover {
+      background-color: #fee2e2;
+      border-color: #ef4444;
+      color: #ef4444;
+    }
+    
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    
+    .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 50%;
+      max-width: 600px;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .modal-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #111827;
+    }
+    
+    .modal-close {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #9ca3af;
+      cursor: pointer;
+    }
+    
+    .modal-close:hover {
+      color: #6b7280;
+    }
+    
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid #e5e7eb;
+    }
+    
+    /* Tab styles */
+    .tabs {
+      margin-bottom: 1.5rem;
+    }
+    
+    .tab-nav {
+      display: flex;
+      border-bottom: 1px solid #e5e7eb;
+      margin-bottom: 1rem;
+    }
+    
+    .tab-button {
+      padding: 0.5rem 1rem;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      margin-right: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .tab-button:hover {
+      color: #3b82f6;
+    }
+    
+    .tab-button.active {
+      color: #3b82f6;
+      border-bottom-color: #3b82f6;
+    }
+    
+    .tab-content {
+      display: none;
+      padding: 1rem 0;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    /* Grid layout */
+    .grid-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+    }
   </style>
 </head>
 <body class="bg-gray-100">
@@ -50,9 +208,10 @@
   <div class="controls px-4 py-3 sm:px-6 flex space-x-4 items-center bg-white">
     <label class="font-medium text-gray-700">Select Template:</label>
     <select id="template-selector" class="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-      <option value="simple-material.html">Simple User Schema</option>
-      <option value="medium.html">Medium Product Schema</option>
-      <option value="complex.html">Complex Schema</option>
+      <option value="simple-form.html">Simple User Form</option>
+      <option value="array-table-form.html">Array Table Form</option>
+      <option value="tabs-layout-form.html">Tabs Layout Form</option>
+      <option value="complex-form.html">Complex Form</option>
     </select>
     
     <div class="ml-auto flex items-center space-x-2">
@@ -75,6 +234,25 @@
       JSON Schema Form Template Playground
     </div>
   </footer>
+  
+  <!-- Modal for array items -->
+  <div id="array-item-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Add/Edit Item</h2>
+        <span class="modal-close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form id="array-item-form">
+          <!-- Form fields will be injected here -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="action-button secondary modal-cancel">Cancel</button>
+        <button type="button" class="action-button modal-save">Save</button>
+      </div>
+    </div>
+  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -83,9 +261,203 @@
       const editModeToggle = document.getElementById('edit-mode');
       const reloadBtn = document.getElementById('reload-btn');
       const saveBtn = document.getElementById('save-btn');
+      const arrayItemModal = document.getElementById('array-item-modal');
+      const arrayItemForm = document.getElementById('array-item-form');
+      const modalClose = document.querySelector('.modal-close');
+      const modalCancel = document.querySelector('.modal-cancel');
+      const modalSave = document.querySelector('.modal-save');
       
       let currentTemplate = null;
       let originalHTML = null;
+      let currentArrayTable = null;
+      let editRowIndex = null;
+      
+      // Initialize array table handlers
+      function initArrayTables() {
+        const arrayTables = templateContainer.querySelectorAll('.array-table');
+        
+        arrayTables.forEach(table => {
+          const addButton = table.parentElement.querySelector('.add-array-item');
+          if (addButton) {
+            addButton.addEventListener('click', function() {
+              openArrayItemModal(table);
+            });
+          }
+          
+          // Setup edit/delete buttons for existing rows
+          const tableRows = table.querySelectorAll('tbody tr');
+          tableRows.forEach((row, index) => {
+            setupRowActions(row, table, index);
+          });
+        });
+      }
+      
+      // Setup row actions
+      function setupRowActions(row, table, index) {
+        const editBtn = row.querySelector('.edit-row');
+        const deleteBtn = row.querySelector('.delete-row');
+        
+        if (editBtn) {
+          editBtn.addEventListener('click', function() {
+            const rowData = {};
+            const cells = row.querySelectorAll('td:not(.array-actions)');
+            cells.forEach((cell, cellIndex) => {
+              const headerCell = table.querySelector(`thead th:nth-child(${cellIndex + 1})`);
+              const fieldName = headerCell.getAttribute('data-field');
+              if (fieldName) {
+                rowData[fieldName] = cell.textContent.trim();
+              }
+            });
+            
+            openArrayItemModal(table, rowData, index);
+          });
+        }
+        
+        if (deleteBtn) {
+          deleteBtn.addEventListener('click', function() {
+            if (confirm('Are you sure you want to delete this item?')) {
+              row.remove();
+            }
+          });
+        }
+      }
+      
+      // Open array item modal
+      function openArrayItemModal(table, rowData = null, rowIndex = null) {
+        currentArrayTable = table;
+        editRowIndex = rowIndex;
+        
+        // Clear previous form fields
+        arrayItemForm.innerHTML = '';
+        
+        // Get fields from the table headers
+        const headers = table.querySelectorAll('thead th:not(.actions-column)');
+        
+        // Create form fields based on headers
+        headers.forEach(header => {
+          const fieldName = header.getAttribute('data-field');
+          const fieldType = header.getAttribute('data-type') || 'text';
+          
+          if (!fieldName) return;
+          
+          const fieldValue = rowData ? rowData[fieldName] : '';
+          
+          const fieldHTML = `
+            <div class="mb-4">
+              <label for="${fieldName}" class="block font-medium text-gray-700 mb-1">${header.textContent}</label>
+              <input type="${fieldType}" id="${fieldName}" name="${fieldName}" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" value="${fieldValue}">
+            </div>
+          `;
+          
+          arrayItemForm.insertAdjacentHTML('beforeend', fieldHTML);
+        });
+        
+        // Update modal title
+        const modalTitle = document.querySelector('.modal-title');
+        modalTitle.textContent = rowData ? 'Edit Item' : 'Add Item';
+        
+        // Show modal
+        arrayItemModal.style.display = 'block';
+      }
+      
+      // Save array item
+      function saveArrayItem() {
+        if (!currentArrayTable) return;
+        
+        // Get form values
+        const formData = new FormData(arrayItemForm);
+        const formValues = {};
+        
+        for (const [key, value] of formData.entries()) {
+          formValues[key] = value;
+        }
+        
+        // Get table body
+        const tableBody = currentArrayTable.querySelector('tbody');
+        
+        if (editRowIndex !== null) {
+          // Update existing row
+          const row = tableBody.children[editRowIndex];
+          
+          if (row) {
+            const headers = currentArrayTable.querySelectorAll('thead th:not(.actions-column)');
+            
+            headers.forEach((header, index) => {
+              const fieldName = header.getAttribute('data-field');
+              if (fieldName && formValues[fieldName]) {
+                const cell = row.children[index];
+                if (cell) {
+                  cell.textContent = formValues[fieldName];
+                }
+              }
+            });
+          }
+        } else {
+          // Add new row
+          const rowHTML = `<tr>
+            ${Array.from(currentArrayTable.querySelectorAll('thead th:not(.actions-column)')).map(header => {
+              const fieldName = header.getAttribute('data-field');
+              return fieldName ? `<td>${formValues[fieldName] || ''}</td>` : '';
+            }).join('')}
+            <td class="array-actions">
+              <button type="button" class="array-action-btn edit edit-row">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                </svg>
+              </button>
+              <button type="button" class="array-action-btn delete delete-row">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+              </button>
+            </td>
+          </tr>`;
+          
+          tableBody.insertAdjacentHTML('beforeend', rowHTML);
+          
+          // Setup actions for the new row
+          const newRow = tableBody.lastElementChild;
+          setupRowActions(newRow, currentArrayTable, tableBody.children.length - 1);
+        }
+        
+        // Close modal
+        arrayItemModal.style.display = 'none';
+        
+        // Reset state
+        currentArrayTable = null;
+        editRowIndex = null;
+      }
+      
+      // Initialize tabs functionality
+      function initTabs() {
+        const tabContainers = templateContainer.querySelectorAll('.tabs');
+        
+        tabContainers.forEach(container => {
+          const tabButtons = container.querySelectorAll('.tab-button');
+          const tabContents = container.querySelectorAll('.tab-content');
+          
+          // Set first tab as active by default
+          if (tabButtons.length > 0 && tabContents.length > 0) {
+            tabButtons[0].classList.add('active');
+            tabContents[0].classList.add('active');
+          }
+          
+          // Add click handlers to tab buttons
+          tabButtons.forEach((button, index) => {
+            button.addEventListener('click', function() {
+              // Remove active class from all tabs
+              tabButtons.forEach(btn => btn.classList.remove('active'));
+              tabContents.forEach(content => content.classList.remove('active'));
+              
+              // Add active class to current tab
+              button.classList.add('active');
+              if (tabContents[index]) {
+                tabContents[index].classList.add('active');
+              }
+            });
+          });
+        });
+      }
       
       // Load template function
       function loadTemplate(templateName) {
@@ -103,6 +475,10 @@
             templateContainer.innerHTML = html;
             currentTemplate = templateName;
             
+            // Initialize components
+            initArrayTables();
+            initTabs();
+            
             // Initialize form behavior
             const form = templateContainer.querySelector('form');
             if (form) {
@@ -112,8 +488,39 @@
                 const data = {};
                 
                 for (let [key, value] of formData.entries()) {
-                  data[key] = value;
+                  if (key.endsWith('[]')) {
+                    // Handle array fields
+                    const cleanKey = key.slice(0, -2);
+                    if (!data[cleanKey]) {
+                      data[cleanKey] = [];
+                    }
+                    data[cleanKey].push(value);
+                  } else {
+                    data[key] = value;
+                  }
                 }
+                
+                // Handle array tables
+                const arrayTables = form.querySelectorAll('.array-table');
+                arrayTables.forEach(table => {
+                  const tableId = table.id || 'items';
+                  data[tableId] = [];
+                  
+                  const rows = table.querySelectorAll('tbody tr');
+                  rows.forEach(row => {
+                    const rowData = {};
+                    const cells = row.querySelectorAll('td:not(.array-actions)');
+                    cells.forEach((cell, cellIndex) => {
+                      const headerCell = table.querySelector(`thead th:nth-child(${cellIndex + 1})`);
+                      const fieldName = headerCell.getAttribute('data-field');
+                      if (fieldName) {
+                        rowData[fieldName] = cell.textContent.trim();
+                      }
+                    });
+                    
+                    data[tableId].push(rowData);
+                  });
+                });
                 
                 console.log('Form Data:', data);
                 alert('Form submission captured! See console for data.');
@@ -148,6 +555,9 @@
           if (currentTemplate) {
             if (originalHTML) {
               templateContainer.innerHTML = originalHTML;
+              // Reinitialize components
+              initArrayTables();
+              initTabs();
             } else {
               loadTemplate(currentTemplate);
             }
@@ -195,6 +605,24 @@
           }
         } else {
           loadTemplate(this.value);
+        }
+      });
+      
+      // Modal close buttons
+      modalClose.addEventListener('click', function() {
+        arrayItemModal.style.display = 'none';
+      });
+      
+      modalCancel.addEventListener('click', function() {
+        arrayItemModal.style.display = 'none';
+      });
+      
+      modalSave.addEventListener('click', saveArrayItem);
+      
+      // Close modal when clicking outside
+      window.addEventListener('click', function(event) {
+        if (event.target == arrayItemModal) {
+          arrayItemModal.style.display = 'none';
         }
       });
       

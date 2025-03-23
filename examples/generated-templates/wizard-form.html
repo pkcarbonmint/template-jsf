@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wizard Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="schema-form-container">
+    <h1 class="form-title">Account Setup Wizard</h1>
+    
+    <form id="wizard-form" class="schema-form">
+      <div class="wizard-container">
+        <!-- Progress Indicator -->
+        <div class="wizard-progress">
+          <div class="wizard-steps">
+            <div class="wizard-step active" data-step="1">
+              <div class="step-number">1</div>
+              <div class="step-label">Account</div>
+            </div>
+            <div class="wizard-step" data-step="2">
+              <div class="step-number">2</div>
+              <div class="step-label">Profile</div>
+            </div>
+            <div class="wizard-step" data-step="3">
+              <div class="step-number">3</div>
+              <div class="step-label">Preferences</div>
+            </div>
+          </div>
+          <div class="wizard-progress-bar">
+            <div class="progress-indicator" style="width: 0%"></div>
+          </div>
+        </div>
+        
+        <!-- Step 1: Account Information -->
+        <div class="wizard-page active" data-page="1">
+          <div class="wizard-page-content">
+            <h2 class="page-title">Account Information</h2>
+            <p class="page-description">Create your account credentials</p>
+            
+            <div class="form-field-container">
+              <label class="field-label" for="username">Username <span class="required">*</span></label>
+              <input type="text" id="username" name="username" class="field-input" required>
+              <p class="field-description">Choose a unique username</p>
+            </div>
+            
+            <div class="form-field-container">
+              <label class="field-label" for="email">Email Address <span class="required">*</span></label>
+              <input type="email" id="email" name="email" class="field-input" required>
+            </div>
+            
+            <div class="form-field-container">
+              <label class="field-label" for="password">Password <span class="required">*</span></label>
+              <input type="password" id="password" name="password" class="field-input" required>
+              <p class="field-description">At least 8 characters with letters, numbers, and special characters</p>
+            </div>
+            
+            <div class="form-field-container">
+              <label class="field-label" for="confirmPassword">Confirm Password <span class="required">*</span></label>
+              <input type="password" id="confirmPassword" name="confirmPassword" class="field-input" required>
+            </div>
+          </div>
+          
+          <div class="wizard-page-actions">
+            <button type="button" class="btn-primary next-page">Next: Profile</button>
+          </div>
+        </div>
+        
+        <!-- Step 2: Profile Information -->
+        <div class="wizard-page" data-page="2">
+          <div class="wizard-page-content">
+            <h2 class="page-title">Profile Information</h2>
+            <p class="page-description">Tell us about yourself</p>
+            
+            <div class="form-grid-2">
+              <div class="form-field-container">
+                <label class="field-label" for="firstName">First Name <span class="required">*</span></label>
+                <input type="text" id="firstName" name="firstName" class="field-input" required>
+              </div>
+              
+              <div class="form-field-container">
+                <label class="field-label" for="lastName">Last Name <span class="required">*</span></label>
+                <input type="text" id="lastName" name="lastName" class="field-input" required>
+              </div>
+            </div>
+            
+            <div class="form-field-container">
+              <label class="field-label" for="birthdate">Date of Birth</label>
+              <input type="date" id="birthdate" name="birthdate" class="field-input">
+            </div>
+            
+            <div class="form-field-container">
+              <label class="field-label" for="occupation">Occupation</label>
+              <input type="text" id="occupation" name="occupation" class="field-input">
+            </div>
+            
+            <div class="form-field-container">
+              <label class="field-label" for="bio">Bio</label>
+              <textarea id="bio" name="bio" class="field-input" rows="3"></textarea>
+              <p class="field-description">Tell us a bit about yourself</p>
+            </div>
+          </div>
+          
+          <div class="wizard-page-actions">
+            <button type="button" class="btn-secondary prev-page">Back: Account</button>
+            <button type="button" class="btn-primary next-page">Next: Preferences</button>
+          </div>
+        </div>
+        
+        <!-- Step 3: Preferences -->
+        <div class="wizard-page" data-page="3">
+          <div class="wizard-page-content">
+            <h2 class="page-title">Preferences</h2>
+            <p class="page-description">Customize your experience</p>
+            
+            <div class="form-field-container">
+              <label class="field-label">Theme</label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="theme" value="light" checked> Light
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="theme" value="dark"> Dark
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="theme" value="system"> System Default
+                </label>
+              </div>
+            </div>
+            
+            <div class="form-field-container">
+              <label class="field-label">Notifications</label>
+              <div class="checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="notifications" value="email" checked> Email Notifications
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="notifications" value="sms"> SMS Notifications
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="notifications" value="push" checked> Push Notifications
+                </label>
+              </div>
+            </div>
+            
+            <div class="form-field-container">
+              <label class="field-label" for="language">Language</label>
+              <select id="language" name="language" class="field-input">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="ja">Japanese</option>
+              </select>
+            </div>
+            
+            <div class="form-field-container">
+              <label class="field-label">Privacy Settings</label>
+              <div class="toggle-container">
+                <label class="toggle-label">
+                  <span>Allow public profile</span>
+                  <div class="toggle-switch">
+                    <input type="checkbox" name="publicProfile" checked>
+                    <span class="toggle-slider"></span>
+                  </div>
+                </label>
+                <label class="toggle-label">
+                  <span>Share activity with followers</span>
+                  <div class="toggle-switch">
+                    <input type="checkbox" name="shareActivity" checked>
+                    <span class="toggle-slider"></span>
+                  </div>
+                </label>
+                <label class="toggle-label">
+                  <span>Enable data collection for personalization</span>
+                  <div class="toggle-switch">
+                    <input type="checkbox" name="dataCollection">
+                    <span class="toggle-slider"></span>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="wizard-page-actions">
+            <button type="button" class="btn-secondary prev-page">Back: Profile</button>
+            <button type="submit" class="btn-submit">Complete Setup</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <script src="layout-handlers.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize wizard
+      initWizardHandlers();
+      
+      // Set up navigation
+      const nextButtons = document.querySelectorAll('.next-page');
+      const prevButtons = document.querySelectorAll('.prev-page');
+      const progressBar = document.querySelector('.progress-indicator');
+      
+      nextButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const currentPage = document.querySelector('.wizard-page.active');
+          const currentStep = parseInt(currentPage.getAttribute('data-page'));
+          const nextStep = currentStep + 1;
+          
+          // Validate form before proceeding
+          if (validateStep(currentStep)) {
+            goToStep(nextStep);
+            updateProgressBar(nextStep);
+          }
+        });
+      });
+      
+      prevButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const currentPage = document.querySelector('.wizard-page.active');
+          const currentStep = parseInt(currentPage.getAttribute('data-page'));
+          const prevStep = currentStep - 1;
+          
+          goToStep(prevStep);
+          updateProgressBar(prevStep);
+        });
+      });
+      
+      // Go to a specific step
+      function goToStep(step) {
+        // Hide all pages and deactivate steps
+        document.querySelectorAll('.wizard-page').forEach(page => {
+          page.classList.remove('active');
+        });
+        
+        document.querySelectorAll('.wizard-step').forEach(stepIndicator => {
+          stepIndicator.classList.remove('active');
+        });
+        
+        // Show the target page and activate step
+        document.querySelector(`.wizard-page[data-page="${step}"]`).classList.add('active');
+        document.querySelector(`.wizard-step[data-step="${step}"]`).classList.add('active');
+        
+        // Mark previous steps as complete
+        document.querySelectorAll(`.wizard-step[data-step]`).forEach(stepIndicator => {
+          const stepNum = parseInt(stepIndicator.getAttribute('data-step'));
+          if (stepNum < step) {
+            stepIndicator.classList.add('completed');
+          } else {
+            stepIndicator.classList.remove('completed');
+          }
+        });
+      }
+      
+      // Update progress bar
+      function updateProgressBar(step) {
+        const totalSteps = document.querySelectorAll('.wizard-step').length;
+        const progressPercentage = ((step - 1) / (totalSteps - 1)) * 100;
+        progressBar.style.width = `${progressPercentage}%`;
+      }
+      
+      // Validate step before proceeding
+      function validateStep(step) {
+        const currentPage = document.querySelector(`.wizard-page[data-page="${step}"]`);
+        const requiredFields = currentPage.querySelectorAll('input[required], select[required], textarea[required]');
+        
+        let isValid = true;
+        
+        requiredFields.forEach(field => {
+          if (!field.value.trim()) {
+            isValid = false;
+            field.classList.add('field-error');
+            
+            // Find or create error message
+            let errorMsg = field.parentNode.querySelector('.error-message');
+            if (!errorMsg) {
+              errorMsg = document.createElement('p');
+              errorMsg.className = 'error-message';
+              field.parentNode.appendChild(errorMsg);
+            }
+            errorMsg.textContent = 'This field is required';
+          } else {
+            field.classList.remove('field-error');
+            const errorMsg = field.parentNode.querySelector('.error-message');
+            if (errorMsg) {
+              errorMsg.remove();
+            }
+          }
+        });
+        
+        // Special validation for step 1 (password match)
+        if (step === 1) {
+          const password = document.getElementById('password');
+          const confirmPassword = document.getElementById('confirmPassword');
+          
+          if (password.value && confirmPassword.value && password.value !== confirmPassword.value) {
+            isValid = false;
+            confirmPassword.classList.add('field-error');
+            
+            // Find or create error message
+            let errorMsg = confirmPassword.parentNode.querySelector('.error-message');
+            if (!errorMsg) {
+              errorMsg = document.createElement('p');
+              errorMsg.className = 'error-message';
+              confirmPassword.parentNode.appendChild(errorMsg);
+            }
+            errorMsg.textContent = 'Passwords do not match';
+          }
+        }
+        
+        return isValid;
+      }
+      
+      // Handle form submission
+      document.getElementById('wizard-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Final validation
+        if (validateStep(3)) {
+          // Get form data
+          const formData = new FormData(this);
+          const formDataObject = {};
+          
+          // Process form data
+          for (const [key, value] of formData.entries()) {
+            if (key === 'notifications') {
+              if (!formDataObject[key]) {
+                formDataObject[key] = [];
+              }
+              formDataObject[key].push(value);
+            } else {
+              formDataObject[key] = value;
+            }
+          }
+          
+          // Do something with the form data (e.g., submit to server)
+          console.log('Form submitted:', formDataObject);
+          alert('Account setup completed successfully!');
+        }
+      });
+    });
+  </script>
+</body>
+</html> 

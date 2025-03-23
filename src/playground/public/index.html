@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Schema Form Playground</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>JSON Schema Form Playground</h1>
+      <div class="actions">
+        <button id="new-schema">New Schema</button>
+        <button id="save-schema">Save Schema</button>
+        <button id="save-layout">Save Layout</button>
+      </div>
+    </header>
+    
+    <main>
+      <div class="sidebar">
+        <div class="schema-selector">
+          <h2>Schemas</h2>
+          <select id="schema-select">
+            <option value="">Select a schema</option>
+            <!-- Schemas will be loaded here -->
+          </select>
+        </div>
+        
+        <div class="editors">
+          <div class="editor-container">
+            <h3>Schema Editor</h3>
+            <div id="schema-editor" class="editor"></div>
+          </div>
+          
+          <div class="editor-container">
+            <h3>Layout Editor</h3>
+            <div id="layout-editor" class="editor"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="preview">
+        <h2>Form Preview</h2>
+        <div class="tabs">
+          <button class="tab-button active" data-tab="form">Form</button>
+          <button class="tab-button" data-tab="template">Template</button>
+          <button class="tab-button" data-tab="data">Data</button>
+        </div>
+        
+        <div class="tab-content">
+          <div id="form-preview" class="tab-pane active">
+            <div id="form-container"></div>
+            <button id="submit-form">Submit</button>
+          </div>
+          
+          <div id="template-preview" class="tab-pane">
+            <pre id="template-code"></pre>
+          </div>
+          
+          <div id="data-preview" class="tab-pane">
+            <pre id="form-data"></pre>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <footer>
+      <p>&copy; 2024 JSON Schema Form Playground</p>
+    </footer>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.js"></script>
+  <script src="app.js"></script>
+</body>
+</html> 

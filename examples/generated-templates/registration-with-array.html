@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form with Array Tables</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="array-table.css">
+</head>
+<body>
+  <div class="schema-form-container">
+    <form id="registration-form" class="schema-form">
+      <h1 class="form-title">Professional Registration</h1>
+      
+      <!-- Basic Information Section -->
+      <div class="form-section">
+        <h2 class="section-title">Basic Information</h2>
+        
+        <div class="form-field-container">
+          <label class="field-label" for="firstName">First Name <span class="required">*</span></label>
+          <input type="text" id="firstName" name="firstName" class="field-input" required>
+        </div>
+        
+        <div class="form-field-container">
+          <label class="field-label" for="lastName">Last Name <span class="required">*</span></label>
+          <input type="text" id="lastName" name="lastName" class="field-input" required>
+        </div>
+        
+        <div class="form-field-container">
+          <label class="field-label" for="email">Email Address <span class="required">*</span></label>
+          <input type="email" id="email" name="email" class="field-input" required>
+          <p class="field-description">We'll never share your email with anyone else.</p>
+        </div>
+        
+        <div class="form-field-container">
+          <label class="field-label" for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" class="field-input">
+        </div>
+      </div>
+      
+      <!-- Education Section with Array Table -->
+      <div class="form-section">
+        <h2 class="section-title">Education</h2>
+        
+        <div class="array-table-container" data-array-name="education">
+          <table class="array-table">
+            <thead>
+              <tr>
+                <th>Degree</th>
+                <th>Institution</th>
+                <th>Year</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="education-items">
+              <!-- Items will be populated dynamically -->
+            </tbody>
+          </table>
+          
+          <button type="button" class="btn-add-item" data-array-name="education">
+            Add Education
+          </button>
+        </div>
+      </div>
+      
+      <!-- Work Experience Section with Array Table -->
+      <div class="form-section">
+        <h2 class="section-title">Work Experience</h2>
+        
+        <div class="array-table-container" data-array-name="workExperience">
+          <table class="array-table">
+            <thead>
+              <tr>
+                <th>Position</th>
+                <th>Company</th>
+                <th>Duration</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="workExperience-items">
+              <!-- Items will be populated dynamically -->
+            </tbody>
+          </table>
+          
+          <button type="button" class="btn-add-item" data-array-name="workExperience">
+            Add Work Experience
+          </button>
+        </div>
+      </div>
+      
+      <!-- Additional Info Section -->
+      <div class="form-section">
+        <h2 class="section-title">Additional Information</h2>
+        
+        <div class="form-field-container">
+          <label class="field-label" for="skills">Skills</label>
+          <div class="string-array-container" data-array-name="skills">
+            <div class="string-array-items" id="skills-items">
+              <!-- String items will be populated dynamically -->
+            </div>
+            <div class="string-array-input-container">
+              <input type="text" class="string-array-input" id="skills-input">
+              <button type="button" class="btn-add-string-item" data-array-name="skills">Add</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-field-container">
+          <label class="field-label" for="references">References</label>
+          <textarea id="references" name="references" class="field-input" rows="4"></textarea>
+          <p class="field-description">List any professional references (optional)</p>
+        </div>
+      </div>
+      
+      <!-- Submit Section -->
+      <div class="form-actions">
+        <button type="button" class="btn-cancel">Cancel</button>
+        <button type="submit" class="btn-submit">Submit Registration</button>
+      </div>
+    </form>
+  </div>
+  
+  <!-- Education Modal -->
+  <div id="education-modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <h2 class="modal-title">Education Details</h2>
+      
+      <form id="education-form" class="modal-form">
+        <input type="hidden" id="education-index" name="index" value="-1">
+        
+        <div class="form-field-container">
+          <label class="field-label" for="education-degree">Degree <span class="required">*</span></label>
+          <input type="text" id="education-degree" name="degree" class="field-input" required>
+        </div>
+        
+        <div class="form-field-container">
+          <label class="field-label" for="education-institution">Institution <span class="required">*</span></label>
+          <input type="text" id="education-institution" name="institution" class="field-input" required>
+        </div>
+        
+        <div class="form-field-container">
+          <label class="field-label" for="education-year">Year <span class="required">*</span></label>
+          <input type="number" id="education-year" name="year" class="field-input" min="1900" max="2099" required>
+        </div>
+        
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel modal-cancel">Cancel</button>
+          <button type="submit" class="btn-submit modal-save">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Work Experience Modal -->
+  <div id="workExperience-modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <h2 class="modal-title">Work Experience Details</h2>
+      
+      <form id="workExperience-form" class="modal-form">
+        <input type="hidden" id="workExperience-index" name="index" value="-1">
+        
+        <div class="form-field-container">
+          <label class="field-label" for="workExperience-position">Position <span class="required">*</span></label>
+          <input type="text" id="workExperience-position" name="position" class="field-input" required>
+        </div>
+        
+        <div class="form-field-container">
+          <label class="field-label" for="workExperience-company">Company <span class="required">*</span></label>
+          <input type="text" id="workExperience-company" name="company" class="field-input" required>
+        </div>
+        
+        <div class="form-field-container">
+          <label class="field-label" for="workExperience-duration">Duration <span class="required">*</span></label>
+          <input type="text" id="workExperience-duration" name="duration" class="field-input" placeholder="e.g. Jan 2018 - Dec 2020" required>
+        </div>
+        
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel modal-cancel">Cancel</button>
+          <button type="submit" class="btn-submit modal-save">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <script src="array-table-handlers.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize the array tables
+      initArrayTableHandlers();
+      
+      // Handle form submission
+      document.getElementById('registration-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(this);
+        const formDataObject = {};
+        
+        // Add basic form fields
+        for (const [key, value] of formData.entries()) {
+          formDataObject[key] = value;
+        }
+        
+        // Add education array data
+        formDataObject.education = getArrayItems('education');
+        
+        // Add work experience array data
+        formDataObject.workExperience = getArrayItems('workExperience');
+        
+        // Add skills array data
+        formDataObject.skills = getStringArrayItems('skills');
+        
+        // Do something with the form data (e.g., submit to server)
+        console.log('Form submitted:', formDataObject);
+        alert('Registration submitted successfully!');
+      });
+    });
+  </script>
+</body>
+</html> 

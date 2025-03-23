@@ -1,0 +1,175 @@
+{
+  "form": [
+    {
+      "type": "tabs",
+      "tabs": [
+        {
+          "title": "Personal Information",
+          "items": [
+            {
+              "type": "fieldset",
+              "title": "Personal Details",
+              "items": [
+                {
+                  "key": "personalInfo.firstName",
+                  "htmlClass": "col-md-6"
+                },
+                {
+                  "key": "personalInfo.lastName",
+                  "htmlClass": "col-md-6"
+                },
+                {
+                  "key": "personalInfo.email",
+                  "htmlClass": "col-md-6"
+                },
+                {
+                  "key": "personalInfo.dateOfBirth",
+                  "htmlClass": "col-md-6"
+                },
+                {
+                  "key": "personalInfo.gender",
+                  "type": "select",
+                  "htmlClass": "col-md-6"
+                }
+              ]
+            },
+            {
+              "type": "fieldset",
+              "title": "Address Information",
+              "items": [
+                {
+                  "key": "address.street",
+                  "htmlClass": "col-md-12"
+                },
+                {
+                  "key": "address.city",
+                  "htmlClass": "col-md-6"
+                },
+                {
+                  "key": "address.state",
+                  "htmlClass": "col-md-6"
+                },
+                {
+                  "key": "address.postalCode",
+                  "htmlClass": "col-md-6"
+                },
+                {
+                  "key": "address.country",
+                  "htmlClass": "col-md-6"
+                }
+              ]
+            },
+            {
+              "key": "bio",
+              "type": "textarea",
+              "htmlClass": "col-md-12"
+            }
+          ]
+        },
+        {
+          "title": "Education",
+          "items": [
+            {
+              "key": "education",
+              "type": "array-table",
+              "title": "Education History",
+              "items": [
+                {
+                  "key": "education[].institution",
+                  "title": "Institution"
+                },
+                {
+                  "key": "education[].degree",
+                  "title": "Degree"
+                },
+                {
+                  "key": "education[].fieldOfStudy",
+                  "title": "Field of Study"
+                },
+                {
+                  "key": "education[].startDate",
+                  "title": "Start Date"
+                },
+                {
+                  "key": "education[].endDate",
+                  "title": "End Date",
+                  "condition": "!model.education[arrayIndices[0]].current"
+                },
+                {
+                  "key": "education[].current",
+                  "title": "Current"
+                }
+              ],
+              "modalFields": [
+                "institution",
+                "degree",
+                "fieldOfStudy",
+                "startDate",
+                "endDate",
+                "current",
+                "description"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Work Experience",
+          "items": [
+            {
+              "key": "workExperience",
+              "type": "array-table",
+              "title": "Work Experience",
+              "items": [
+                {
+                  "key": "workExperience[].company",
+                  "title": "Company"
+                },
+                {
+                  "key": "workExperience[].position",
+                  "title": "Position"
+                },
+                {
+                  "key": "workExperience[].location",
+                  "title": "Location"
+                },
+                {
+                  "key": "workExperience[].startDate",
+                  "title": "Start Date"
+                },
+                {
+                  "key": "workExperience[].endDate",
+                  "title": "End Date",
+                  "condition": "!model.workExperience[arrayIndices[0]].current"
+                },
+                {
+                  "key": "workExperience[].current",
+                  "title": "Current"
+                }
+              ],
+              "modalFields": [
+                "company",
+                "position",
+                "location",
+                "startDate",
+                "endDate",
+                "current",
+                "description"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Skills",
+          "items": [
+            {
+              "key": "skills",
+              "type": "string-array",
+              "title": "Skills",
+              "description": "Add your skills"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+} 

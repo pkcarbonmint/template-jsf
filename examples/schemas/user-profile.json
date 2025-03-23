@@ -1,0 +1,160 @@
+{
+  "type": "object",
+  "title": "User Profile",
+  "description": "User profile with education and work experience",
+  "properties": {
+    "personalInfo": {
+      "type": "object",
+      "title": "Personal Information",
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "title": "First Name"
+        },
+        "lastName": {
+          "type": "string",
+          "title": "Last Name"
+        },
+        "email": {
+          "type": "string",
+          "title": "Email",
+          "format": "email"
+        },
+        "dateOfBirth": {
+          "type": "string",
+          "title": "Date of Birth",
+          "format": "date"
+        },
+        "gender": {
+          "type": "string",
+          "title": "Gender",
+          "enum": ["male", "female", "other", "prefer-not-to-say"],
+          "enumNames": ["Male", "Female", "Other", "Prefer not to say"]
+        }
+      },
+      "required": ["firstName", "lastName", "email"]
+    },
+    "address": {
+      "type": "object",
+      "title": "Address",
+      "properties": {
+        "street": {
+          "type": "string",
+          "title": "Street Address"
+        },
+        "city": {
+          "type": "string",
+          "title": "City"
+        },
+        "state": {
+          "type": "string",
+          "title": "State/Province"
+        },
+        "postalCode": {
+          "type": "string",
+          "title": "Postal Code"
+        },
+        "country": {
+          "type": "string",
+          "title": "Country"
+        }
+      }
+    },
+    "education": {
+      "type": "array",
+      "title": "Education",
+      "description": "Education history",
+      "items": {
+        "type": "object",
+        "properties": {
+          "institution": {
+            "type": "string",
+            "title": "Institution"
+          },
+          "degree": {
+            "type": "string",
+            "title": "Degree"
+          },
+          "fieldOfStudy": {
+            "type": "string",
+            "title": "Field of Study"
+          },
+          "startDate": {
+            "type": "string",
+            "title": "Start Date",
+            "format": "date"
+          },
+          "endDate": {
+            "type": "string",
+            "title": "End Date",
+            "format": "date"
+          },
+          "current": {
+            "type": "boolean",
+            "title": "Current"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          }
+        },
+        "required": ["institution", "degree"]
+      }
+    },
+    "workExperience": {
+      "type": "array",
+      "title": "Work Experience",
+      "description": "Work experience history",
+      "items": {
+        "type": "object",
+        "properties": {
+          "company": {
+            "type": "string",
+            "title": "Company"
+          },
+          "position": {
+            "type": "string",
+            "title": "Position"
+          },
+          "location": {
+            "type": "string",
+            "title": "Location"
+          },
+          "startDate": {
+            "type": "string",
+            "title": "Start Date",
+            "format": "date"
+          },
+          "endDate": {
+            "type": "string",
+            "title": "End Date",
+            "format": "date"
+          },
+          "current": {
+            "type": "boolean",
+            "title": "Current"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          }
+        },
+        "required": ["company", "position"]
+      }
+    },
+    "skills": {
+      "type": "array",
+      "title": "Skills",
+      "description": "List of skills",
+      "items": {
+        "type": "string"
+      }
+    },
+    "bio": {
+      "type": "string",
+      "title": "Biography",
+      "description": "Short biography"
+    }
+  },
+  "required": ["personalInfo"]
+} 
