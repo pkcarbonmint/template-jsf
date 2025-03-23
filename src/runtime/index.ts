@@ -99,7 +99,7 @@ export class SchemaForm {
     // Add debug log listener for all events if in debug mode
     if (options.debug) {
       this.emitter.on('*', (type, event) => {
-        console.log(`[SchemaForm Event] ${type}:`, event);
+        console.log(`[SchemaForm Event] ${type as string}:`, event);
       });
     }
     
@@ -141,7 +141,8 @@ export class SchemaForm {
       this.evaluateAllConditions();
       
       // Emit ready event
-      this.emitter.emit('ready', { schema: this.schema });
+      if (this.schema)
+        this.emitter.emit('ready', { schema: this.schema });
       
       // Call onReady callback if provided
       if (this.options.onReady) {
@@ -174,10 +175,8 @@ export class SchemaForm {
   }
   
   private processSchemaConditionals(schema: JSONSchema): void {
-    if (!schema.conditionals) {
-      schema.conditionals = [];
-    }
-    
+    schema.conditionals = schema.conditionals || [];
+    const conditionals = schema.conditionals;
     // Extract if/then/else at root level
     if (schema.if && (schema.then || schema.else)) {
       schema.conditionals.push({
@@ -191,7 +190,7 @@ export class SchemaForm {
     if (schema.allOf) {
       schema.allOf.forEach(subSchema => {
         if (subSchema.if && (subSchema.then || subSchema.else)) {
-          schema.conditionals.push({
+          conditionals.push({
             if: subSchema.if,
             then: subSchema.then,
             else: subSchema.else
@@ -215,7 +214,7 @@ export class SchemaForm {
             then: dependency
           };
           
-          schema.conditionals.push(conditionalSchema);
+          conditionals.push(conditionalSchema);
         }
       });
     }
@@ -1144,9 +1143,10 @@ export class SchemaForm {
   private evaluateIfCondition(ifCondition: any): boolean {
     // If the if condition has properties, check each property
     if (ifCondition.properties) {
-      for (const [propName, propCondition] of Object.entries(ifCondition.properties)) {
+      for (const [propName, _propCondition] of Object.entries(ifCondition.properties)) {
         const formValue = this.getFormValue(propName);
-        
+        const propCondition = _propCondition as any;
+
         // Check enum condition
         if (propCondition.enum && Array.isArray(propCondition.enum)) {
           if (!propCondition.enum.includes(formValue)) {
@@ -1191,8 +1191,8 @@ export class SchemaForm {
           element.classList.remove('hidden');
           // Mark inputs as required
           const inputs = element.querySelectorAll('input, select, textarea');
-          inputs.forEach((input: HTMLElement) => {
-            input.setAttribute('required', 'required');
+          inputs.forEach((input: Element, index, parent) => {
+            (input as HTMLInputElement).setAttribute('required', 'required');
           });
         }
       });
@@ -1213,7 +1213,8 @@ export class SchemaForm {
     
     // Handle specific properties actions (like showing/hiding specific fields)
     if (thenAction.properties) {
-      for (const [propName, propAction] of Object.entries(thenAction.properties)) {
+      for (const [propName, _propAction] of Object.entries(thenAction.properties)) {
+        const propAction = _propAction as any;
         if (propName.startsWith('_')) {
           // Handle special properties (like _submitDisabled)
           this.handleSpecialProperty(propName, propAction);
@@ -1224,7 +1225,7 @@ export class SchemaForm {
             // If the property has a const:true, show the field
             if (propAction.const === true) {
               element.classList.remove('hidden');
-              this.emitter.emit('fieldShow', { fieldId: propName });
+              this.emitter.emit('fieldShow', { field: propName });
             } 
             // If the property has a const:false, hide the field
             else if (propAction.const === false) {

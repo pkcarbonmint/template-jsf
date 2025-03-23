@@ -230,7 +230,7 @@ export function getArrayItemsData(container: HTMLElement): any[] {
         const name = input.getAttribute('name');
         if (!name) return;
         
-        itemData[name] = input.value;
+        itemData[name] = (input as HTMLInputElement).value;
       }
     });
     
