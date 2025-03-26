@@ -83,7 +83,7 @@ describe('Playground Functionality Tests', () => {
   });
 
   test('should load schema correctly', () => {
-    const schema = loadSchema();
+    const schema = loadSchemaById("user");
     expect(schema).not.toBeNull();
   });
 

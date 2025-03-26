@@ -49,7 +49,7 @@ async function main() {
     const parsedSchema = parseSchema(schema);
     
     // Generate the template using async version
-    const html = await generateTemplateAsync(parsedSchema, options.templates);
+    const html = await generateTemplateAsync(parsedSchema);
     
     // Write the output file
     await fs.writeFile(options.output, html, 'utf-8');

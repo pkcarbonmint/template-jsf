@@ -1,6 +1,7 @@
 import { allLayouts, LayoutConfig } from './layoutSpecs';
 import { generateTemplateAsync } from '../template-generator/lib/generator';
 import { generateLayoutSpec } from '../template-generator/lib/layout-spec/layout-generator';
+import { parseSchema, parseSchemaStr, type SchemaNode, type SchemaNodeWithLayout  } from '../template-generator/lib/schema-parser';
 
 /**
  * Get a layout for a specific schema by ID
@@ -69,16 +70,17 @@ export function generateLayout(schema: any): LayoutConfig {
  * @param layout Layout configuration
  * @returns HTML template string
  */
-export async function generateTemplateWithLayout(schema: any, layout: LayoutConfig): Promise<string> {
+export async function generateTemplateWithLayout(schemaStr: string | SchemaNode, layout: LayoutConfig): Promise<string> {
+  const schema: SchemaNode = (typeof schemaStr == "string") ? parseSchemaStr(schemaStr) : schemaStr as SchemaNode;
   try {
     // Attach layout to schema as x-layout property
-    const schemaWithLayout = {
+    const schemaWithLayout : SchemaNodeWithLayout = {
       ...schema,
-      'x-layout': layout
+      'x-layout': layout.layout
     };
     
     // Use the template generator to generate HTML with empty templates directory since we're handling it in-memory
-    return await generateTemplateAsync(schemaWithLayout, '');
+    return await generateTemplateAsync(schemaWithLayout);
   } catch (error) {
     console.error('Error generating template:', error);
     

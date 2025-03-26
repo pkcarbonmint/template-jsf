@@ -2,6 +2,7 @@ import { SchemaNode } from '../../lib/schema-parser';
 import { applyLayoutSpec } from '../../lib/layout-spec/layout-apply';
 import { LayoutSpecification } from '../../lib/layout-spec/layout-types';
 import { generateTemplateAsync } from '../../lib/generator';
+import { expect, jest, describe, it } from '@jest/globals';
 
 // Mock the template generation functions
 jest.mock('../../lib/generator', () => ({
@@ -114,7 +115,7 @@ describe('Layout Specification Application', () => {
     const modifiedSchema = applyLayoutSpec(schema, layoutSpec);
     
     // Then generate template from modified schema
-    await generateTemplateAsync(modifiedSchema, '/path/to/templates');
+    await generateTemplateAsync(modifiedSchema);
     
     // Check if generateTemplateAsync was called with correctly modified schema
     expect(generateTemplateAsync).toHaveBeenCalledWith(

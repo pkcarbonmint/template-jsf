@@ -17,6 +17,7 @@ export function renderPlayground(): boolean {
   try {
     // In a full implementation, this would render the UI components
     console.log('Rendering playground interface');
+    const schemas = listSchemas();
     
     // Initialize with the first schema if available
     if (schemas.length > 0) {

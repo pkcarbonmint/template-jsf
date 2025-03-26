@@ -30,6 +30,10 @@ export interface SchemaNode {
   inputType?: string; // Used for HTML input type attribute
 }
 
+export type SchemaNodeWithLayout = SchemaNode & {
+  'x-layout': string;
+}
+
 export interface Conditional {
   type: 'if' | 'then' | 'else' | 'allOf' | 'anyOf' | 'oneOf' | 'not';
   schema: SchemaNode | SchemaNode[];
@@ -144,6 +148,11 @@ export function parseSchema(schema: any, path: string = '', parentRequired: stri
   }
   
   return node;
+}
+
+export function parseSchemaStr(schemaStr: string): SchemaNode {
+  const parsed = parseSchema(JSON.parse(schemaStr));
+  return parsed;
 }
 
 // Helper function to generate unique IDs for schema nodes

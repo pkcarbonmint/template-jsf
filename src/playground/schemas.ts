@@ -1,4 +1,4 @@
-export const userSchema = {
+export const userSchema = JSON.stringify({
   id: 'user',
   type: 'object',
   properties: {
@@ -16,9 +16,9 @@ export const userSchema = {
     }
   },
   required: ['name', 'email']
-};
+});
 
-export const productSchema = {
+export const productSchema = JSON.stringify({
   id: 'product',
   type: 'object',
   properties: {
@@ -39,9 +39,9 @@ export const productSchema = {
     }
   },
   required: ['id', 'name', 'price']
-};
+});
 
-export const registrationSchema = {
+export const registrationSchema = JSON.stringify({
   id: 'registration',
   type: 'object',
   title: 'User Registration',
@@ -68,9 +68,9 @@ export const registrationSchema = {
   else: {
     required: ['companyName', 'vatNumber']
   }
-};
+});
 
-export const surveySchema = {
+export const surveySchema = JSON.stringify({
   id: 'survey',
   type: 'object',
   title: 'Customer Survey',
@@ -116,9 +116,9 @@ export const surveySchema = {
       }
     }
   ]
-};
+});
 
-export const paymentSchema = {
+export const paymentSchema = JSON.stringify({
   id: 'payment',
   type: 'object',
   title: 'Payment Information',
@@ -179,7 +179,7 @@ export const paymentSchema = {
       required: ['paypalEmail']
     }
   ]
-};
+});
 
 export const allSchemas = {
   user: userSchema,

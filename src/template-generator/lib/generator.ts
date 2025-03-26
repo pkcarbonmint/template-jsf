@@ -217,8 +217,10 @@ function validateSchema(schema: SchemaNode, path: string = 'root'): void {
 }
 
 // Generate HTML template from schema - async version
-export async function generateTemplateAsync(schema: SchemaNode, templatesDir: string): Promise<string> {
-  logger.debug("Starting template generation with schema:", schema.id);
+export async function generateTemplateAsync(schema: SchemaNode): Promise<string> {
+
+  const templatesDir = "./src/template-generator/templates";
+  console.log("Starting template generation with schema:",schema);
   logger.debug("Templates directory:", templatesDir);
   
   // Check if templates directory exists

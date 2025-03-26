@@ -47,7 +47,7 @@ async function main() {
     const parsedSchema = parseSchema(schema);
     
     // Generate template from parsed schema
-    const htmlTemplate = await generateTemplateAsync(parsedSchema, options.templates);
+    const htmlTemplate = await generateTemplateAsync(parsedSchema);
     
     // Create directory for output file if it doesn't exist
     const outputDir = path.dirname(options.output);
