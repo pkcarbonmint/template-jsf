@@ -1,0 +1,28 @@
+
+// Generated from template file: enum.mustache
+import Mustache from 'mustache';
+const renderMustache = (template: string) => (context:any): string => Mustache.render(template, context);
+
+const templateEnumMustache = `<div class="relative">
+  <select
+    id="{{id}}"
+    name="{{id}}"
+    class="w-full px-4 py-3 border-0 border-b-2 border-gray-300 focus:border-blue-500 focus:ring-0 bg-gray-50 rounded-t-md transition-colors duration-200 appearance-none"
+    data-schema-type="enum"
+    data-schema-id="{{id}}"
+    data-schema-path="{{id}}"
+    {{#required}}required{{/required}}
+  >
+    <option value="">-- Select --</option>
+    {{#enum}}
+    <option value="{{.}}">{{.}}</option>
+    {{/enum}}
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+    </svg>
+  </div>
+  <div class="h-0.5 w-0 bg-blue-500 transition-all duration-200 group-focus-within:w-full"></div>
+</div> `;
+export const genEnumMustache = renderMustache(templateEnumMustache);

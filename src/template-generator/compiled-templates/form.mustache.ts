@@ -1,0 +1,201 @@
+
+// Generated from template file: form.mustache
+import Mustache from 'mustache';
+const renderMustache = (template: string) => (context:any): string => Mustache.render(template, context);
+
+const templateFormMustache = `{{! Form template }}
+<div class="schema-form-container">
+  <form id="{{formId}}" class="schema-form" data-schema-id="{{schemaId}}">
+    {{#sections}}
+    <section class="form-section" id="section-{{id}}">
+      {{#title}}<h2 class="section-title">{{title}}</h2>{{/title}}
+      {{#description}}<p class="section-description">{{description}}</p>{{/description}}
+      
+      <div class="section-fields">
+        {{#fields}}
+        <div class="form-field-container" id="container-{{id}}">
+          {{{html}}}
+        </div>
+        {{/fields}}
+      </div>
+    </section>
+    {{/sections}}
+    
+    {{^sections}}
+    {{#content}}
+    <div class="form-content">
+      {{{.}}}
+    </div>
+    {{/content}}
+    {{/sections}}
+    
+    <div class="form-actions">
+      <button type="submit" class="btn-submit">{{submitLabel}}</button>
+      <button type="button" class="btn-cancel">{{cancelLabel}}</button>
+    </div>
+  </form>
+</div>
+
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/array-table.css">
+
+<script type="text/javascript">
+  // Initialize form
+  (function() {
+    const form = document.getElementById('{{formId}}');
+    if (!form) return;
+    
+    // Initialize array tables if the handlers are available
+    if (typeof window.ArrayTableHandlers !== 'undefined') {
+      window.ArrayTableHandlers.initArrayTables(form);
+    } else {
+      // Fallback initialization for array tables
+      const arrayTables = form.querySelectorAll('.array-table');
+      
+      arrayTables.forEach(table => {
+        const tbody = table.querySelector('tbody');
+        const rowTemplate = table.querySelector('.array-row-template');
+        const addButton = table.querySelector('.add-item');
+        
+        if (!tbody || !rowTemplate || !addButton) return;
+        
+        // Setup add item button
+        addButton.addEventListener('click', function() {
+          // Clone the template
+          const newRow = rowTemplate.cloneNode(true);
+          
+          // Remove template class
+          newRow.classList.remove('array-row-template');
+          newRow.classList.remove('hidden');
+          
+          // Generate unique IDs
+          const timestamp = Date.now();
+          const random = Math.floor(Math.random() * 10000);
+          const uniqueId = \`\${timestamp}-\${random}\`;
+          
+          // Update IDs and names
+          const inputs = newRow.querySelectorAll('input, select, textarea');
+          inputs.forEach(input => {
+            if (input.id) {
+              const newId = \`\${input.id}_\${uniqueId}\`;
+              input.id = newId;
+            }
+            
+            if (input.name) {
+              input.name = \`\${input.name}_\${uniqueId}\`;
+            }
+          });
+          
+          // Append the new row
+          tbody.appendChild(newRow);
+        });
+        
+        // Add initial row if table is empty
+        if (tbody.querySelectorAll('tr:not(.array-row-template)').length === 0) {
+          addButton.click();
+        }
+        
+        // Handle delete buttons
+        tbody.addEventListener('click', function(event) {
+          const target = event.target;
+          
+          if (target.classList.contains('action-delete') || target.closest('.action-delete')) {
+            const row = target.closest('tr');
+            if (!row) return;
+            
+            // Get all visible rows
+            const visibleRows = Array.from(tbody.querySelectorAll('tr')).filter(r => 
+              !r.classList.contains('array-row-template') && 
+              !r.classList.contains('hidden')
+            );
+            
+            // Only remove if there's more than one row
+            if (visibleRows.length > 1) {
+              row.remove();
+            }
+          }
+        });
+      });
+    }
+    
+    // Form submission handling
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      // Collect form data
+      const formData = new FormData(form);
+      const data = {};
+      
+      for (const [key, value] of formData.entries()) {
+        // Handle special cases like checkboxes, arrays, etc.
+        if (key.includes('[]')) {
+          const cleanKey = key.replace('[]', '');
+          if (!data[cleanKey]) {
+            data[cleanKey] = [];
+          }
+          data[cleanKey].push(value);
+        } else {
+          data[key] = value;
+        }
+      }
+      
+      // Handle array tables
+      const arrayTables = form.querySelectorAll('.array-table');
+      arrayTables.forEach(table => {
+        const schemaId = table.getAttribute('data-schema-id');
+        if (!schemaId) return;
+        
+        // Get the array data
+        let arrayData = [];
+        
+        if (typeof window.ArrayTableHandlers !== 'undefined') {
+          // Use the array table handlers if available
+          arrayData = window.ArrayTableHandlers.getArrayTableData(table, window.schemaRegistry[schemaId]);
+        } else {
+          // Fallback data collection
+          const tbody = table.querySelector('tbody');
+          if (!tbody) return;
+          
+          const rows = Array.from(tbody.querySelectorAll('tr')).filter(row => 
+            !row.classList.contains('array-row-template') && 
+            !row.classList.contains('hidden')
+          );
+          
+          arrayData = rows.map(row => {
+            const rowData = {};
+            const cells = row.querySelectorAll('td[data-field]');
+            
+            cells.forEach(cell => {
+              const fieldName = cell.getAttribute('data-field');
+              if (fieldName === 'actions') return;
+              
+              const input = cell.querySelector('input, select, textarea');
+              if (input) {
+                if (input.type === 'checkbox') {
+                  rowData[fieldName] = input.checked;
+                } else {
+                  rowData[fieldName] = input.value;
+                }
+              }
+            });
+            
+            return rowData;
+          });
+        }
+        
+        // Add array data to the form data
+        data[schemaId] = arrayData;
+      });
+      
+      // Emit form submit event with data
+      const submitEvent = new CustomEvent('schema-form:submit', {
+        bubbles: true,
+        cancelable: true,
+        detail: { formId: form.id, data: data }
+      });
+      
+      form.dispatchEvent(submitEvent);
+    });
+  })();
+</script> `;
+export const genFormMustache = renderMustache(templateFormMustache);
