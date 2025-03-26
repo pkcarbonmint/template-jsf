@@ -1,83 +1,24 @@
-import * as fs from 'fs';
-import * as fsPromises from 'fs/promises';
-import * as path from 'path';
-import Mustache from 'mustache';
-import { pipe } from 'fp-ts/function';
-import * as O from 'fp-ts/Option';
-import * as A from 'fp-ts/Array';
 import { SchemaNode, Conditional } from './schema-parser';
 import logger from '../../utils/logger';
 
-// Templates cache
-const templatesCache: Record<string, string> = {};
-
-// Asynchronously load template from file
-export async function loadTemplateAsync(templatePath: string, template?: string): Promise<string> {
-  if (templatesCache[templatePath]) {
-    return templatesCache[templatePath];
-  }
-  
-  try {
-    if (template) {
-      // If template is provided directly, cache and return it
-      templatesCache[templatePath] = template;
-      return template;
-    }
-    
-    const templateContent = await fsPromises.readFile(templatePath, 'utf-8');
-    templatesCache[templatePath] = templateContent;
-    return templateContent;
-  } catch (error) {
-    console.warn(`Template not found: ${templatePath}. Using fallback template.`);
-    // Provide a basic fallback template
-    const fallbackTemplate = getFallbackTemplate(templatePath);
-    templatesCache[templatePath] = fallbackTemplate;
-    return fallbackTemplate;
-  }
-}
-
-// Synchronously load template from file (for backwards compatibility)
-export function loadTemplate(templatePath: string, template?: string): string {
-  if (templatesCache[templatePath]) {
-    return templatesCache[templatePath];
-  }
-  
-  try {
-    if (template) {
-      // If template is provided directly, cache and return it
-      templatesCache[templatePath] = template;
-      return template;
-    }
-    
-    const templateContent = fs.readFileSync(templatePath, 'utf-8');
-    templatesCache[templatePath] = templateContent;
-    return templateContent;
-  } catch (error) {
-    console.warn(`Template not found: ${templatePath}. Using fallback template.`);
-    // Provide a basic fallback template
-    const fallbackTemplate = getFallbackTemplate(templatePath);
-    templatesCache[templatePath] = fallbackTemplate;
-    return fallbackTemplate;
-  }
-}
-
-// Get a fallback template based on the path
-function getFallbackTemplate(templatePath: string): string {
-  if (templatePath.includes('string.mustache')) {
-    return '<input type="text" id="{{id}}" name="{{id}}" class="w-full px-3 py-2 border" data-schema-id="{{id}}" {{#required}}required{{/required}} />';
-  } else if (templatePath.includes('number.mustache')) {
-    return '<input type="number" id="{{id}}" name="{{id}}" class="w-full px-3 py-2 border" data-schema-id="{{id}}" {{#required}}required{{/required}} />';
-  } else if (templatePath.includes('boolean.mustache')) {
-    return '<input type="checkbox" id="{{id}}" name="{{id}}" data-schema-id="{{id}}" />';
-  } else if (templatePath.includes('object.mustache')) {
-    return '<div id="{{id}}" data-schema-id="{{id}}"><div class="space-y-4">{{{properties}}}{{{conditionals}}}</div></div>';
-  } else if (templatePath.includes('array.mustache')) {
-    return '<div id="{{id}}" data-schema-id="{{id}}"><div class="array-items">{{{itemTemplate}}}</div><button type="button">Add Item</button></div>';
-  } else {
-    return '<div id="{{id}}" data-schema-id="{{id}}">{{{content}}}</div>';
-  }
-}
-
+// Import compiled templates
+import { genStringMustache } from '../compiled-templates/string.mustache';
+import { genNumberMustache } from '../compiled-templates/number.mustache';
+import { genBooleanMustache } from '../compiled-templates/boolean.mustache';
+import { genObjectMustache } from '../compiled-templates/object.mustache';
+import { genArrayMustache } from '../compiled-templates/array.mustache';
+import { genPropertyMustache } from '../compiled-templates/property.mustache';
+import { genFormMustache } from '../compiled-templates/form.mustache';
+import { genEnumMustache } from '../compiled-templates/enum.mustache';
+import { genDateMustache } from '../compiled-templates/date.mustache';
+import { genEmailMustache } from '../compiled-templates/email.mustache';
+import { genUrlMustache } from '../compiled-templates/url.mustache';
+import { genTextareaMustache } from '../compiled-templates/textarea.mustache';
+import { genObjectGridMustache } from '../compiled-templates/object-grid.mustache';
+import { genObjectTabsMustache } from '../compiled-templates/object-tabs.mustache';
+import { genObjectVtabsMustache } from '../compiled-templates/object-vtabs.mustache';
+import { genObjectWizardMustache } from '../compiled-templates/object-wizard.mustache';
+import { genConditionalMustache } from '../compiled-templates/conditional.mustache';
 
 /**
  * Assigns a layout strategy to each object node in the schema tree.
@@ -127,7 +68,6 @@ function assignLayoutStrategy(node: SchemaNode, level: number = 0, parentLayout?
     // Assign layout strategy to array items
     assignLayoutStrategy(node.items, level, parentLayout);
   }
-
 }
 
 function dbgDumpLayout(schema: SchemaNode, level: number = 0): void {
@@ -217,36 +157,9 @@ function validateSchema(schema: SchemaNode, path: string = 'root'): void {
 }
 
 // Generate HTML template from schema - async version
-export async function generateTemplateAsync(schema: SchemaNode): Promise<string> {
-
-  const templatesDir = "./src/template-generator/templates";
-  console.log("Starting template generation with schema:",schema);
+export async function generateTemplateAsync(schema: SchemaNode, templatesDir: string = ''): Promise<string> {
+  logger.debug("Starting template generation with schema:", schema.id);
   logger.debug("Templates directory:", templatesDir);
-  
-  // Check if templates directory exists
-  try {
-    await fsPromises.access(templatesDir);
-    // logger.debug("Templates directory exists");
-    
-    // List template files to verify they exist
-    const files = await fsPromises.readdir(templatesDir);
-    
-    // Check for essential templates
-    const essentialTemplates = [
-      'form.mustache', 'object.mustache', 'string.mustache', 
-      'number.mustache', 'boolean.mustache', 'property.mustache'
-    ];
-    const missingTemplates = essentialTemplates.filter(template => !files.includes(template));
-    
-    if (missingTemplates.length > 0) {
-      logger.error("Missing essential templates:", missingTemplates);
-      throw new Error("Missing essential templates: " + missingTemplates.join(","));
-
-    }
-  } catch (error) {
-    logger.error("Templates directory not found:", templatesDir);
-    throw new Error(`Templates directory not found: ${templatesDir}`);
-  }
   
   // Validate schema structure
   try {
@@ -262,15 +175,6 @@ export async function generateTemplateAsync(schema: SchemaNode): Promise<string>
   assignLayoutStrategy(schema);
   logger.debug("Layout assignment complete. Schema structure:");
   dbgDumpLayout(schema);
-  
-  // Create base form structure
-  const formTemplatePath = path.join(templatesDir, 'form.mustache');
-  logger.debug("Loading form template from:", formTemplatePath);
-  const formTemplate = await loadTemplateAsync(formTemplatePath);
-  
-  if (!formTemplate) {
-    throw new Error('Failed to load form template');
-  }
   
   // Generate HTML for schema
   logger.debug("Generating HTML content for schema");
@@ -292,7 +196,7 @@ export async function generateTemplateAsync(schema: SchemaNode): Promise<string>
   }
   
   // Render form template with content
-  const result = Mustache.render(formTemplate, {
+  const result = genFormMustache({
     formId: schema.id,
     schemaId: schema.id,
     title: schema.title || 'Form',
@@ -338,25 +242,6 @@ async function generateObjectHTMLAsync(node: SchemaNode, templatesDir: string): 
     throw new Error(`Expected node type 'object', got '${node.type}' in generateObjectHTMLAsync`);
   }
   
-  let templateName = 'object.mustache';
-  if (node.layout === 'grid') {
-    templateName = 'object-grid.mustache';
-  } else if (node.layout === 'tabs') {
-    templateName = 'object-tabs.mustache';
-  } else if (node.layout === 'vtabs') {
-    templateName = 'object-vtabs.mustache';
-  } else if (node.layout === 'wizard') {
-    templateName = 'object-wizard.mustache';
-  }
-  
-  logger.debug(`Using template ${templateName} for ${node.id} (layout: ${node.layout})`);
-  const templatePath = path.join(templatesDir, templateName);
-  const objectTemplate = await loadTemplateAsync(templatePath);
-  
-  if (!objectTemplate) {
-    throw new Error(`Failed to load template ${templateName}`);
-  }
-  
   let propertiesHTML = '';
   
   if (node.properties) {
@@ -364,15 +249,9 @@ async function generateObjectHTMLAsync(node: SchemaNode, templatesDir: string): 
     const propertyPromises = Object.entries(node.properties)
       .map(async ([key, propNode]) => {
         logger.debug(`  Processing property ${key} (${propNode.type})`);
-        const propertyTemplate = await loadTemplateAsync(path.join(templatesDir, 'property.mustache'));
-        
-        if (!propertyTemplate) {
-          throw new Error('Failed to load property template');
-        }
-        
         const propHTML = await generateNodeHTMLAsync(propNode, templatesDir);
         
-        return Mustache.render(propertyTemplate, {
+        return genPropertyMustache({
           id: propNode.id,
           name: key,
           title: propNode.title || key,
@@ -400,13 +279,53 @@ async function generateObjectHTMLAsync(node: SchemaNode, templatesDir: string): 
     : '';
   
   try {
-    const result = Mustache.render(objectTemplate, {
-      id: node.id,
-      title: node.title || '',
-      description: node.description || '',
-      properties: propertiesHTML,
-      conditionals: conditionalsHTML
-    });
+    let result;
+    switch (node.layout) {
+      case 'grid':
+        result = genObjectGridMustache({
+          id: node.id,
+          title: node.title || '',
+          description: node.description || '',
+          properties: propertiesHTML,
+          conditionals: conditionalsHTML
+        });
+        break;
+      case 'tabs':
+        result = genObjectTabsMustache({
+          id: node.id,
+          title: node.title || '',
+          description: node.description || '',
+          properties: propertiesHTML,
+          conditionals: conditionalsHTML
+        });
+        break;
+      case 'vtabs':
+        result = genObjectVtabsMustache({
+          id: node.id,
+          title: node.title || '',
+          description: node.description || '',
+          properties: propertiesHTML,
+          conditionals: conditionalsHTML
+        });
+        break;
+      case 'wizard':
+        result = genObjectWizardMustache({
+          id: node.id,
+          title: node.title || '',
+          description: node.description || '',
+          properties: propertiesHTML,
+          conditionals: conditionalsHTML
+        });
+        break;
+      default:
+        result = genObjectMustache({
+          id: node.id,
+          title: node.title || '',
+          description: node.description || '',
+          properties: propertiesHTML,
+          conditionals: conditionalsHTML
+        });
+    }
     
     if (!result) {
       throw new Error(`Failed to render object template for ${node.id}`);
@@ -422,14 +341,12 @@ async function generateObjectHTMLAsync(node: SchemaNode, templatesDir: string): 
 
 // Generate HTML for array type - async version
 async function generateArrayHTMLAsync(node: SchemaNode, templatesDir: string): Promise<string> {
-  const arrayTemplate = await loadTemplateAsync(path.join(templatesDir, 'array.mustache'));
-  
   // Generate template for array items
   const itemHTML = node.items 
     ? await generateNodeHTMLAsync(node.items, templatesDir)
     : '<!-- No items schema defined -->';
   
-  return Mustache.render(arrayTemplate, {
+  return genArrayMustache({
     id: node.id,
     title: node.title || '',
     description: node.description || '',
@@ -440,49 +357,71 @@ async function generateArrayHTMLAsync(node: SchemaNode, templatesDir: string): P
 // Generate HTML for string type - async version
 async function generateStringHTMLAsync(node: SchemaNode, templatesDir: string): Promise<string> {
   // Different templates based on format or enum
-  let templateName = 'string.mustache';
   if (node.enum && node.enum.length > 0) {
-    templateName = 'enum.mustache';
+    return genEnumMustache({
+      id: node.id,
+      title: node.title || '',
+      description: node.description || '',
+      required: node.required,
+      enum: node.enum,
+      default: node.default
+    });
   } else if (node.format === 'date-time' || node.format === 'date') {
-    templateName = 'date.mustache';
-    // Set input type based on format
-    node = {
-      ...node,
-      inputType: node.format === 'date-time' ? 'datetime-local' : 'date'
-    };
+    return genDateMustache({
+      id: node.id,
+      title: node.title || '',
+      description: node.description || '',
+      required: node.required,
+      inputType: node.format === 'date-time' ? 'datetime-local' : 'date',
+      default: node.default
+    });
   } else if (node.format === 'email') {
-    templateName = 'email.mustache';
+    return genEmailMustache({
+      id: node.id,
+      title: node.title || '',
+      description: node.description || '',
+      required: node.required,
+      default: node.default
+    });
   } else if (node.format === 'uri') {
-    templateName = 'url.mustache';
+    return genUrlMustache({
+      id: node.id,
+      title: node.title || '',
+      description: node.description || '',
+      required: node.required,
+      default: node.default
+    });
   } else if (node.format === 'textarea' || (node.maxLength && node.maxLength > 100)) {
-    templateName = 'textarea.mustache';
+    return genTextareaMustache({
+      id: node.id,
+      title: node.title || '',
+      description: node.description || '',
+      required: node.required,
+      minLength: node.minLength,
+      maxLength: node.maxLength,
+      default: node.default
+    });
+  } else {
+    return genStringMustache({
+      id: node.id,
+      title: node.title || '',
+      description: node.description || '',
+      required: node.required,
+      minLength: node.minLength,
+      maxLength: node.maxLength,
+      pattern: node.pattern,
+      format: node.format,
+      default: node.default
+    });
   }
-  
-  const stringTemplate = await loadTemplateAsync(path.join(templatesDir, templateName));
-  
-  return Mustache.render(stringTemplate, {
-    id: node.id,
-    title: node.title || '',
-    description: node.description || '',
-    required: node.required,
-    minLength: node.minLength,
-    maxLength: node.maxLength,
-    pattern: node.pattern,
-    format: node.format,
-    default: node.default,
-    enum: node.enum,
-    inputType: (node as any).inputType
-  });
 }
 
 // Generate HTML for number/integer type - async version
 async function generateNumberHTMLAsync(node: SchemaNode, templatesDir: string): Promise<string> {
-  const numberTemplate = await loadTemplateAsync(path.join(templatesDir, 'number.mustache'));
-  
   // Set step to 1 for integer types
   const step = node.type === 'integer' ? 1 : undefined;
   
-  return Mustache.render(numberTemplate, {
+  return genNumberMustache({
     id: node.id,
     title: node.title || '',
     description: node.description || '',
@@ -497,9 +436,7 @@ async function generateNumberHTMLAsync(node: SchemaNode, templatesDir: string): 
 
 // Generate HTML for boolean type - async version
 async function generateBooleanHTMLAsync(node: SchemaNode, templatesDir: string): Promise<string> {
-  const booleanTemplate = await loadTemplateAsync(path.join(templatesDir, 'boolean.mustache'));
-  
-  return Mustache.render(booleanTemplate, {
+  return genBooleanMustache({
     id: node.id,
     title: node.title || '',
     description: node.description || '',
@@ -510,8 +447,6 @@ async function generateBooleanHTMLAsync(node: SchemaNode, templatesDir: string):
 
 // Generate HTML for conditionals - async version
 async function generateConditionalsHTMLAsync(conditionals: Conditional[], templatesDir: string): Promise<string> {
-  const conditionalTemplate = await loadTemplateAsync(path.join(templatesDir, 'conditional.mustache'));
-  
   const conditionalPromises = conditionals.map(async conditional => {
     let schemaHTML;
     
@@ -526,7 +461,7 @@ async function generateConditionalsHTMLAsync(conditionals: Conditional[], templa
       schemaHTML = await generateNodeHTMLAsync(conditional.schema, templatesDir);
     }
     
-    return Mustache.render(conditionalTemplate, {
+    return genConditionalMustache({
       type: conditional.type,
       schema: schemaHTML
     });
@@ -558,28 +493,14 @@ function generateNodeHTML(node: SchemaNode, templatesDir: string): string {
 
 // Generate HTML for object type - sync version
 function generateObjectHTML(node: SchemaNode, templatesDir: string): string {
-  let templateName = 'object.mustache';
-  if (node.layout === 'grid') {
-    templateName = 'object-grid.mustache';
-  } else if (node.layout === 'tabs') {
-    templateName = 'object-tabs.mustache';
-  } else if (node.layout === 'vtabs') {
-    templateName = 'object-vtabs.mustache';
-  } else if (node.layout === 'wizard') {
-    templateName = 'object-wizard.mustache';
-  }
-  
-  const objectTemplate = loadTemplate(path.join(templatesDir, templateName));
-  
   let propertiesHTML = '';
   
   if (node.properties) {
     propertiesHTML = Object.entries(node.properties)
       .map(([key, propNode]) => {
-        const propertyTemplate = loadTemplate(path.join(templatesDir, 'property.mustache'));
         const propHTML = generateNodeHTML(propNode, templatesDir);
         
-        return Mustache.render(propertyTemplate, {
+        return genPropertyMustache({
           id: propNode.id,
           name: key,
           title: propNode.title || key,
@@ -596,25 +517,69 @@ function generateObjectHTML(node: SchemaNode, templatesDir: string): string {
     ? generateConditionalsHTML(node.conditionals, templatesDir) 
     : '';
   
-  return Mustache.render(objectTemplate, {
-    id: node.id,
-    title: node.title || '',
-    description: node.description || '',
-    properties: propertiesHTML,
-    conditionals: conditionalsHTML
-  });
+  let result;
+  switch (node.layout) {
+    case 'grid':
+      result = genObjectGridMustache({
+        id: node.id,
+        title: node.title || '',
+        description: node.description || '',
+        properties: propertiesHTML,
+        conditionals: conditionalsHTML
+      });
+      break;
+    case 'tabs':
+      result = genObjectTabsMustache({
+        id: node.id,
+        title: node.title || '',
+        description: node.description || '',
+        properties: propertiesHTML,
+        conditionals: conditionalsHTML
+      });
+      break;
+    case 'vtabs':
+      result = genObjectVtabsMustache({
+        id: node.id,
+        title: node.title || '',
+        description: node.description || '',
+        properties: propertiesHTML,
+        conditionals: conditionalsHTML
+      });
+      break;
+    case 'wizard':
+      result = genObjectWizardMustache({
+        id: node.id,
+        title: node.title || '',
+        description: node.description || '',
+        properties: propertiesHTML,
+        conditionals: conditionalsHTML
+      });
+      break;
+    default:
+      result = genObjectMustache({
+        id: node.id,
+        title: node.title || '',
+        description: node.description || '',
+        properties: propertiesHTML,
+        conditionals: conditionalsHTML
+      });
+  }
+  
+  if (!result) {
+    throw new Error(`Failed to render object template for ${node.id}`);
+  }
+  
+  return result;
 }
 
 // Generate HTML for array type - sync version
 function generateArrayHTML(node: SchemaNode, templatesDir: string): string {
-  const arrayTemplate = loadTemplate(path.join(templatesDir, 'array.mustache'));
-  
   // Generate template for array items
   const itemHTML = node.items 
     ? generateNodeHTML(node.items, templatesDir)
     : '<!-- No items schema defined -->';
   
-  return Mustache.render(arrayTemplate, {
+  return genArrayMustache({
     id: node.id,
     title: node.title || '',
     description: node.description || '',
@@ -625,49 +590,71 @@ function generateArrayHTML(node: SchemaNode, templatesDir: string): string {
 // Generate HTML for string type - sync version
 function generateStringHTML(node: SchemaNode, templatesDir: string): string {
   // Different templates based on format or enum
-  let templateName = 'string.mustache';
   if (node.enum && node.enum.length > 0) {
-    templateName = 'enum.mustache';
+    return genEnumMustache({
+      id: node.id,
+      title: node.title || '',
+      description: node.description || '',
+      required: node.required,
+      enum: node.enum,
+      default: node.default
+    });
   } else if (node.format === 'date-time' || node.format === 'date') {
-    templateName = 'date.mustache';
-    // Set input type based on format
-    node = {
-      ...node,
-      inputType: node.format === 'date-time' ? 'datetime-local' : 'date'
-    };
+    return genDateMustache({
+      id: node.id,
+      title: node.title || '',
+      description: node.description || '',
+      required: node.required,
+      inputType: node.format === 'date-time' ? 'datetime-local' : 'date',
+      default: node.default
+    });
   } else if (node.format === 'email') {
-    templateName = 'email.mustache';
+    return genEmailMustache({
+      id: node.id,
+      title: node.title || '',
+      description: node.description || '',
+      required: node.required,
+      default: node.default
+    });
   } else if (node.format === 'uri') {
-    templateName = 'url.mustache';
+    return genUrlMustache({
+      id: node.id,
+      title: node.title || '',
+      description: node.description || '',
+      required: node.required,
+      default: node.default
+    });
   } else if (node.format === 'textarea' || (node.maxLength && node.maxLength > 100)) {
-    templateName = 'textarea.mustache';
+    return genTextareaMustache({
+      id: node.id,
+      title: node.title || '',
+      description: node.description || '',
+      required: node.required,
+      minLength: node.minLength,
+      maxLength: node.maxLength,
+      default: node.default
+    });
+  } else {
+    return genStringMustache({
+      id: node.id,
+      title: node.title || '',
+      description: node.description || '',
+      required: node.required,
+      minLength: node.minLength,
+      maxLength: node.maxLength,
+      pattern: node.pattern,
+      format: node.format,
+      default: node.default
+    });
   }
-  
-  const stringTemplate = loadTemplate(path.join(templatesDir, templateName));
-  
-  return Mustache.render(stringTemplate, {
-    id: node.id,
-    title: node.title || '',
-    description: node.description || '',
-    required: node.required,
-    minLength: node.minLength,
-    maxLength: node.maxLength,
-    pattern: node.pattern,
-    format: node.format,
-    default: node.default,
-    enum: node.enum,
-    inputType: (node as any).inputType
-  });
 }
 
 // Generate HTML for number/integer type - sync version
 function generateNumberHTML(node: SchemaNode, templatesDir: string): string {
-  const numberTemplate = loadTemplate(path.join(templatesDir, 'number.mustache'));
-  
   // Set step to 1 for integer types
   const step = node.type === 'integer' ? 1 : undefined;
   
-  return Mustache.render(numberTemplate, {
+  return genNumberMustache({
     id: node.id,
     title: node.title || '',
     description: node.description || '',
@@ -682,9 +669,7 @@ function generateNumberHTML(node: SchemaNode, templatesDir: string): string {
 
 // Generate HTML for boolean type - sync version
 function generateBooleanHTML(node: SchemaNode, templatesDir: string): string {
-  const booleanTemplate = loadTemplate(path.join(templatesDir, 'boolean.mustache'));
-  
-  return Mustache.render(booleanTemplate, {
+  return genBooleanMustache({
     id: node.id,
     title: node.title || '',
     description: node.description || '',
@@ -695,8 +680,6 @@ function generateBooleanHTML(node: SchemaNode, templatesDir: string): string {
 
 // Generate HTML for conditionals - sync version
 function generateConditionalsHTML(conditionals: Conditional[], templatesDir: string): string {
-  const conditionalTemplate = loadTemplate(path.join(templatesDir, 'conditional.mustache'));
-  
   return conditionals.map(conditional => {
     let schemaHTML;
     
@@ -710,7 +693,7 @@ function generateConditionalsHTML(conditionals: Conditional[], templatesDir: str
       schemaHTML = generateNodeHTML(conditional.schema, templatesDir);
     }
     
-    return Mustache.render(conditionalTemplate, {
+    return genConditionalMustache({
       type: conditional.type,
       schema: schemaHTML
     });

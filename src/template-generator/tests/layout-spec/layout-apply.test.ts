@@ -6,7 +6,7 @@ import { expect, jest, describe, it } from '@jest/globals';
 
 // Mock the template generation functions
 jest.mock('../../lib/generator', () => ({
-  generateTemplateAsync: jest.fn().mockResolvedValue('<div>mocked template</div>')
+  generateTemplateAsync: jest.fn().mockResolvedValue('<div>mocked template</div>' as never)
 }));
 
 describe('Layout Specification Application', () => {
@@ -124,8 +124,7 @@ describe('Layout Specification Application', () => {
         layoutOptions: expect.objectContaining({
           columns: 3
         })
-      }),
-      '/path/to/templates'
+      })
     );
   });
   
