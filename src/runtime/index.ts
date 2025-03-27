@@ -443,7 +443,7 @@ export class SchemaForm {
   
   private mapSchemaPaths(schema: JSONSchema, path: string): void {
     // Map the current schema node
-    const id = path || 'root';
+    const id = path || schema.$id|| 'root';
     this.schemaPathMap[id] = path;
     
     // Map properties for object types

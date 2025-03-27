@@ -1,3 +1,5 @@
+
+
 // Monaco Editor instances
 let schemaEditor = null;
 let layoutEditor = null;
@@ -77,20 +79,23 @@ async function init() {
 async function loadSchemas() {
   try {
     const response = await fetch('/api/schemas');
-    const schemas = await response.json();
+    const schemaTable = await response.json();
     
     // Clear existing options
     while (schemaSelect.options.length > 1) {
       schemaSelect.remove(1);
     }
     
-    // Add options for each schema
-    schemas.forEach(schema => {
+    console.log("schemas from the serer", schemaTable);
+    Object.keys(schemaTable).forEach((name) => {
+      const schema = schemaTable[name];
+      console.log(name, schema);
       const option = document.createElement('option');
-      option.value = schema.id;
-      option.textContent = schema.name;
+      option.value = name;
+      option.textContent = name;
       schemaSelect.appendChild(option);
     });
+
   } catch (error) {
     console.error('Error loading schemas:', error);
   }
@@ -107,7 +112,6 @@ async function handleSchemaSelect() {
     
     currentSchema = data.schema;
     schemaEditor.setValue(JSON.stringify(currentSchema, null, 2));
-    
     // Get layout for this schema
     await loadLayout(schemaId);
   } catch (error) {

@@ -196,8 +196,8 @@ describe('Server API Tests', () => {
   test('GET /api/schemas should return all schemas', async () => {
     const response = await request(app).get('/api/schemas');
     expect(response.status).toBe(200);
-    expect(response.body).toBeInstanceOf(Array);
-    expect(response.body.length).toBeGreaterThan(0);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body.user).toBeDefined();
   });
   
   test('GET /api/schemas/:id should return a specific schema', async () => {

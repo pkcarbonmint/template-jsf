@@ -33,7 +33,7 @@
     "test:jest:validation": "node src/template-generator/tests/run-jest-tests.js -- --testPathPattern=validation.test.js",
     "start": "node src/playground/index.js",
     "generate": "node bin/generate-template.js",
-    "playground:start": "ts-node src/playground/app.ts",
+    "playground:start": "ts-node src/playground/serverapp.ts",
     "playground:dev": "nodemon --watch src/playground --ext ts --exec ts-node src/playground/app.ts"
   },
   "keywords": [

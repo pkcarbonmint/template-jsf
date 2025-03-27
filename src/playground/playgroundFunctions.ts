@@ -1,4 +1,4 @@
-import { schemas, getSchemaById, listSchemas } from './schemaManager';
+import { getSchemaById, listSchemas } from './schemaManager';
 import { getLayoutBySchemaId, generateLayout, generateTemplateWithLayout, saveLayout } from './layoutManager';
 import { LayoutConfig } from './layoutSpecs';
 

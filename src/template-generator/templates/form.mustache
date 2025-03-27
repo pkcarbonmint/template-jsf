@@ -25,21 +25,28 @@
     {{/sections}}
     
     <div class="form-actions">
-      <button type="submit" class="btn-submit">{{submitLabel}}</button>
-      <button type="button" class="btn-cancel">{{cancelLabel}}</button>
+      <button type="submit" class="btn-submit">Submit</button>
+      <button type="button" class="btn-cancel">Cancel</button>
     </div>
   </form>
 </div>
 
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/array-table.css">
+<link rel="stylesheet" href="/dist/jsf.css">
 
-<script type="text/javascript">
+<script type="module">
+  import { createSchemaForm } from "/dist/runtime.es.js";
+
+  window.createSchemaForm = createSchemaForm;
+
   // Initialize form
   (function() {
     const form = document.getElementById('{{formId}}');
     if (!form) return;
-    
+
+    createSchemaForm(form);
+
     // Initialize array tables if the handlers are available
     if (typeof window.ArrayTableHandlers !== 'undefined') {
       window.ArrayTableHandlers.initArrayTables(form);

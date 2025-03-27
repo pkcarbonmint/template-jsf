@@ -3,7 +3,7 @@ import path from 'path';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import fs from 'fs/promises';
-import { schemas, getSchemaById, listSchemas } from './schemaManager';
+import { getAllSchemas, getSchemaById, getSchemaTable, listSchemas } from './schemaManager';
 import { generateLayout, generateTemplateWithLayout, getLayoutBySchemaId, saveLayout } from './layoutManager';
 import { LayoutConfig } from './layoutSpecs';
 
@@ -17,7 +17,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 app.get('/api/schemas', (req, res) => {
-  res.json(listSchemas());
+  res.json(getSchemaTable());
+  // res.json(listSchemas());
 });
 
 app.get('/api/schemas/:id', (req, res) => {

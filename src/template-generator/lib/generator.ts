@@ -200,7 +200,9 @@ export async function generateTemplateAsync(schema: SchemaNode, templatesDir: st
     formId: schema.id,
     schemaId: schema.id,
     title: schema.title || 'Form',
-    content: formContent
+    content: formContent,
+    submitLabel: 'Submit',
+    cancelLabel: 'Cancel'
   });
   
   if (!result) {
