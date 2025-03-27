@@ -2,6 +2,7 @@ import { SchemaNode } from '../template-generator/lib/schema-parser';
 
 // Custom interface for layout configuration to be used in the test
 export interface LayoutConfig {
+  id?: string;
   layout: string;
   order: string[];
   layoutOptions?: any;

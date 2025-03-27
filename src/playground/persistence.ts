@@ -8,6 +8,9 @@ const LAYOUT_DIR = './layout-data'; // Define the LAYOUT_DIR constant
 export async function saveSchemaToDisk(name: string, schema: any, schemaDir = SCHEMA_DIR): Promise<boolean> {
   const filePath = path.join(schemaDir, `${name}.json`);
   try {
+    if (!schema.id) {
+      return false;
+    }
     await fs.writeFile(filePath, JSON.stringify(schema, null, 2));
     return true;
   } catch (error) {
@@ -34,6 +37,9 @@ export async function saveLayoutToDisk(name: string, layout: any, layoutDir = LA
   // Add similar code to saveSchemaToDisk
   const filePath = path.join(layoutDir, `${name}.json`);
   try {
+    if (!layout.id) {
+      return false;
+    }
     console.log('Saving layout to disk:', filePath);
     await fs.writeFile(filePath, JSON.stringify(layout, null, 2));
     return true;
