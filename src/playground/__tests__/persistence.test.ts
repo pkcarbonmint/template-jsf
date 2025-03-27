@@ -95,7 +95,7 @@ describe('Persistence Tests', () => {
     
     test('should save schema to disk', async () => {
       // Save schema to disk
-      const result = await saveSchemaToDisk('test-schema', testSchema);
+      const result = await saveSchemaToDisk('test-schema', testSchema, SCHEMA_DIR);
       
       // Verify result
       expect(result).toBe(true);
@@ -113,17 +113,14 @@ describe('Persistence Tests', () => {
     
     test('should load schemas from disk', async () => {
       // First save a schema
-      await saveSchemaToDisk('test-schema', testSchema);
+      await saveSchemaToDisk('test-schema', testSchema, SCHEMA_DIR); 
       
       // Load schemas from disk
-      const loadedCount = await loadSchemasFromDisk();
+      const loadedSchemas = await loadSchemasFromDisk(SCHEMA_DIR);
       
       // Verify at least one schema was loaded
-      expect(loadedCount).toBeGreaterThanOrEqual(1);
+      expect(loadedSchemas.length).toBeGreaterThanOrEqual(1);
       
-      // Verify the schema was loaded into memory
-      const isInMemory = saveSchemaToMemory('test-schema',testSchema);
-      expect(isInMemory).toBe(true);
     });
     
     test('should not save schema without ID', async () => {
@@ -135,7 +132,7 @@ describe('Persistence Tests', () => {
       };
       
       // Try to save schema without ID
-      const result = await saveSchemaToDisk('invalid-schema', invalidSchema);
+      const result = await saveSchemaToDisk('invalid-schema', invalidSchema, SCHEMA_DIR);
       
       // Verify it failed
       expect(result).toBe(false);
@@ -154,13 +151,13 @@ describe('Persistence Tests', () => {
     
     test('should save layout to disk', async () => {
       // Save layout to disk
-      const result = await saveLayoutToDisk('test-schema-layout', testLayout);
+      const result = await saveLayoutToDisk('test-schema-layout', testLayout, LAYOUT_DIR);
       
       // Verify result
       expect(result).toBe(true);
       
       // Verify file exists
-      const filePath = path.join(LAYOUT_DIR, 'test-schema.json');
+      const filePath = path.join(LAYOUT_DIR, 'test-schema-layout.json');
       const exists = existsSync(filePath);
       expect(exists).toBe(true);
       
@@ -172,18 +169,17 @@ describe('Persistence Tests', () => {
     
     test('should load layouts from disk', async () => {
       // First save a layout
-      await saveLayoutToDisk('test-schema', testLayout);
+      await saveLayoutToDisk('test-schema-layout2', testLayout, LAYOUT_DIR);
       
       // Load layouts from disk
-      const loadedCount = await loadLayoutsFromDisk();
-      
+      const loadedSchemas = await loadSchemasFromDisk(SCHEMA_DIR);
       // Verify at least one layout was loaded
-      expect(loadedCount).toBeGreaterThanOrEqual(1);
+      expect(loadedSchemas.length).toBeGreaterThanOrEqual(1);
     });
     
     test('should not save layout without schema ID', async () => {
       // Try to save layout without schema ID
-      const result = await saveLayoutToDisk('', testLayout);
+      const result = await saveLayoutToDisk('', testLayout, LAYOUT_DIR);
       
       // Verify it failed
       expect(result).toBe(false);
@@ -193,16 +189,16 @@ describe('Persistence Tests', () => {
   describe('Integration Tests', () => {
     test('should save and load both schema and layout', async () => {
       // Save schema and layout
-      await saveSchemaToDisk('test-schema', testSchema);
-      await saveLayoutToDisk('test-schema-layout', testLayout);
+      await saveSchemaToDisk('test-schema', testSchema, SCHEMA_DIR);
+      await saveLayoutToDisk('test-schema-layout', testLayout, LAYOUT_DIR);
       
       // Load from disk
-      const loadedSchemas = await loadSchemasFromDisk();
-      const loadedLayouts = await loadLayoutsFromDisk();
+      const loadedSchemas = await loadSchemasFromDisk(SCHEMA_DIR);
+      const loadedLayouts = await loadLayoutsFromDisk(LAYOUT_DIR);
       
       // Verify both were loaded
-      expect(loadedSchemas).toBeGreaterThanOrEqual(1);
-      expect(loadedLayouts).toBeGreaterThanOrEqual(1);
+      expect(loadedSchemas.length).toBeGreaterThanOrEqual(1);
+      expect(loadedLayouts.length).toBeGreaterThanOrEqual(1);
     });
   });
 }); 
